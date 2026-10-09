@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PJ Crawley LLC, evidence case 2, the compensator rule and the loss model</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ Crawley LLC">
+<meta property="og:title" content="PJ Crawley LLC, evidence case 2, the compensator rule and the loss model">
+<meta property="og:description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:url" content="https://www.pjcrawleyllc.com/case-compensator-rule.html">
+<meta property="og:image" content="https://www.pjcrawleyllc.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.pjcrawleyllc.com/case-compensator-rule.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#0C1B33;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1B4FE8}a:hover{color:#0C1B33}
+h1,h2,h3{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-0.01em}
+p{margin:0 0 14px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.prose{max-width:68ch}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid #C9D3DF}
+.nav a{text-decoration:none;color:#0C1B33;font-weight:500;font-size:15px;padding:8px 0}
+.nav a.on{color:#1B4FE8;box-shadow:inset 0 -2px 0 #1B4FE8}
+.brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:22px;color:#0C1B33;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px}
+.crumb{font-size:14px;color:#5B6B7F;padding-top:20px}
+.btn{display:inline-block;background:#1B4FE8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn:hover{background:#0C1B33;color:#fff}
+.btn2{display:inline-block;color:#0C1B33;text-decoration:none;font-weight:600;font-size:16px;padding:12px 22px;border:1.5px solid #0C1B33;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn2:hover{color:#1B4FE8;border-color:#1B4FE8}
+.band{background:#0C1B33;color:#fff}
+.band a{color:#7FA6FF}.band a:hover{color:#fff}
+.band a.btn{color:#fff}.band a.btn:hover{background:#fff;color:#0C1B33}
+.band2{background:#EEF3F8}
+.banner{border-top:3px solid #D13B1E;border-bottom:1px solid #C9D3DF;padding:14px 0;font-weight:600;font-size:16px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tag{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:3px;line-height:1.3;vertical-align:middle;white-space:nowrap}
+.t-meas{background:#0A7F4A;color:#fff}
+.t-doc{background:#fff;color:#0C1B33;border:1.5px solid #0C1B33}
+.t-der{background:#1B4FE8;color:#fff}
+.t-na{background:#5B6B7F;color:#fff}
+.t-fail{background:#D13B1E;color:#fff}
+.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.ro .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:36px;font-weight:600;line-height:1.05;color:#fff;letter-spacing:-0.02em}
+.ro .l{font-size:14px;color:#C9D3DF;margin-top:10px;line-height:1.4}
+.ro .tag{margin-top:12px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.tbl{overflow-x:auto;border:1px solid #C9D3DF;border-radius:4px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+th{background:#0C1B33;color:#fff;text-align:left;font-weight:600;padding:10px 12px;font-size:13.5px}
+td{padding:9px 12px;border-top:1px solid #C9D3DF;vertical-align:top}
+tr:nth-child(even) td{background:#F6F8FB}
+td.num{font-family:'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap}
+.ent{border-top:1px solid #C9D3DF;padding:18px 0}
+.ent p{max-width:76ch}
+.rule{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 40px}
+.rule div{border-top:1px solid #C9D3DF;padding-top:10px}
+.foot{padding:40px 0;font-size:14px;color:#C9D3DF}
+ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
+pre{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:14px;background:#EEF3F8;padding:16px;border-radius:4px;overflow-x:auto;margin:0 0 14px 0}
+@media (max-width:900px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.rule{grid-template-columns:1fr}}
+
+@media (max-width:1240px){.wrap{width:100%}}
+@media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
+
+<div class="wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">PJ Crawley LLC</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="offering.html">The Offering</a>
+      <a href="worked-example.html">Worked example</a>
+      <a class="on" href="evidence.html">Evidence</a>
+      <a href="metrics.html">Metrics</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="crumb"><a href="evidence.html">Evidence</a>, case 2, the compensator rule and the loss model</div>
+</div>
+
+<div class="wrap" style="padding-top: 48px; padding-bottom: 40px">
+  <h1 style="font-size: 60px; max-width: 18ch">The rule was right for one phase. It was used for four.</h1>
+  <p class="prose" style="font-size: 20px; margin-top: 26px; color: #2A3A52">A published compensator design rule, twenty years old and widely taught, reproduced from its own figures and found to be incomplete for the multiphase case it is used in. The gap was derived before the source text was read, then confirmed at two, four and eight phases against one simulated and one measured arbiter, with the alternative explanation stated in advance, tested, and refuted. The loss model for the next design step was then predicted, measured, and measured again after its own measuring script was found to be wrong.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+    <a class="btn" href="#how">Read how it was found</a>
+    <a class="btn2" href="contact.html">Book a scoping conversation</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="banner">Read in simulation against the source's own published figures, one of them measured on hardware. Nothing on this page was built.</div>
+</div>
+
+<div class="wrap" style="padding-top: 36px; padding-bottom: 40px">
+  <div class="cols">
+    <div><h2 style="font-size: 36px; max-width: 16ch">The check is written before the thing it judges.</h2></div>
+    <div class="prose"><p>Every prediction on this page was committed to a file before the run that tests it. That is what makes a failed prediction reportable, and there are failed predictions below.</p></div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 44px; padding-bottom: 44px">
+    <div class="readout">
+      <div class="ro">
+        <div class="n">2.18x</div>
+        <div class="l">the rule as printed lands at 2.18 times its own stated bandwidth on the author's own two-phase design; corrected, +2.76 %</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">7.95063</div>
+        <div class="l">the output-impedance ratio at eight phases, against 8, with the alternative that it saturates at four written down first and refuted</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">0.03 dB</div>
+        <div class="l">a closed-form loop model from the author's own two equations against the measured loop, from fs/20 to fs/5</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">11,571 of 11,571</div>
+        <div class="l">pin pairs agreeing between two independently built netlists at four phases; 30,739 of 30,739 at eight</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px">Provenance</h2>
+  <div class="cols" style="margin-top: 20px">
+    <div class="prose">
+      <p>A 2004 doctoral dissertation on multiphase voltage-regulator control. Public, citable, and still in use. A commercial circuit simulator, stock install. One engineer. No client material of any kind is involved in this case.</p>
+      <p><strong>Everything here is reproducible by you.</strong> The source states its component values, its switching frequencies, its target bandwidth and its output-impedance rule, and it prints a measured loop-gain plot with a marker on it. That is why this design was chosen over a current one. A modern application note gives you a topology and no arbiter, and grading your own homework is not evidence.</p>
+    </div>
+    <div class="prose">
+      <p style="font-weight: 600">Read the tags.</p>
+      <p><span class="tag t-meas">MEASURED</span> <span class="tag t-doc">DOCUMENTED</span> <span class="tag t-der">DERIVED</span> <span class="tag t-na">NOT EVALUABLE</span></p>
+      <p>A check that cannot decide returns NOT EVALUABLE. It is never promoted to a pass because the answer looks plausible.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px">What was found</h2>
+    <p class="prose" style="margin-top: 16px">The published rule sets the compensator's DC gain from the current-sense gain and the output capacitor. Built exactly as printed, on the author's own two-phase ceramic design, it lands at <strong>2.18 times</strong> its own stated bandwidth and <strong>half</strong> its own stated output impedance.</p>
+    <p class="prose">Divided by the phase count, the same design lands on both.</p>
+    <h3 style="font-size: 24px; margin-top: 24px; margin-bottom: 12px">The output-impedance ratio, at every phase count built</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>phases</th><th>measured ratio</th><th>against</th><th>error</th><th>tag</th></tr></thead>
+        <tbody>
+          <tr><td class="num">2</td><td class="num">1.99036 and 1.99173</td><td class="num">2</td><td class="num">-0.48 % and -0.41 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+          <tr><td class="num">4</td><td class="num">3.97734</td><td class="num">4</td><td class="num">-0.57 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+          <tr><td class="num">8</td><td class="num">7.95063</td><td class="num">8</td><td class="num">-0.62 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top: 16px">Monotonic, every error negative, the magnitude growing slowly. And the crossover, independently:</p>
+    <div class="tbl">
+      <table style="min-width: 700px">
+        <thead><tr><th></th><th>as printed</th><th>corrected</th><th>tag</th></tr></thead>
+        <tbody>
+          <tr><td>crossover against the stated 130 kHz, two phases</td><td class="num">2.18x</td><td class="num">+2.76 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+          <tr><td>output impedance by the published rule at the hardware's own measured 220 kHz, four phases</td><td>n/a</td><td class="num">-0.25 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+          <tr><td>crossover against that measured marker, four phases</td><td>n/a</td><td class="num">+0.08 % best, +3.01 % worst</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+          <tr><td>crossover against that same marker, eight phases</td><td>n/a</td><td class="num">+0.378 %</td><td><span class="tag t-meas">MEASURED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols" style="margin-top: 24px">
+      <div class="prose">
+        <p>The four-phase board's switching frequency is not stated in the source, so it was swept. Three decks sat inside the model's own guard, a crossover below a fifth of the switching frequency, declared before the runs. The best of them lands at +0.08 % and the worst at +3.01 %.</p>
+        <p><strong>Two phases was never going to be enough, and neither was four.</strong> A factor of two is the least diagnostic number in engineering. It is equally consistent with a transcription slip, a peak-versus-average confusion, or a single-ended versus differential sense, and none of those has anything to do with phase count. Four separates those. Four does not separate "the divisor is the phase count" from "the divisor saturates at four".</p>
+        <p><strong>So that alternative was written down as the interesting outcome, before the deck existed</strong>, in the file that specifies the experiment. The file calls a result near 4 "the interesting one" and says it would narrow the published claim to "up to four phases", with every sentence of the finding rewritten.</p>
+        <p>It came back <strong>7.95063</strong>. The alternative is refuted.</p>
+      </div>
+      <div class="prose">
+        <h3 style="font-size: 24px; margin-bottom: 10px">The prediction that failed</h3>
+        <p><span class="tag t-meas">MEASURED</span> A sharper companion prediction said the negative bias was systematic and would put the eight-phase result between <strong>7.93 and 7.95</strong>. It measured <strong>7.95063</strong>, six ten-thousandths outside the band. <span class="tag t-fail">FAIL</span> <strong>Recorded as FAIL and left as written.</strong> It identified a real effect and missed its size. That is a different result from being wrong, and collapsing the two loses the distinction.</p>
+        <h3 style="font-size: 24px; margin-bottom: 10px; margin-top: 24px">And the loop model behind it</h3>
+        <p><span class="tag t-meas">MEASURED</span> A closed-form model built from the author's own two equations reproduces the measured loop's magnitude to <strong>0.03 dB</strong> from f<sub>s</sub>/20 to f<sub>s</sub>/5. With one term added, the output resistance that follows from the modulator's own definition, a single transport delay leaves a phase residual of <strong>0.400 degrees RMS</strong> from 10 to 200 kHz. Above f<sub>s</sub>/4.1 it stops being a model of that loop, and the file states that limit beside the model so it is never quoted outside its range.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px; max-width: 22ch">Stage 2: the loss model, checked twice</h2>
+  <p class="prose" style="margin-top: 16px">The corrected loop is the first half of the case. The second half is a power stage upgraded from 2004 devices to 2023 devices, and that needs a loss model: how conduction, gate charge, body-diode conduction during dead time and winding resistance divide the budget. The model was checked against the simulator, and then the check was checked.</p>
+
+  <h3 style="font-size: 26px; margin-top: 28px; margin-bottom: 10px">Predicted, then measured, at six corners</h3>
+  <p class="prose"><span class="tag t-meas">MEASURED</span> An open-loop power stage at 1.5 V and 25 A, 300 kHz, with two device generations, 2004 and 2023, at three dead times, 20, 50 and 100 ns. The predictions were committed before the deck was built. At the 2004-device, 50 ns corner:</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th></th><th>predicted</th><th>measured</th><th>error</th></tr></thead>
+      <tbody>
+        <tr><td>output voltage</td><td class="num">1.500 ± 0.005 V</td><td class="num">1.500096 V</td><td class="num">+0.096 mV</td></tr>
+        <tr><td>output current</td><td class="num">25.00 ± 0.1 A</td><td class="num">25.0016 A</td><td class="num">+1.6 mA</td></tr>
+        <tr><td>total simulated loss</td><td class="num">3.0611 W</td><td class="num">3.0523 W</td><td class="num">-0.29 %</td></tr>
+        <tr><td>efficiency, simulated terms</td><td class="num">92.45 %</td><td class="num">92.47 %</td><td class="num">+0.02 pt</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top: 16px">The output voltage is the sharp check. The on-time was solved from the loss model, so the output voltage tests both conduction terms, the body-diode forward drop, the dead-time placement and the winding resistance at once. <strong>All six corners land within 0.114 mV of 1.500000 V on one duty equation</strong>, and within 0.129 mV of each other.</p>
+
+  <div class="cols" style="margin-top: 28px">
+    <div class="prose">
+      <h3 style="font-size: 26px; margin-bottom: 10px">What it says about modern silicon</h3>
+      <p><span class="tag t-meas">MEASURED</span> <strong>Dead time costs the same on modern silicon.</strong> Each 80 ns of dead time costs 2.24 efficiency points on the 2004 devices and 2.36 points on the 2023 devices. The body-diode drop is 0.8 V on both. The body diode's share of the loss budget:</p>
+      <div class="tbl">
+        <table style="min-width: 320px">
+          <thead><tr><th>dead time</th><th>2004 devices</th><th>2023 devices</th></tr></thead>
+          <tbody>
+            <tr><td class="num">20 ns</td><td class="num">9.4 %</td><td class="num">14.4 %</td></tr>
+            <tr><td class="num">50 ns</td><td class="num">21.9 %</td><td class="num">31.2 %</td></tr>
+            <tr><td class="num">100 ns</td><td class="num">35.9 %</td><td class="num">47.6 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 14px">At 100 ns on the modern devices the body diode is <strong>nearly half the entire budget</strong>. Upgrade the silicon and leave the dead time alone, and the loss moves toward the one term nobody touched.</p>
+      <p><span class="tag t-na">NOT EVALUABLE</span> These are the losses the simulator represents. Output-capacitance charge, switching overlap and reverse recovery are absent from the model and the deck by construction, so these efficiencies are not comparable with the 86.71 % this case derived for the source's board at 300 kHz by extrapolating from its 500 kHz and 1 MHz figures. Continuous conduction only, 4.4 A to 25 A.</p>
+    </div>
+    <div class="prose">
+      <h3 style="font-size: 26px; margin-bottom: 10px">The check of the check</h3>
+      <p>The build record said conduction loss agreed with the analytic budget to <strong>0.018 %</strong>. On 2026-09-18 the script that reads losses from the simulator's waveforms was found to place the inductor current one sample ahead of its own time, and on 2026-09-19 it was fixed. Squared over the wrong sample's interval, the early current reads the top switch high and the bottom switch low. It was found because a second, independently written reader disagreed with it by 0.004 W on the top switch at a 1 MHz deck. With the fix, every corner was read again:</p>
+      <div class="tbl">
+        <table style="min-width: 520px">
+          <thead><tr><th>term</th><th>analytic</th><th>old reading</th><th>error</th><th>corrected</th><th>error</th></tr></thead>
+          <tbody>
+            <tr><td>top switch</td><td class="num">0.4447 W</td><td class="num">0.4500 W</td><td class="num">+1.20 %</td><td class="num">0.44538 W</td><td class="num">+0.153 %</td></tr>
+            <tr><td>bottom switch</td><td class="num">1.3209 W</td><td class="num">1.3159 W</td><td class="num">-0.38 %</td><td class="num">1.31898 W</td><td class="num">-0.145 %</td></tr>
+            <tr><td>conduction, sum</td><td class="num">1.7656 W</td><td class="num">1.7659 W</td><td class="num">+0.018 %</td><td class="num">1.76436 W</td><td class="num">-0.070 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 14px"><span class="tag t-doc">DOCUMENTED</span> for the old errors, <span class="tag t-der">DERIVED</span> for the corrected ones, each good to about 0.01 %.</p>
+      <p><strong>The 0.018 % was two errors cancelling.</strong> Corrected, the top switch agrees about eight times better and the bottom more than twice as well, and the sum agrees worse, because the two errors no longer cancel. The per-term figures are the result. The 0.018 % sentence is withdrawn.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size: 26px; margin-top: 36px; margin-bottom: 10px">Beyond the fitted range</h3>
+  <div class="cols">
+    <div class="prose">
+      <p>The next design step is planned at 1 MHz, outside the 300 kHz range the model was fitted in, so every 1 MHz prediction is an extrapolation and is tagged <span class="tag t-der">DERIVED</span>. Two hypotheses were registered for short dead times. One said conduction loss rises as dead time falls. The other, a relation between the diode's conduction window and the effective duty, predicted a lower value, with a tolerance band. Two 1 MHz decks were pre-registered against them, each before it existed.</p>
+      <p>At the first, with 29.1 ns of dead time, the measurement fell <strong>0.0303 W</strong> below the value the first hypothesis held and within <strong>0.0004 W</strong> of the relation. A second, independently written reader put it 0.033 W below the first hypothesis, so that verdict does not depend on the reader. <span class="tag t-meas">MEASURED</span></p>
+      <p>The second, with 6.0 ns of dead time, was read three times, and the first two readings were withdrawn.</p>
+    </div>
+    <div>
+      <div class="tbl">
+        <table style="min-width: 520px">
+          <thead><tr><th>reading</th><th>measured, with</th><th>band, built with</th><th>verdict it selected</th></tr></thead>
+          <tbody>
+            <tr><td>first</td><td class="num">1.33262 W, the early reader</td><td>the early reader</td><td>0.00021 W above the band: the first hypothesis stands on top of the relation</td></tr>
+            <tr><td>second</td><td class="num">1.32984 W, the corrected reader</td><td>the early reader</td><td>0.00179 W below the band: neither stands</td></tr>
+            <tr><td>third</td><td class="num">1.32984 W, the corrected reader</td><td>the corrected reader</td><td>inside the band, 1.33009 ± 0.00124 W</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose" style="margin-top: 14px">The first two each had the early reader on at least one side of the comparison, and the defect at this deck was about 3.6 times the width of the band being tested. The third reads both sides with one instrument. <strong>The relation stands at this deck, and the first hypothesis is refuted there.</strong> At the first deck the same relation, re-derived the same way, lands 0.00034 W from the measurement. <span class="tag t-der">DERIVED</span></p>
+      <p class="prose">The band in the third reading was re-derived after the measurement was known, from the six corners read again with the corrected script, so it is tagged <span class="tag t-der">DERIVED</span>. The relation itself was registered before either deck existed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 22ch">The same discipline with nobody at the machine</h2>
+    <div class="cols" style="margin-top: 20px">
+      <div class="prose">
+        <p>Since 2026-09-18 the case has run on a loop on the engineer's own workstation: Windows Task Scheduler tasks running plain PowerShell scripts, a queue of job files, and Claude Code, Anthropic's command-line agent, running the Claude Opus 5 model for the jobs that read, derive and write. Every job ends in a receipt with its verdict, its inputs by hash and its outputs by hash. A pre-registration is hashed before the deck it judges exists. The simulator is started and driven by a script through the operating system's UI Automation interface. A governor job applies the engineer's current plan and stops when the next step needs his ruling.</p>
+        <p><span class="tag t-meas">MEASURED</span> On 2026-09-21 the loop rebuilt one of Stage 2's corners from its script under a new name, ran it and read it: pre-registration at 13:30, simulation at 13:40, reading finished at 13:56. The new output file is <strong>24,003,206 bytes and identical, byte for byte</strong>, to the one the same corner produced on 2026-09-11. The reading script printed the recorded values 21 of 21 and both readings 10 of 10.</p>
+        <p>The run shows that the route from a queued job to a measured number works with no one operating the machine, and that the simulator reproduced its own output exactly across ten days and a rebuilt deck. The rulings that shaped this case, including which reading of the second 1 MHz deck stands, were made by the engineer, and the loop carried them out. A session that runs unattended is evidence about throughput, and this page claims nothing more from it.</p>
+        <h3 style="font-size: 24px; margin-bottom: 10px; margin-top: 20px">A revised generator, checked against the old one</h3>
+        <p><span class="tag t-meas">MEASURED</span> On 2026-09-22 a revised version of the script that generates the multiphase decks was run on the workstation against the version it replaces. The outputs matched byte for byte, 59 files of 59 across the test matrix and 8 of 8 at eight phases, and a control set with one file altered was flagged at that file and line, which shows the comparison could fail.</p>
+        <h3 style="font-size: 24px; margin-bottom: 10px; margin-top: 20px">Datasheets read as page images</h3>
+        <p><span class="tag t-meas">MEASURED</span> On 2026-09-26 the loop ran eleven datasheet checks on candidate parts for the next design step, nine at once and then two more; ten read the maker's own pages as images, and the eleventh could not reach its maker's site and recorded that it had read nothing. <span class="tag t-doc">DOCUMENTED</span> The first page of the sheet for the recommended low-side switch, which the engineer had picked that morning, states that the part is not designed for switching applications. The recommendation had been built from automatically fetched text, which did not carry that line, and the part was taken out of the design.</p>
+      </div>
+      <div class="prose">
+        <h3 style="font-size: 24px; margin-bottom: 10px">Two simulations at once</h3>
+        <p><span class="tag t-doc">DOCUMENTED</span> Running real work two simulations at a time, each in its own instance of the simulator, is allowed only after a control with known answers reads as predicted and the engineer rules to release it.</p>
+        <p><span class="tag t-meas">MEASURED</span> The first control, on 2026-09-23, launched two instances within a millisecond of each other. One came up with the full product name in its window title, waited the three minutes allowed for its partner, ran its deck alone and reproduced the known answer byte for byte. The other's title still had no product name after the eight seconds it was given to settle, and it offered no line to type a command into, so the run closed it without sending its deck. <span class="tag t-doc">DOCUMENTED</span> The record keeps two explanations open, a start slower than the settling time and a licence race between two launches in the same second, and the second control could not separate them because it launched the instances apart.</p>
+        <p><span class="tag t-meas">MEASURED</span> That second control, on 2026-09-25, put a lock around each launch, so the second instance started only after the first showed its product name. The two titles reached the product name 2.0 s and 1.0 s after their first windows. Both decks ran, and their solves overlapped. The solves took 3.583 s and 3.338 s, against 3.085 s for one of the decks solving alone on 2026-09-23. Fifteen of the seventeen predictions held. The two that failed are the two that carry the known answers: each run exported the other deck's known answer, byte for byte, and the printed means came back swapped. The reading job recorded NOT_AS_PREDICTED under the pre-registration's catch-all reading, and the loop went back to one simulation at a time that day, as the pre-registration requires.</p>
+        <p><span class="tag t-meas">MEASURED</span> On 2026-09-26 a job looked for what the two instances shared and found one results folder, fixed by the working directory with nothing in its name per instance, and one result name. It ruled out the temporary data folder, which each instance already had to itself. <span class="tag t-der">DERIVED</span> The working file each solver wrote for its own deck carries that deck's sign, so the answers crossed on their way back from the solver, before the export. <span class="tag t-na">NOT EVALUABLE</span> What carried them across is not yet known.</p>
+        <p><span class="tag t-meas">MEASURED</span> The same day the launch script gave each instance its own results folder and its own temporary folders, and a third control ran. One instance sat on its start-up screen for the full minute it was allowed and was closed without running. The other ran its deck alone, and its export matched its own known answer byte for byte, with every results file written into its own folder. <span class="tag t-doc">DOCUMENTED</span> A job that read the solver's binaries found that the named channels it creates carry the solver's own process number. <span class="tag t-der">DERIVED</span> Two solvers therefore cannot share one.</p>
+        <p><span class="tag t-meas">MEASURED</span> A fourth control that afternoon gave each instance three minutes to start. Both started within two seconds and both decks were sent together. One instance then reported that the result it loaded held no data, and the other had not finished its run three minutes later. <span class="tag t-doc">DOCUMENTED</span> On 2026-09-27 the engineer ruled that the loop runs one simulation at a time, and parked the question.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px">The ledger</h2>
+  <div class="cols" style="margin-top: 20px">
+    <div class="prose">
+      <p><span class="tag t-meas">MEASURED</span> Two records, reported side by side and never added. They have different numbering, different scope and different escape tests, and adding them is precisely the mistake that put a wrong figure on an earlier draft of this page.</p>
+<pre>the build's defect table, sessions 3 to 8   67 defects, 15 escaped
+  of which described in the log             61
+  lost, six contiguous rows, on no surviving record, one an escape
+the numbered-defect record, 61 to 97        37 defects,  6 escaped</pre>
+      <p><strong>Escapes, under three definitions, because "escaped" means three things:</strong></p>
+<pre>reached the engineer as a claim he was asked to act on          14
+  plus written into a committed artefact he had access to       18
+  plus caught internally before either                          20</pre>
+      <p>The middle figure is the one a reader means: it left the working copy. The other two bound it in both directions, which is more informative than any single number and costs one line.</p>
+    </div>
+    <div class="prose">
+      <p><strong>How this figure came to be publishable at all</strong> is the part worth reading. An earlier version of this page carried <strong>7 of 64</strong>. That was wrong. The correction offered in its place, <strong>19 of 80</strong>, was worse, because it merged two records that are separate by design. The page then published <strong>no total at all</strong> for a day while the ledger was audited, and the audit found the discrepancy came from <strong>two records of different scope being added together</strong>, with no arithmetic error anywhere.</p>
+      <p>Reconciling it turned up something better than a number: the build log is complete everywhere except <strong>one contiguous block of six rows</strong> in one session, identified, bounded, and absent from every surviving record. Everything else reconciles exactly where a total exists to check against.</p>
+      <p><span class="tag t-doc">DOCUMENTED</span> The numbered record did not stop at 97. Later work, from the coupling experiments to Stage 2 and the loop, added defects in its own result documents, and the numbers now run past 170. Those documents have not yet been reconciled into one table the way 61 to 97 were, so this page publishes no total and no escape count for them. A total published before its reconciliation is the mistake described above.</p>
+      <p><em>Every defect is logged with the mechanism that caught it. Escapes are recorded per session. No ratio has been revised after the fact.</em></p>
+    </div>
+  </div>
+</div>
+
+<div class="band2" id="how">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px">How it was found</h2>
+    <p class="prose" style="margin-top: 16px">By an operating discipline that the tooling made cheap enough to run every time.</p>
+    <div class="rule" style="margin-top: 20px">
+      <div><strong>The check is written before the thing it judges.</strong> Predictions, tolerances and decidability rules go into the file first. A check that cannot fail is not a check.</div>
+      <div><strong>Every criterion carries a tier.</strong> A tier is never upgraded because a result looks right.</div>
+      <div><strong>When a parameter cannot be obtained, the equation is inverted and the requirement stated.</strong> Never guessed.</div>
+      <div><strong>A number from a summary is not a verified number.</strong> Every figure is re-read from the file that produced it before it is published, including on this page, where doing so caught a stale count one step before v2 shipped, a corner-voltage figure that was really a spread before v3 did, and before v4 a sentence on coupling that the case had already measured false.</div>
+      <div><strong>A check's scope is part of the check.</strong> A parser that silently excludes what it was asked about must abstain. Zero files scanned and zero problems found print identically, so the count is part of the verdict.</div>
+      <div><strong>Both sides of a comparison are read with one instrument.</strong> When the reading script was fixed, the prediction's band was re-derived with the fixed script before anything was read against it.</div>
+      <div><strong>Typeset mathematics is read as an image</strong>, never trusted from text extraction.</div>
+      <div><strong>A comparison that cannot separate the hypotheses is no evidence</strong>, and is reported as such.</div>
+    </div>
+    <p class="prose" style="margin-top: 24px">Supporting this: schematics generated from scripts, so topology is right by construction; a netlist check that reads what the solver receives, which can differ from what was intended; a state walk over the switching period run before any simulation; and a design-sheet gate that refuses to emit a deck whose numbers disagree with the sheet that specified it.</p>
+    <p class="prose">Two pre-flights, quoted because they are the shape of the whole approach: <strong>11,571 pin pairs agree, 0 disagree</strong> at four phases; <strong>30,739 agree, 0 disagree</strong> at eight, each against an independently written netlist. <span class="tag t-meas">MEASURED</span></p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 44px; max-width: 20ch">Where the work was wrong</h2>
+  <p class="prose" style="margin-top: 16px; font-size: 19px">This list is where the page earns its credibility, and it is longer than the findings list on purpose. Each entry names what caught it.</p>
+
+  <h3 style="font-size: 28px; margin-top: 32px">Stage 1</h3>
+  <div class="ent"><p><strong>A claim made to the engineer that was simply false.</strong> He was told the simulator was unavailable and two queued items were blocked, on the strength of a failure in a subsystem the simulator does not use. The project's own reference file already said that subsystem fails intermittently and said not to treat it as a blocker. It was hit, and reported as a blocker anyway. He caught it in one short sentence. <em>The rule this produced: a capability is not unavailable until the mechanism it uses has been tried and failed.</em></p></div>
+  <div class="ent"><p><strong>A deck that was valid and was the wrong circuit.</strong> Two functions bound a phase count as a default argument, frozen at import, while a third read it at call time. An eight-phase request would have produced a four-phase deck that pre-flighted clean, ran, and got measured as eight: internally consistent, perfectly valid, and wrong. No checker that inspects one artefact can see that. It was caught by a check that compares two independently built descriptions, which named all 96 missing pins.</p></div>
+  <div class="ent"><p><strong>The same error three times in one script</strong>, in a single day. A derivation printed a table without checking it and published negative inductances as data. Fixing it produced a bound, which was then not applied to the table one section below, where every coupled row was outside it. The fix for that ends with the sentence "conflating the two would have been a third instance of the same error in one script." The third instance was committed two sections later. Naming a failure mode in writing does not stop you committing it.</p></div>
+  <div class="ent"><p><strong>A prediction that was pre-registered, fired as designed, and still tested the wrong statistic.</strong> It would have buried a refutation the data supports at 3.45 standard errors.</p></div>
+  <div class="ent"><p><strong>A loop gain read upside down.</strong> The export does not preserve the column order it was asked for. It was caught by an extractor that refuses anything but exactly one falling crossing. Nobody had noticed it. The same export did it again the same day on the eight-phase deck, and the fix held.</p></div>
+  <div class="ent"><p><strong>A verification gate that returned CLEAN on a file it never opened.</strong> Its file walk did not include the format the artefact was in.</p></div>
+  <div class="ent"><p><strong>A gate whose rulings depended on which directory you ran it from.</strong> A properly reviewed file reported as an unreviewed hit from anywhere else, which trains a reader to dismiss hits, the exact damage the gate exists to prevent.</p></div>
+  <div class="ent"><p><strong>A published figure that was wrong, and a correction that was worse.</strong> The ledger above tells it in full.</p></div>
+  <div class="ent"><p><strong>A question put to the engineer with the wrong evidence attached.</strong> The item was named correctly and the evidence shown belonged to a different item. He was told, because a person who rules on evidence is entitled to know when the evidence he was shown was not the evidence for the thing he ruled on, whether or not it changed his answer.</p></div>
+
+  <h3 style="font-size: 28px; margin-top: 36px">Stage 2 and the loop</h3>
+  <div class="ent"><p><strong>A headline agreement that was two errors cancelling.</strong> Conduction loss "agreed to 0.018 %" because the top switch read 1.20 % high and the bottom 0.38 % low. The build record's own text had warned about exactly this kind of agreement a paragraph earlier.</p></div>
+  <div class="ent"><p><strong>A measuring script one sample early, which moved a pre-registered verdict twice.</strong> The error was about 3.6 times the width of the band it was judged against. It was found by writing the reader a second time, independently, and looking at why the two disagreed.</p></div>
+  <div class="ent"><p><strong>A deck with no body diode on its high side, left out on purpose with the reason written down.</strong> The reason was that positive inductor current keeps that diode reverse-biased. It held in the steady-state window every corner was read in, and nowhere else. With both switches off and the inductor current negative, at start-up, light load or discontinuous conduction, the switch node had only the switch's 1 MOhm off-resistance to push against, which is the 30 kV spike at the start of one trace. The steady-state readings at 25 A are unchanged by construction, so the figures above stand. The fix is a mirrored diode per phase, and the switching-state check now walks it.</p></div>
+  <div class="ent"><p><strong>A step reported as cancelled that had run.</strong> The interface showed a delivery step as cancelled; on the machine it had run in full and installed a file. The next delivery's name check found that file already in place and stopped before anything was sent twice. An interrupted step is now treated as unknown until its possible outputs have been inspected.</p></div>
+  <div class="ent"><p><strong>An isolation check that held while the answers crossed.</strong> The control of 2026-09-25, which ran two simulations at once, predicted isolation on each instance's temporary folder and on the user's settings file, and that prediction held. The two instances also wrote into one results folder and used one result name, which the prediction did not cover. Every other prediction held too, and only the two that carry the known answers failed: each run came back with the other deck's known answer. What carried the answers across is not yet known.</p></div>
+  <div class="ent"><p><strong>A part recommended from a summary of its datasheet.</strong> The comparison that recommended the low-side switch took its figures from text an automated fetch extracted and summarised, and it cited the sheet's first page. That page says the part is not designed for switching applications, and the summary carried no such line. The engineer picked the part on the recommendation. Reading the same page as an image surfaced the statement that morning, and the part was taken out of the design.</p></div>
+  <div class="ent"><p><strong>A result that waited two days to be read.</strong> The first control for two simulations at once read NOT_AS_PREDICTED at 11:33 on 2026-09-23. The governor job after it recorded that a ruling was owed and wrote no job, since no rule of its plan covered the control. The result was not read or put to the engineer until 10:48 on 2026-09-25, and the loop ran nothing in between.</p></div>
+  <div class="ent"><p><strong>Statements made before the file that decides them was read, four in one day and a fifth the next morning.</strong> On 2026-09-26 the engineer was told an installer command was ready without a re-check against the workstation, that a driver's maker model would bring its own dead time into the simulator when no route for such a model exists, and that a check would confirm an uninstalled model left nothing behind, when the simulator's own script describes a catalogue holding every user model that ever existed. A brief written that day for a subagent carried three facts the record does not hold. Each was corrected, and the one acted on, the installer, refused and changed nothing. The rule taken: a decision put to him separates what has been read, with its file, from what is expected and from what is not known, and the message is searched for outcome words before it is sent. The next morning the message that reported the rule told him the leftover catalogue entry could be removed afterwards, and nobody had read how. The search missed it, because the sentence used none of the listed words.</p></div>
+
+  <h3 style="font-size: 28px; margin-top: 36px">This page</h3>
+  <div class="ent"><p><strong>A claim carried on this page after the case had measured it false.</strong> The case measured the magnetics section's second claim false on 2026-09-12. The draft of 2026-09-21 still carried it, because that section was copied forward and only its figures were re-read against their sources, and the claim had no figure in it. It was found when the page was traced against its sources again before launch.</p></div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 22ch">If you are designing a modern multiphase rail</h2>
+    <p class="prose" style="margin-top: 16px; font-size: 19px; font-weight: 500">This guideline had twenty years of scrutiny. Yours has had two.</p>
+    <div class="cols">
+      <div class="prose">
+        <p>The finding concerns <strong>per-phase sensed current into a shared output capacitor</strong>, the control structure that a discrete multiphase buck, an inverse-coupled build and a trans-inductor voltage regulator all share unchanged. Magnetics do not enter it. The topology moved, and the loop architecture stayed where it was.</p>
+        <p><strong>So the obvious question was put to the work: does the correction survive coupling?</strong></p>
+        <p><span class="tag t-meas">MEASURED</span> It does. The author's two-phase ceramic design was built again with its two inductors inversely coupled at α = -0.5, and the corrected and as-printed decks were compared within each condition. Their output-impedance ratio measured <strong>1.95465</strong> coupled against <strong>1.97642</strong> uncoupled, 1.10 % apart. Had coupling collapsed the divisor, the ratio would have fallen to 1.00, a factor of two away, and that outcome was written down before the decks were built. Read a second way, as the droop after a load step, which a voltmeter can check, the ratio measured <strong>1.99024</strong> coupled against <strong>1.99174</strong> uncoupled, 0.075 % apart. Coupling redistributes di/dt between phases and leaves the count of phases delivering into the bank alone, and a mutual inductance passes no DC. The divisor is the number of phases feeding the capacitor bank, however they are wound.</p>
+      </div>
+      <div class="prose">
+        <p><strong>The section's second claim was measured false.</strong> Earlier drafts of this page said, tagged <span class="tag t-der">DERIVED</span>, that what coupling moves is each phase's finite output resistance, in step with the differential inductance. At α = -0.5 that inductance is 1.5 times the uncoupled one, so the resistance should have risen 1.5 times and the loop gain with it. <span class="tag t-meas">MEASURED</span> At two loads and two compensator settings, coupling <strong>lowered</strong> the DC loop gain, by <strong>0.22 to 0.55 dB</strong> in four pairs of decks out of four, and the drop grew with the load by <strong>1.735 and 1.769</strong> against the <strong>1.668</strong> registered for a change at the output node. <span class="tag t-der">DERIVED</span> Read through the plant model, the output resistance moved by a factor of <strong>0.824</strong>, softer where the claim said stiffer, with a 6.6 % spread across four extractions, and neither eigenvalue of the coupled inductance accounts for it. At α = -0.5 on a two-phase cell, inverse coupling lowers the DC loop gain slightly and leaves the closed-loop droop unchanged to better than 0.1 %. Its case rests on ripple and transient behaviour.</p>
+        <p><strong>And checking that algebra turned up a bound nobody had written down.</strong> For a symmetric coupled group to describe a physical magnetic circuit, the coupling coefficient is limited by the group size: at four coupled phases it cannot go below -0.333, at eight below -0.143. Vendor application notes report coupled groups of two and three, an interleaving rule that divides by the group size, and ripple that rose when a third phase joined. They report the practice, and the bound explains it.</p>
+        <p><span class="tag t-na">NOT EVALUABLE</span> The trans-inductor case stays open, now for a stated reason. Its series secondary adds a component common to every sensed current, where coupling redistributes among them, and that path's gain has not been derived.</p>
+        <p>The session that produced the coupling measurement was recorded, and the cut of it is on the <a href="evidence.html">Evidence page</a>. It ends on that number.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px">What transfers</h2>
+    </div>
+    <div class="prose">
+      <p>None of this is specific to one simulator or one converter.</p>
+      <ul>
+        <li>Predictions committed before runs, with tolerances and a stated failure branch</li>
+        <li>Claim tiering, with NOT EVALUABLE as a first-class result</li>
+        <li>Inverted requirements in place of guessed parameters</li>
+        <li>Artefacts generated from scripts, checked against an independently written description of the same thing</li>
+        <li>Identifiers derived from the artefact on every use, never carried between runs</li>
+        <li>One instrument on both sides of every comparison, and a second, independent instrument to test the first</li>
+        <li>Gates validated by firing them on known-bad input, every time, because a gate that has never failed has never been tested</li>
+        <li>Every figure re-derived from its source file before publication</li>
+      </ul>
+      <p><strong>The discipline is the portable asset.</strong> The tooling makes it affordable to run, and the engineer still decides.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 38px; max-width: 24ch">One engineer, a public source, and a simulator you already own.</h2>
+    <p class="prose" style="margin-top: 16px; color: #E6EDFF">If that produced a correction to a rule your field has used for twenty years, confirmed across a factor of four in phase count, it is worth an hour to talk about what the same discipline finds in your flow.</p>
+    <a class="btn" href="contact.html" style="margin-top: 12px">Book a scoping conversation</a>
+  </div>
+  <div class="wrap">
+    <div style="border-top: 1px solid #2A3A52; padding-top: 32px; font-size: 14px; color: #C9D3DF; max-width: 80ch">
+      <p>The design reproduced in this case is from Kaiwei Yao, <em>High-Frequency and High-Performance VRM Design for the Next Generations of Processors</em>, PhD dissertation, Virginia Polytechnic Institute and State University, April 14, 2004 (chairman Fred C. Lee). The correction described above restores the mechanism the author himself states and is consistent with it. The work is public and the figures on this page can be reproduced from it.</p>
+    </div>
+    <div class="foot">
+      <div>PJ Crawley LLC. Corp-to-corp. On site for the kickoff and as often as the work needs, remote in between.</div>
+      <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PJ Crawley LLC, home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ Crawley LLC">
+<meta property="og:title" content="PJ Crawley LLC, home">
+<meta property="og:description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:url" content="https://www.pjcrawleyllc.com/">
+<meta property="og:image" content="https://www.pjcrawleyllc.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.pjcrawleyllc.com/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#0C1B33;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1B4FE8}a:hover{color:#0C1B33}
+h1,h2,h3{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-0.01em}
+p{margin:0 0 14px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.prose{max-width:68ch}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid #C9D3DF}
+.nav a{text-decoration:none;color:#0C1B33;font-weight:500;font-size:15px;padding:8px 0}
+.nav a.on{color:#1B4FE8;box-shadow:inset 0 -2px 0 #1B4FE8}
+.brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:22px;color:#0C1B33;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px}
+.btn{display:inline-block;background:#1B4FE8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn:hover{background:#0C1B33;color:#fff}
+.btn2{display:inline-block;color:#0C1B33;text-decoration:none;font-weight:600;font-size:16px;padding:12px 22px;border:1.5px solid #0C1B33;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn2:hover{color:#1B4FE8;border-color:#1B4FE8}
+.band{background:#0C1B33;color:#fff}
+.band a{color:#7FA6FF}.band a:hover{color:#fff}
+.band a.btn{color:#fff}.band a.btn:hover{background:#fff;color:#0C1B33}
+.band2{background:#EEF3F8}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tag{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:3px;line-height:1.3;vertical-align:middle;white-space:nowrap}
+.t-meas{background:#0A7F4A;color:#fff}
+.t-sim{background:#fff;color:#0A7F4A;border:1.5px solid #0A7F4A}
+.t-doc{background:#fff;color:#0C1B33;border:1.5px solid #0C1B33}
+.t-der{background:#1B4FE8;color:#fff}
+.t-est{background:#B35900;color:#fff}
+.t-na{background:#5B6B7F;color:#fff}
+.t-fail{background:#D13B1E;color:#fff}
+.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.ro .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:38px;font-weight:600;line-height:1.05;color:#fff;letter-spacing:-0.02em}
+.ro .l{font-size:14px;color:#C9D3DF;margin-top:10px;line-height:1.4}
+.ro .tag{margin-top:12px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.fig{width:100%;height:auto;display:block;border:1px solid #C9D3DF;border-radius:4px}
+.foot{padding:40px 0;font-size:14px;color:#C9D3DF}
+ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
+.acc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 40px;margin-top:32px}
+.acc .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:28px;font-weight:600;line-height:1.15;color:#fff;letter-spacing:-0.02em}
+.acc .l{font-size:15px;color:#C9D3DF;margin-top:10px;line-height:1.5}
+.acc .tag{margin-top:12px;margin-right:10px}
+.acc a{display:inline-block;margin-top:12px;font-size:15px}
+@media (max-width:1000px){.acc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{grid-template-columns:1fr}.acc{grid-template-columns:1fr}}
+
+@media (max-width:1240px){.wrap{width:100%}}
+@media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
+
+<div class="wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">PJ Crawley LLC</a>
+    <div class="links">
+      <a class="on" href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="offering.html">The Offering</a>
+      <a href="worked-example.html">Worked example</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="metrics.html">Metrics</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 56px">
+  <h1 style="font-size: 58px; max-width: 26ch">AI tools for analog and mixed-signal design teams, deployed into your own flow.</h1>
+  <p class="prose" style="font-size: 21px; margin-top: 26px; color: #2A3A52">Nothing a model produces is acted on until a deterministic check has passed it. The tools change how much one engineer can run and check. They do not change who decides.</p>
+  <p class="prose" style="font-size: 19px; font-weight: 500; margin-top: 18px">Smaller companies start with a four-week pilot for a $30,000 fixed fee, opening with an on-site kickoff to meet your team and set priorities. Larger companies get a plan built around the goal of their training.</p>
+  <p class="prose" style="margin-top: 6px"><span class="tag t-est">CONSERVATIVE ESTIMATE</span> Two to four weeks earlier to tapeout on a twelve-month program. <a href="executive-summary.html">The executive summary works it through.</a></p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px">
+    <a class="btn" href="contact.html">Book a scoping conversation</a>
+    <a class="btn2" href="executive-summary.html">Read the executive summary</a>
+    <a class="btn2" href="evidence.html">See the evidence, including where the AI was wrong</a>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 56px; padding-bottom: 56px">
+    <h2 style="font-size: 36px; max-width: 30ch">What the work has already done</h2>
+    <div class="acc">
+      <div>
+        <div class="n">30 years</div>
+        <div class="l">designing analog and mixed-signal ICs, with 14 patents and two papers in IEEE JSSC. The method on this site comes from that design work.</div>
+        <a href="about.html">About me</a>
+      </div>
+      <div>
+        <div class="n">1.435 to 0.112 LSB</div>
+        <div class="l">peak DNL on a 12-bit converter that failed its linearity spec. It calibrates itself with its own comparator, needs no tester, and passes once six capacitors are trimmed.</div>
+        <span class="tag t-meas">MEASURED</span>
+        <a href="worked-example.html">Run the worked example</a>
+      </div>
+      <div>
+        <div class="n">97 % and 0 %</div>
+        <div class="l">yield from the same calibration with one check in place and with it removed. Both runs finished without an error and reported plausible codes, which is why every output here passes a mechanical check before anyone relies on it.</div>
+        <span class="tag t-meas">MEASURED</span>
+        <a href="worked-example.html">See the check</a>
+      </div>
+      <div>
+        <div class="n">2, 4, 8 phases</div>
+        <div class="l">where a published compensator rule, twenty years old, proved incomplete. I reproduced it from its own figures in a licensed simulator, derived the gap before reading the source text, and confirmed it at each phase count.</div>
+        <span class="tag t-sim">SIMULATED</span>
+        <a href="case-compensator-rule.html">Read the case</a>
+      </div>
+      <div>
+        <div class="n">252 runs</div>
+        <div class="l">behind a four-phase, 1 MHz, 119 A regulator held to Intel's VRD 10.1 guide at typical part values, with nobody at the keyboard. The AI made 22 of the 31 recorded design decisions, every one on record, and 41 wrong turns stay on the record. Read in simulation, nothing built. The misses at datasheet limits are on the case page.</div>
+        <span class="tag t-sim">SIMULATED</span>
+        <a href="case-four-phase-design.html">Read the case</a>
+      </div>
+      <div>
+        <div class="n">5 of 12, then 12 of 12</div>
+        <div class="l">buck converter design tasks solved by a 2024 model working alone, then by a 2026 model working alone, each answer checked in SIMPLIS. Models improve every few months, and I keep track of that for you.</div>
+        <span class="tag t-meas">MEASURED</span>
+        <a href="metrics.html">See the measurements</a>
+      </div>
+    </div>
+    <p style="margin: 32px 0 0 0; font-size: 14px; color: #C9D3DF; max-width: 80ch">Every figure on this site comes from my own harness, scripts and licensed simulator, run on generic designs, and traces to the file that produced it. The AI models ran on hosted services. No client work appears here.</p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 24px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px">These tools lie fluently.</h2>
+    </div>
+    <div class="prose">
+      <p>The failure that costs a design team is the confident wrong answer: plausible, free of warnings and ready to ship. A wrong number arrives looking exactly like a right one, and review practice built for human mistakes does not flag it.</p>
+      <p>A deterministic verification layer catches it, where a smarter model would not. The model proposes, the engine decides, and nothing ships on a model's say-so.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 48px; padding-bottom: 72px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px">AI does not replace the design engineer.</h2>
+    </div>
+    <div class="prose">
+      <p>It changes how much one engineer can run and check: sweep and statistical campaigns at cube scale, requirements work in bulk, decks and documentation rendered and checked.</p>
+      <p>Every limit, waiver and design decision stays with the engineer.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 22ch">Where it plugs into your flow</h2>
+    <p class="prose" style="margin-top: 16px">One flow, familiar stages, and a plug-in point at each, with the decision layer left exactly where it was. The Offering lists the plug-ins stage by stage.</p>
+    <p style="margin-top: 14px"><a href="offering.html">See the plug-ins stage by stage on The Offering</a></p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 32px">
+  <h2 style="font-size: 40px; max-width: 24ch">Evidence you can run</h2>
+  <div class="cols" style="margin-top: 28px">
+    <div class="prose">
+      <h3 style="font-size: 24px; margin-bottom: 10px">The worked example</h3>
+      <p>A 12-bit converter, its calibration, and its digital correction block. Runnable on your laptop, and checked against its own model at every input code.</p>
+      <p><a href="worked-example.html">Run the worked example</a></p>
+    </div>
+    <div class="prose">
+      <h3 style="font-size: 24px; margin-bottom: 10px">Two power designs in a licensed simulator</h3>
+      <p>A published compensator rule reproduced from its own figures and found to be incomplete for the multiphase case it is used in. Then a four-phase 1 MHz regulator held to Intel's design guide line by line, with the design calls delegated on purpose and every one on record. Both read in simulation, nothing built.</p>
+      <p><a href="evidence.html">See the evidence, including where the AI was wrong</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 24px; padding-bottom: 72px">
+  <div style="border-top: 1px solid #C9D3DF; padding-top: 32px">
+    <div class="cols">
+      <div>
+        <h2 style="font-size: 34px; max-width: 18ch">Two to four weeks earlier to tapeout, on a twelve-month program.</h2>
+      </div>
+      <div class="prose">
+        <p>The effort recovered alongside it is worth four to seven times the engagement. The case, the schedule it comes from, and the fine print, in that order.</p>
+        <p><a href="executive-summary.html">Read the executive summary</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 38px; max-width: 26ch">One conversation to map your data-sensitivity picture and pick a deployment tier.</h2>
+    <p class="prose" style="margin-top: 16px; color: #C9D3DF">Whatever your legal team decides, including no cloud at all, one of the tiers fits it.</p>
+    <p class="prose" style="color: #C9D3DF">The work starts with an on-site kickoff to meet your team and set priorities, and I travel as often as the work needs.</p>
+    <a class="btn" href="contact.html" style="margin-top: 12px">Book a scoping conversation</a>
+  </div>
+  <div class="wrap">
+    <div class="foot" style="border-top: 1px solid #2A3A52">
+      <div>PJ Crawley LLC. Corp-to-corp. On site for the kickoff and as often as the work needs, remote in between.</div>
+      <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

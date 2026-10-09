@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PJ Crawley LLC, metrics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ Crawley LLC">
+<meta property="og:title" content="PJ Crawley LLC, metrics">
+<meta property="og:description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:url" content="https://www.pjcrawleyllc.com/metrics.html">
+<meta property="og:image" content="https://www.pjcrawleyllc.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.pjcrawleyllc.com/metrics.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#0C1B33;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1B4FE8}a:hover{color:#0C1B33}
+h1,h2,h3{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-0.01em}
+p{margin:0 0 14px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.prose{max-width:68ch}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid #C9D3DF}
+.nav a{text-decoration:none;color:#0C1B33;font-weight:500;font-size:15px;padding:8px 0}
+.nav a.on{color:#1B4FE8;box-shadow:inset 0 -2px 0 #1B4FE8}
+.brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:22px;color:#0C1B33;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px}
+.btn{display:inline-block;background:#1B4FE8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn:hover{background:#0C1B33;color:#fff}
+.btn2{display:inline-block;color:#0C1B33;text-decoration:none;font-weight:600;font-size:16px;padding:12px 22px;border:1.5px solid #0C1B33;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn2:hover{color:#1B4FE8;border-color:#1B4FE8}
+.band{background:#0C1B33;color:#fff}
+.band a{color:#7FA6FF}.band a:hover{color:#fff}
+.band a.btn{color:#fff}.band a.btn:hover{background:#fff;color:#0C1B33}
+.band2{background:#EEF3F8}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tag{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:3px;line-height:1.3;vertical-align:middle;white-space:nowrap}
+.t-meas{background:#0A7F4A;color:#fff}
+.t-doc{background:#fff;color:#0C1B33;border:1.5px solid #0C1B33}
+.t-der{background:#1B4FE8;color:#fff}
+.t-est{background:#B35900;color:#fff}
+.t-na{background:#5B6B7F;color:#fff}
+.t-fail{background:#D13B1E;color:#fff}
+.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.ro .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:36px;font-weight:600;line-height:1.05;color:#fff;letter-spacing:-0.02em}
+.ro .l{font-size:14px;color:#C9D3DF;margin-top:10px;line-height:1.4}
+.ro .tag{margin-top:12px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.tbl{overflow-x:auto;border:1px solid #C9D3DF;border-radius:4px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+th{background:#0C1B33;color:#fff;text-align:left;font-weight:600;padding:10px 12px;font-size:13.5px;vertical-align:top}
+td{padding:9px 12px;border-top:1px solid #C9D3DF;vertical-align:top}
+tr:nth-child(even) td{background:#F6F8FB}
+td.num{font-family:'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap}
+td.lab{font-weight:600;white-space:nowrap}
+.side td{width:50%}
+.side td.lab{width:auto;background:#EEF3F8;font-weight:600}
+.hero2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.hero2 .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:84px;font-weight:600;line-height:1;letter-spacing:-0.04em}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;margin-top:12px}
+.legend span{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.foot{padding:40px 0;font-size:14px;color:#C9D3DF}
+ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
+.cmpbox{max-width:780px}
+table.cmp{min-width:520px}
+table.cmp th.r,table.cmp td.num{text-align:right}
+table.cmp td.num{font-size:17px;font-weight:600;width:25%}
+table.cmp td.num sup{font-size:11px;font-weight:500;color:#5B6B7F;margin-left:3px}
+table.cmp td.na{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:13.5px;font-weight:400;color:#8794A6}
+table.cmp tr:nth-child(even) td{background:#fff}
+table.cmp tr.g td{background:#EEF3F8;font-weight:600;font-size:14.5px;border-top:2px solid #0C1B33}
+table.bl{min-width:900px}
+table.bl th.r,table.bl td.num{width:13%}
+table.bl td.num{font-size:16px}
+ol.notes{font-size:14px;line-height:1.55;max-width:84ch;margin:18px 0 6px 0;padding-left:22px}
+ol.notes li{margin:8px 0}
+@media (max-width:900px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.hero2{grid-template-columns:1fr}.hero2 .n{font-size:64px}}
+
+@media (max-width:1240px){.wrap{width:100%}}
+@media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
+
+<div class="wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">PJ Crawley LLC</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="offering.html">The Offering</a>
+      <a href="worked-example.html">Worked example</a>
+      <a href="evidence.html">Evidence</a>
+      <a class="on" href="metrics.html">Metrics</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 48px">
+  <h1 style="font-size: 60px; max-width: 20ch">What open-weight models get wrong on analog and mixed-signal work, measured.</h1>
+  <p class="prose" style="font-size: 20px; margin-top: 26px; color: #2A3A52">A design team considering an on-premises model wants one question answered: on our work, how often is it wrong, and how would we know. Published coding benchmarks do not answer it. They measure code that runs and is checked by tests, where a wrong answer throws an exception and announces itself. The published analog benchmarks score circuit questions and designs, and their results are in the second table below, with where we stand on repeating them. The failure that costs an analog team time is a different case, where nothing errors at all and a plausible wrong number goes downstream, and we found no benchmark that counts it separately.</p>
+  <p class="prose">So we built a harness that measures that case specifically, on analog and mixed-signal material, and we published its mistakes along with its results. The models we measured are not named on this page, and the section near the end says why. The published results keep the names their papers gave them.</p>
+  <p class="prose">Models change every few months and these numbers change with them. Keeping a team current on them is part of full support, the $2,500 monthly retainer, <a href="#current">described after the second table</a>.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+    <a class="btn" href="#finding">The finding that should drive the decision</a>
+    <a class="btn2" href="contact.html">Book a scoping conversation</a>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 44px; padding-bottom: 44px">
+    <div class="readout">
+      <div class="ro">
+        <div class="n">no answer, then 90%</div>
+        <div class="l">the same ten models and three questions. Asked to compute the number, no answer came back before the reply was cut off, in all 90 trials. Asked to write a script the harness runs, 81 of 90 were right. At eight times the reply budget, computing reached 17 of 30</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">93% vs 97%</div>
+        <div class="l">the ten open-weight models against the three closed references, correct over graded trials. Eight of the ten sit between 95 and 100 percent</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">11 s vs 275 s</div>
+        <div class="l">estimated time to a correct answer for two models three accuracy points apart, on the same single card. Accuracy barely separates this field. Time separates it twenty-five fold</div>
+        <span class="tag t-est">ESTIMATE</span>
+      </div>
+      <div class="ro">
+        <div class="n">0.07 to 0.20 weeks</div>
+        <div class="l">a year, per engineer, for a hundred-engineer fleet to break even on the workstation-class rows. The hardware is not what decides this</div>
+        <span class="tag t-est">ESTIMATE</span>
+      </div>
+    </div>
+    <p style="margin: 28px 0 0 0; font-size: 14px; color: #C9D3DF; max-width: 80ch">Every percentage on this page is a count over a count, and the counts are kept in the record behind it. A check that cannot decide returns not evaluable and never returns a pass. The thesis this work is held to: AI expands what one engineer can run and check. It does not change who decides.</p>
+  </div>
+</div>
+
+<div class="wrap" id="bottomline" style="padding-top: 64px; padding-bottom: 16px">
+  <h2 style="font-size: 44px; max-width: 22ch">The bottom line</h2>
+  <p class="prose" style="margin-top: 14px; font-size: 19px; font-weight: 500">On site, the cheapest setup we can recommend costs $42,000 up front and about $19,400 a year for a team of up to 25 engineers. Hosted behind the gate, the same team pays nothing up front and $700 to $5,750 a year.</p>
+  <div class="tbl" style="margin-top: 20px">
+    <table class="cmp bl">
+      <thead><tr><th>route and model</th><th class="r">our tests</th><th class="r">up front,<br>up to 25 engineers</th><th class="r">a year,<br>up to 25 engineers</th><th class="r">up front,<br>100 engineers</th><th class="r">a year,<br>100 engineers</th></tr></thead>
+      <tbody>
+        <tr class="g"><td colspan="6">On site, open weights</td></tr>
+        <tr><td>Open-weight F</td><td class="num">97%<sup>1</sup></td><td class="num">$42,000<sup>2</sup></td><td class="num">$19,383<sup>2</sup></td><td class="num">$100,000<sup>2</sup></td><td class="num">$46,290<sup>2</sup></td></tr>
+        <tr><td>Open-weight B</td><td class="num">100%<sup>1</sup></td><td class="num">$74,000<sup>2</sup></td><td class="num">$34,432<sup>2</sup></td><td class="num">$190,000<sup>2</sup></td><td class="num">$88,246<sup>2</sup></td></tr>
+        <tr><td>Open-weight D</td><td class="num">100%<sup>1</sup></td><td class="num">$116,000<sup>2</sup></td><td class="num">$53,814<sup>2</sup></td><td class="num">$237,500<sup>2</sup></td><td class="num">$105,873<sup>2</sup></td></tr>
+        <tr class="g"><td colspan="6">Hosted, behind the gate</td></tr>
+        <tr><td>A frontier model in your own cloud account, or by API with zero data retention<sup>3</sup></td><td class="num">92 to 100%<sup>4</sup></td><td class="num">$0</td><td class="num">$700 to $5,750<sup>5</sup></td><td class="num">$0</td><td class="num">$2,800 to $23,000<sup>5</sup></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="notes">
+    <li>Overall accuracy on our four tests, from the first table. These are the three open-weight models with the best accuracy that we can price. Row A also scored 100% on every test, but it publishes no parameter count, so its hardware cannot be costed yet. Row F's estimated median wait for a correct answer is 11 seconds, and its weak spot is arithmetic done in the reply (33%), which the script mode removes. Row B's wait is 14 seconds, on twice F's cards. Row D is right on all four tests, arithmetic included, and fits one card, but its wait is 275 seconds, so a team that wants faster answers buys more cards. AnalogCoder and the buck tasks run on these three next and can change the order.</li>
+    <li>ESTIMATE from the break-even model under the third table: RTX PRO 6000 cards at $16,000 or H200 NVL at $31,500, plus hosts, sized for 20 answers per engineer per working day with the slowest tenth inside five minutes and one spare set, on whichever card comes out cheaper. A year means the capital spread over three years, plus power and upkeep. Up to about 25 engineers the fleet is one set of cards and the spare, so it costs the same for 5 engineers as for 25.</li>
+    <li>Tiers 2 and 3 on <a href="offering.html">The Offering</a>. The gate, which I build with your team, holds back anything foundry-covered or design-identifying before a prompt leaves. Anthropic's <a href="https://www.anthropic.com/legal/commercial-terms">commercial terms</a> say it may not train models on customer content, and they treat that content as the customer's confidential information. Its API <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">deletes inputs and outputs within 30 days</a> by default, keeps content its safety systems flag or the law requires for longer, and offers zero data retention by agreement. Whether your foundry NDA allows any of it is your legal team's decision.</li>
+    <li>The three closed references in the first table scored 92%, 100% and 100% overall, and the newest frontier model we ran solved all twelve of our buck tasks with no simulator.</li>
+    <li>ESTIMATE from measured spend. Our hosted design tasks on 8 October 2026 cost $0.006 to $0.037 each, across three frontier models, alone and with the simulator. A datasheet-sized prompt of 20,000 tokens with a 1,000-token answer costs about $0.05 at the newest model's list price of $2 per million tokens in and $10 per million out. At the same 20 answers per engineer per working day over 230 working days, that is $28 to $230 per engineer a year.</li>
+  </ol>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 32px">
+  <h2 style="font-size: 44px; max-width: 22ch">Our measurements, in one table</h2>
+  <p class="prose" style="margin-top: 14px">Thirteen rows. Ten open-weight models that could in principle be installed on site, and three closed hosted models kept as reference and never treated as candidates, because a model whose weights are not released cannot be installed anywhere. Open-weight rows ran three replicates of every task, so 78 trials each. Reference rows ran one, so 26.</p>
+  <p class="prose">Every percentage below is correct answers over <em>graded</em> trials, and the column after the four tests is the share of trials that produced nothing to grade. Those two numbers have to be read together. A model that is right whenever it answers, and that fails to answer one trial in five, is a different purchase from a model that answers every time and is wrong more often. The last column is how long an engineer would wait for a correct answer on one workstation card, and it is the column that separates this field.</p>
+
+  <div class="tbl" style="margin-top: 24px">
+    <table style="min-width: 1080px">
+      <thead>
+        <tr>
+          <th style="width: 13%">row</th><th>deployable on</th>
+          <th>overall<br>accuracy</th><th>reading a<br>datasheet</th><th>knowing when<br>to abstain</th>
+          <th>computing in<br>the reply</th><th>writing a<br>script</th><th>trials with<br>nothing to grade</th>
+          <th>seconds to a correct answer,<br>median / slowest tenth <span class="tag t-est">ESTIMATE</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lab">Open-weight A</td><td>server, multi-GPU</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">15%</td><td class="num" style="color:#5B6B7F">not evaluable</td></tr>
+        <tr><td class="lab">Open-weight B</td><td>server, multi-GPU</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">33%</td><td class="num">100%</td><td class="num">15%</td><td class="num">14 s / 116 s</td></tr>
+        <tr><td class="lab">Open-weight C</td><td>server, multi-GPU</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">15%</td><td class="num">1,105 s / 2,053 s</td></tr>
+        <tr><td class="lab">Open-weight D</td><td>one 24 GB card</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">17%</td><td class="num" style="color:#D13B1E;font-weight:600">275 s / 724 s</td></tr>
+        <tr><td class="lab">Open-weight E</td><td>server, multi-GPU</td><td class="num">96%</td><td class="num">100%</td><td class="num">93%</td><td class="num">100%</td><td class="num">89%</td><td class="num">14%</td><td class="num">96 s / 442 s</td></tr>
+        <tr><td class="lab">Open-weight F</td><td>one 24 GB card</td><td class="num">97%</td><td class="num">96%</td><td class="num">97%</td><td class="num">33%</td><td class="num">100%</td><td class="num">15%</td><td class="num" style="color:#0A7F4A;font-weight:600">11 s / 55 s</td></tr>
+        <tr><td class="lab">Open-weight G</td><td>one 24 GB card</td><td class="num">98%</td><td class="num">100%</td><td class="num">97%</td><td class="num">0% (1 graded)</td><td class="num">100%</td><td class="num">19%</td><td class="num" style="color:#0A7F4A;font-weight:600">16 s / 42 s</td></tr>
+        <tr><td class="lab">Open-weight H</td><td>one 24 GB card</td><td class="num">95%</td><td class="num">100%</td><td class="num">100%</td><td class="num" style="color:#D13B1E">none gradeable</td><td class="num">50%</td><td class="num">19%</td><td class="num">7 s, one answer</td></tr>
+        <tr><td class="lab">Open-weight J</td><td>two cards or 128 GB</td><td class="num">78%</td><td class="num">72%</td><td class="num">77%</td><td class="num" style="color:#D13B1E">none gradeable</td><td class="num">100%</td><td class="num">18%</td><td class="num">5 s / 8 s, capped</td></tr>
+        <tr><td class="lab">Open-weight K</td><td>server, multi-GPU</td><td class="num">63%</td><td class="num">56%</td><td class="num">60%</td><td class="num">100%</td><td class="num">100%</td><td class="num">17%</td><td class="num" style="color:#5B6B7F">not evaluable</td></tr>
+        <tr style="border-top: 2px solid #0C1B33"><td class="lab">Closed reference 1</td><td>hosted only</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">4%</td><td class="num" style="color:#5B6B7F">hosted only</td></tr>
+        <tr><td class="lab">Closed reference 2</td><td>hosted only</td><td class="num">92%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">0%</td><td class="num">4%</td><td class="num" style="color:#5B6B7F">hosted only</td></tr>
+        <tr><td class="lab">Closed reference 3</td><td>hosted only</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">12%</td><td class="num" style="color:#5B6B7F">hosted only</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 10px; font-size: 14px"><span class="tag t-meas">MEASURED</span> from the trial records, graded under the current harness rules. The first run, on 23 September 2026, gave every column except computing in the reply. At that run's reply limit of 16,384 tokens none of the ten open-weight rows returned anything gradeable in that test, because they were still reasoning when the reply was cut, so the test was run again on 27 September at 131,072 tokens, eight times the budget. That second run is what the column shows for the open-weight rows. Each of those figures rests on three trials or fewer, G's on one, and every wrong answer in the column was silently wrong. Rows H and J had every reply cut by their hosting before an answer appeared. J's three trials were run a third time on 7 October on an endpoint that allows longer replies, and each ended in a provider error after 6,344 to 27,656 tokens of reasoning, so J stays unmeasured in this test. The closed references answered it inside the first run's limit. Overall accuracy is the first run. "Reading a datasheet" is the ten questions the material can settle and "knowing when to abstain" is their ten twins, so a reply that could not be read counts against whichever of the two it answered. "None gradeable" means no trial in that test produced an answer to grade; it is not a score of zero. The nothing-to-grade column counts trials that were cut at the limit, empty, filtered by the provider, or lost to a failed request after its retries.</p>
+  <p style="margin-top: 6px; font-size: 14px"><span class="tag t-est">ESTIMATE</span> for the last column, derived as set out under accuracy and time below. Rows B, C and E need two, seventeen and three of the cards to hold their weights. Rows H and J had their reply budget capped by their hosting, so their figures rest on one and three correct answers and read low. A and K publish no parameter count, so no rate can be derived for them.</p>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 56px; padding-bottom: 56px">
+    <div class="cols">
+      <div>
+        <div class="n" style="font-family: 'IBM Plex Mono', monospace; font-size: 56px; font-weight: 600; color: #fff; letter-spacing: -0.02em">93%</div>
+        <p style="font-size: 19px; font-weight: 500; margin-top: 10px; color: #fff">the ten open-weight models, correct over 651 graded trials</p>
+        <p style="color: #C9D3DF">Eight of the ten sit between 95 and 100 percent. The field is not separated by accuracy when these models answer.</p>
+      </div>
+      <div>
+        <div class="n" style="font-family: 'IBM Plex Mono', monospace; font-size: 56px; font-weight: 600; color: #fff; letter-spacing: -0.02em">97%</div>
+        <p style="font-size: 19px; font-weight: 500; margin-top: 10px; color: #fff">the three closed references, correct over 73 graded trials</p>
+        <p style="color: #C9D3DF">Four points, and the reference figure rests on 73 trials against 651. The gap that matters is not here.</p>
+      </div>
+    </div>
+    <p style="margin: 28px 0 0 0; font-size: 15px; color: #C9D3DF; max-width: 86ch">Where the open-weight rows lose is the nothing-to-grade column of the table. Between 14 and 19 percent of their trials produced nothing to grade, against 4 to 12 percent for the references. They were cut off before they could deliver the engineering, and that is a property of the harness around them rather than of the weights.</p>
+  </div>
+</div>
+
+<div class="wrap" id="finding" style="padding-top: 72px; padding-bottom: 48px">
+  <h2 style="font-size: 44px; max-width: 20ch">The finding that should drive the decision</h2>
+  <p class="prose" style="margin-top: 14px">The data reduction family asks the same three questions two ways. One mode says compute the quantities and return the numbers. The other says write a Python script, and the harness runs it in a sandbox and grades what it prints. Same models, same campaign, same definitions in the prompt, same grader, same tolerances. The only difference is whether the model does the arithmetic or writes the method and something else executes it.</p>
+  <div class="hero2" style="margin-top: 32px">
+    <div style="border-top: 6px solid #D13B1E; padding-top: 18px">
+      <div class="n" style="color: #D13B1E">none</div>
+      <p style="font-size: 19px; font-weight: 500; margin-top: 12px">compute it and give the number</p>
+      <p style="color: #5B6B7F">no answer in any of 90 trials across all ten open-weight rows at the original reply budget, because every reply was cut off before the answer. At eight times the budget, 17 of 30 came back right and five silently wrong</p>
+    </div>
+    <div style="border-top: 6px solid #0A7F4A; padding-top: 18px">
+      <div class="n" style="color: #0A7F4A">90%</div>
+      <p style="font-size: 19px; font-weight: 500; margin-top: 12px">write a script the harness runs</p>
+      <p style="color: #5B6B7F">81 of 90 trials correct, the same ten rows, the same questions, the same grader</p>
+    </div>
+  </div>
+  <p style="margin-top: 10px; font-size: 14px"><span class="tag t-meas">MEASURED</span> from the campaign result files.</p>
+  <p class="prose" style="margin-top: 24px; font-size: 19px; font-weight: 500">No answer in ninety trials against 81 right, at the same reply budget, is the largest effect we measured anywhere, and it is not a difference between models.</p>
+  <p class="prose">The compute-it mode was starved of reply length. These models worked through a 63-step array in their reasoning channel and the reply was cut before the answer came out. One row spent 16,382 of its 16,384 tokens on reasoning alone, which is the clean demonstration that the harness discarded nothing. So we raised the budget eightfold and ran the family again. Eight rows then produced at least one gradeable answer where none had before, and five got all three right. Three rows still had replies cut by their hosting, two of them every reply, and those trials are recorded as unmeasured rather than failed.</p>
+  <p class="prose">Even with eight times the budget, the compute-it mode recovered only to 17 of 30 across the ten rows. Five of those 30 were silently wrong and eight were still cut off. The script mode produced no silently wrong answers at all. Its failures announce themselves, one of them by calling a numpy function with a keyword argument it does not accept and stopping before printing anything. The compute-it mode's failures do not: a well-formed object, a plausible peak integral non-linearity outside tolerance, and nothing in the reply to say so.</p>
+  <div class="cols" style="margin-top: 20px">
+    <div class="prose">
+      <p style="font-size: 19px; font-weight: 500">The practical reading for a team buying this: what you install is more than cards.</p>
+      <p>A sandbox the model can run code in, a validator on the output contract, and a reference implementation to check against are worth more than the measured difference between any two models on this list.</p>
+    </div>
+    <div class="prose">
+      <p>We have measurements for the first and the third. The second is the one-character misspelling described under the first test below, and a validator that rejects and re-asks recovers most of that for no hardware at all.</p>
+      <p>Whether the same holds for driving a simulator is the next measurement. The nearest published work points the same way: in a 2025 study of buck converter design, putting the simulator in the loop raised a reasoning model's solve rate from 25 to 85 percent, and adding retrieval took it to 91. It is in the second table below.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 24px; padding-bottom: 64px">
+  <h2 style="font-size: 44px; max-width: 24ch">The published results, and our remeasurement</h2>
+  <p class="prose" style="margin-top: 14px">Each published figure sits beside our own run of the same model. The numbered notes under the table say what each figure measures and where it comes from.</p>
+  <div class="tbl cmpbox" style="margin-top: 24px">
+    <table class="cmp">
+      <thead><tr><th>model</th><th class="r">published</th><th class="r">ours, October 2026</th></tr></thead>
+      <tbody>
+        <tr class="g"><td colspan="3"><a href="https://arxiv.org/abs/2405.14918">AnalogCoder</a> (2024): first-try pass rate on 15 transistor-level design tasks</td></tr>
+        <tr><td>GPT-4o (2024)</td><td class="num">87%<sup>1</sup></td><td class="num">79%<sup>2</sup></td></tr>
+        <tr><td>DeepSeek-V2 (2024)</td><td class="num">62%<sup>1</sup></td><td class="num na">not run</td></tr>
+        <tr><td>Llama 3 70B (2024)</td><td class="num">46%<sup>1</sup></td><td class="num na">not run</td></tr>
+        <tr><td>GPT-3.5</td><td class="num">34%<sup>1</sup></td><td class="num na">not run</td></tr>
+        <tr><td>o3 (2025)</td><td class="num na">not in paper</td><td class="num na">pending<sup>2</sup></td></tr>
+        <tr><td>GPT-6.1 Sol (2026)</td><td class="num na">not in paper</td><td class="num na">pending<sup>2</sup></td></tr>
+        <tr class="g"><td colspan="3"><a href="https://arxiv.org/abs/2507.10639">Buck converter design workflows</a> (2025): tasks solved within 5%, the model alone</td></tr>
+        <tr><td>GPT-4o (2024)</td><td class="num">14.4%<sup>3</sup></td><td class="num">42%<sup>4</sup></td></tr>
+        <tr><td>o3 (2025)</td><td class="num">25.4%<sup>3</sup></td><td class="num">67%<sup>4</sup></td></tr>
+        <tr><td>GPT-6.1 Sol (2026)</td><td class="num na">not in paper</td><td class="num">100%<sup>4</sup></td></tr>
+        <tr class="g"><td colspan="3">The same study, with the simulator in the loop</td></tr>
+        <tr><td>GPT-4o (2024)</td><td class="num">46.4%<sup>3</sup></td><td class="num">92%<sup>4</sup></td></tr>
+        <tr><td>o3 (2025)</td><td class="num">84.9%<sup>3</sup></td><td class="num">100%<sup>4</sup></td></tr>
+        <tr><td>GPT-6.1 Sol (2026)</td><td class="num na">not in paper</td><td class="num">100%<sup>4</sup></td></tr>
+        <tr class="g"><td colspan="3"><a href="https://arxiv.org/abs/2502.07980">CIRCUIT</a> (2025): final numerical answers right, 510 analog circuit questions</td></tr>
+        <tr><td>GPT-4o (2024)</td><td class="num">48.0%<sup>5</sup></td><td class="num na">pending<sup>6</sup></td></tr>
+        <tr><td>GPT-4 Turbo (2024)</td><td class="num">38.2%<sup>5</sup></td><td class="num na">pending<sup>6</sup></td></tr>
+        <tr><td>Gemini 1.5 Pro (2024)</td><td class="num">34.7%<sup>5</sup></td><td class="num na">not run</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="notes">
+    <li><a href="https://arxiv.org/abs/2405.14918">AnalogCoder</a>, Lai et al., 2024, and AAAI 2025. The model writes Python that builds one of fifteen transistor-level blocks (amplifiers, inverters, current mirrors, op-amps) and runs a SPICE simulator; a checker simulates the design and feeds any failure back for further rounds. The figure is the mean first-try pass rate over tasks 1 to 15, derived from the paper's per-task table, which we read twice and checked against the totals in the benchmark's repository. In the paper every model except GPT-4o also had the benchmark's circuit library, which plays no part in these fifteen tasks. On the four op-amp tasks the two open models scored 0 to 7%.</li>
+    <li>Our rerun of GPT-4o, the 2024-05-13 snapshot, ran on 8 October 2026 with the paper's prompt, feedback loop and temperature of 0.5: 59 of 75 trials passed, 5 per task where the paper ran 15, a mean first-try pass rate of 78.7%. The gap to the paper is in the op-amp tasks 11, 13 and 14 and in task 4; tasks 12 and 15 failed every trial, close to the paper's 13.3% on each. The benchmark had to pass its own control first, and it did on 7 October 2026: 15 of 15 of its correct answers accepted and 4 of 4 deliberately broken ones rejected. That took pinning the simulator to ngspice 34, the version the benchmark's Python library supports; the paper does not say which version it ran. On ngspice 42 the op-amp checks reject the benchmark's own correct answers. o3 and GPT-6.1 Sol run next.</li>
+    <li><a href="https://arxiv.org/abs/2507.10639">Buck converter design workflows</a>, Nau, Krummenauer and Zimmermann, 2025: 269 tasks that tune, adapt or optimise a buck converter, from a textbook buck to a two-phase synchronous step-down controller, with LTspice. A task is solved when the simulated result is within 5% of its target. The figures are the model alone and with LTspice in the loop without retrieval, from the paper's Table 2. With retrieval and LTspice together, o3 reached 90.7%. The paper does not release its tasks.</li>
+    <li>The paper's tasks are not released, so we wrote twelve of our own: set the duty cycle, inductor, output capacitor or switching frequency of three bucks, one of them two-phase, solved when SIMPLIS puts the result within 5% of its target. With the simulator in the loop a model may run up to four simulations before it answers. Before any model ran, the 36-deck control held: every exact answer passed and every answer 12% off failed. Run on 8 October 2026, each model on OpenAI's own endpoint. Counts: GPT-4o 5 of 12 alone and 11 with the simulator, o3 8 and 12, GPT-6.1 Sol 12 and 12. Twelve tasks give wide intervals: 8 of 12 is anywhere from 39% to 86% at 95% confidence. Our tasks differ from the paper's, so compare the direction of change between the two columns; the levels do not carry over.</li>
+    <li><a href="https://arxiv.org/abs/2502.07980">CIRCUIT</a>, Skelic et al., 2025: 510 analog circuit questions with numerical answers, right when the final number is within 0.001 of the key. The figures are zero-shot with netlists, the paper's best setting for GPT-4o, from its Table 1. The question set is not public.</li>
+    <li>Ours is a question set of the same shape, written here, each answer computed two independent ways. A 120-question pilot on the paper's two OpenAI models tunes its difficulty to these figures; the full set is then frozen and run on this year's models. Gemini 1.5 Pro has no endpoint on the aggregator we use, so it is not run.</li>
+  </ol>
+  <p class="prose" style="font-size: 14px">We found no published benchmark that scores a model driving SIMPLIS; ours is described under What is being measured next.</p>
+  <p style="margin-top: 10px; font-size: 14px"><span class="tag t-doc">DOCUMENTED</span> for the published figures, from each paper as read on 7 and 8 October 2026. <span class="tag t-der">DERIVED</span> for the AnalogCoder means. <span class="tag t-meas">MEASURED</span> for ours. <a href="https://arxiv.org/abs/2505.24138">AMSbench</a> (Shi et al., 2025, about 8,000 questions across eight models) is the largest published set, and it is left out of the table because its per-model figures have not been read for this page.</p>
+
+  <h3 style="font-size: 28px; margin-top: 44px">Where this harness differs from the published benchmarks</h3>
+  <div class="cols" style="margin-top: 14px">
+    <div class="prose">
+      <p>The coding benchmarks (<a href="https://arxiv.org/abs/2107.03374">HumanEval</a>, <a href="https://arxiv.org/abs/2108.07732">MBPP</a> and <a href="https://arxiv.org/abs/2208.08227">MultiPL-E</a>, <a href="https://arxiv.org/abs/2310.06770">SWE-bench</a>, and <a href="https://arxiv.org/abs/2309.07544">VerilogEval</a>, <a href="https://arxiv.org/abs/2308.05345">RTLLM</a> and <a href="https://arxiv.org/abs/2506.14074">CVDP</a> for digital RTL) score code that runs against tests, where a wrong answer throws an error and announces itself. This harness counts the reply that is well formed and wrong apart from the reply that cannot be read, because the first one goes downstream unnoticed.</p>
+      <p>Most benchmarks give an abstention no more credit than a wrong answer, so guessing pays. <a href="https://arxiv.org/abs/2506.09038">AbstentionBench</a> and <a href="https://arxiv.org/abs/2511.13029">AA-Omniscience</a> address that on general questions and recall. We found no abstention test built on datasheets, tool release notes or simulator output, so each question here has a twin with the one necessary fact removed.</p>
+    </div>
+    <div class="prose">
+      <p>For digital place and route, <a href="https://arxiv.org/abs/2405.06676">EDA Corpus</a> pairs prompts with OpenROAD scripts and <a href="https://arxiv.org/abs/2603.04476">iScript-Bench</a> scores Tcl written for a commercial tool. We found no public benchmark that scores Verilog-AMS, VHDL-AMS, SKILL, OCEAN or Spectre work, and none on reducing measured converter data.</p>
+      <p>Reproducibility and the cost to deploy are seldom part of a published score. Here eight of thirteen rows changed at least one answer between identical runs, reported row by row, and the hardware and break-even are priced further down.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band" id="current">
+  <div class="wrap" style="padding-top: 56px; padding-bottom: 56px">
+    <h2 style="font-size: 40px; max-width: 24ch">AI changes every few months. I keep track of it for you.</h2>
+    <p class="prose" style="margin-top: 16px; font-size: 19px; color: #E6EDFF">The published results in the table above come from 2024 and 2025, and every model named in them has had a newer release since. Our own table was measured in September and October 2026, and it will date the same way.</p>
+    <p class="prose" style="color: #C9D3DF">A design team cannot spend its weeks following which model now handles which job, and it should not have to take a vendor's word for it. Working with me, you know where things stand. On a monthly retainer I keep track of it for you: when a model worth considering is released, it goes through the tests on this page, the published benchmark is rerun where that is possible, and you hear from me when something changes what your team should use.</p>
+    <p class="prose" style="color: #C9D3DF">This is part of full support, Maintained and extended on <a href="offering.html">The Offering</a>, $2,500 a month. It carries everything in the $1,000 tier: release tracking against your installed versions, the whitelist and retrieval index rebuilt when your tools or PDK move, regression tests on the delivered tooling, bug fixes, and the recipe library as it is built. On top of that come two days a month of development against your own priorities, the reference cards updated for each new tool version, and early access to new recipes with the right to ask for one. Twelve-month minimum, and annual prepayment attracts a discount.</p>
+    <a class="btn" href="contact.html" style="margin-top: 8px">Book a scoping conversation</a>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 26ch">The four tests, and a real question from each</h2>
+    <p class="prose" style="margin-top: 14px">Twenty-six tasks in two families, graded by code with no human judgement in the loop. Every question below is the real one, as the model received it. Ground truth for the data reduction family is a published converter model, exact by construction, with tolerances derived from the printed precision of the inputs and propagated through each definition.</p>
+
+    <div style="margin-top: 36px; border-top: 3px solid #0C1B33; padding-top: 18px">
+      <h3 style="font-size: 26px">1. Reading a datasheet</h3>
+      <p class="prose" style="margin-top: 10px">Can it pull the right fact out of supplied material and return it in the exact shape a program downstream can read. When it fails, it is usually the envelope that is wrong and seldom the fact.</p>
+      <div class="mono" style="background: #fff; border: 1px solid #C9D3DF; border-radius: 4px; padding: 16px 18px; margin: 14px 0; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; overflow-x: auto">QUESTION: What is the name of pin 7? Answer with the pin name.
+UNIT FOR THE ANSWER: label
+
+MATERIAL:
+pin  name      type
+1    VIN+      analog in
+2    VIN-      analog in
+3    GND       supply
+4    VS        supply
+5    REF       analog in
+6    OUT       analog out
+7    SHDN      digital in</div>
+      <p class="prose">The reply must be one JSON object with three fields: the answer, a boolean saying whether the material can settle it, and a one-sentence reason. Eight of the ten open-weight rows scored 96 to 100 percent here. The two that did not, rows J and K at 72 and 56 percent, mostly failed the contract rather than the question. Row K misspelled one field name on 26 of its 60 replies across this test and the next. Its answers were largely right. Read as intended, by the same grader, that one field moves it from 33 right of 60 to 54. One character cost it the bottom of the table.</p>
+    </div>
+
+    <div style="margin-top: 36px; border-top: 3px solid #0C1B33; padding-top: 18px">
+      <h3 style="font-size: 26px">2. Knowing when to abstain</h3>
+      <p class="prose" style="margin-top: 10px">Each of the ten questions above has a twin of the same form and length with the one necessary fact removed. The generator writes each material both ways, so the correct abstention is known before any model sees the task. A model that answers the twin anyway is confidently wrong, and that is the only failure on this page with a hard exclusion gate.</p>
+      <div class="mono" style="background: #fff; border: 1px solid #C9D3DF; border-radius: 4px; padding: 16px 18px; margin: 14px 0; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; overflow-x: auto">QUESTION: According to these release notes alone, was the command 'Export /csv'
+added in SIMX 8.4? Answer with the string 'yes' if the notes list it; if the
+notes do not settle the question, set not_evaluable.
+UNIT FOR THE ANSWER: label
+
+MATERIAL:
+SIMX 8.4 release notes - script commands added in this release
+  Show /plain /file &lt;path&gt;      write a tabulated result to a file
+  Netlist /raw                  emit the flat netlist
+  SetPrecision &lt;digits&gt;         printed precision for Show</div>
+      <p class="prose">A list that may be partial does not settle whether something is absent, so the right answer is an abstention. The gate, written before the runs: a row answering more than one tenth of its unanswerable questions is excluded whatever else it scores. The worst row managed 2 of 30, which is 0.067. We wrote this gate expecting it to exclude somebody, it excluded nobody, and we are reporting that. The abstain column in the table is stricter than the gate, because it counts every reply to a twin and a reply that could not be read counts against it. Row K's 60 percent is ten unreadable replies and two confident answers in thirty.</p>
+    </div>
+
+    <div style="margin-top: 36px; border-top: 3px solid #D13B1E; padding-top: 18px">
+      <h3 style="font-size: 26px">3. Computing in the reply</h3>
+      <p class="prose" style="margin-top: 10px">The data is in the question and the answer comes straight back as numbers. The trap is a definition whose wrong-but-valid twin sits one line away. An endpoint integral non-linearity is a real quantity, and giving it where best-fit was asked is a silent wrong answer.</p>
+      <div class="mono" style="background: #fff; border: 1px solid #C9D3DF; border-radius: 4px; padding: 16px 18px; margin: 14px 0; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; overflow-x: auto">Definitions (use exactly these):
+  LSB = Vref / 2^N; thresholds th[0..2^N-2] ascending for Vref = 1.2 V.
+  Best-fit line: ordinary least squares of th[j] against j over ALL
+  thresholds j = 0..2^N-2.
+  inl_bf[j] = (th[j] - (slope*j + intercept)) / LSB for every j.
+  peak_inl_bestfit = max |inl_bf[j]|;  slope_LSB_per_code = slope / LSB.
+
+TASK: Reply with exactly one JSON object, no prose, no code fence, with these
+numeric fields: peak_inl_bestfit_LSB, slope_LSB_per_code.
+
+DATA (CSV, 63 rows, N = 6 bits):
+index,threshold_V
+0,0.018037529
+1,0.035987874
+... 61 more rows</div>
+      <p class="prose">At the first run's reply limit this test read "none gradeable" for all ten open-weight rows. They worked the 63-step array through in their reasoning channel and the reply was cut off before the answer appeared. At eight times the budget eight rows returned something gradeable, and five of the thirty trials came back silently wrong. Those are the figures in the table. This is the mode to avoid in production.</p>
+    </div>
+
+    <div style="margin-top: 36px; border-top: 3px solid #0A7F4A; padding-top: 18px">
+      <h3 style="font-size: 26px">4. Writing a script</h3>
+      <p class="prose" style="margin-top: 10px">The same three questions, over a 4,095-row file the message only samples. The reply is a Python script, which the harness runs in a fresh folder with a timeout, and its printed output is graded exactly as the numbers above are.</p>
+      <div class="mono" style="background: #fff; border: 1px solid #C9D3DF; border-radius: 4px; padding: 16px 18px; margin: 14px 0; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; overflow-x: auto">Definitions (use exactly these):
+  LSB = Vref / 2^N  (not Vref / (2^N - 1)).
+  dnl[0] = th[0]/LSB - 1;  dnl[k] = (th[k] - th[k-1])/LSB - 1;
+  dnl[2^N-1] = (Vref - th[2^N-2])/LSB - 1.
+  The two end codes are bounded by the rails, not by two thresholds: peak
+  and rms are taken over the interior codes 1..2^N-2 only.
+
+TASK: Reply with exactly one Python 3 script in a fenced block and nothing
+else. It reads the CSV at sys.argv[1] and prints one JSON object with these
+numeric fields: peak_dnl_LSB, rms_dnl_LSB, peak_inl_LSB, dnl_at_msb_LSB.
+Standard library and numpy only; no file writes; no network.
+
+The CSV has 4095 data rows for an N = 12-bit array.</div>
+      <p class="prose">Nine of the ten open-weight rows scored 89 to 100 percent here, on harder data than test 3, at the same reply budget that defeated every one of them in test 3. Nothing about the model changed between the two. What changed was whether something else was allowed to do the arithmetic.</p>
+    </div>
+
+    <h3 style="font-size: 26px; margin-top: 44px">How a reply is scored</h3>
+    <p class="prose" style="margin-top: 14px">Every reply lands in one of five classes, and each is counted apart because each costs something different.</p>
+    <ul class="prose">
+      <li>Right is the correct answer inside a derived tolerance, in the form asked for, or a correct abstention on a question the material cannot settle.</li>
+      <li>Silently wrong is well formed and wrong. It parses, it fills the template, and the number is wrong. This is the one that costs real time, because nothing downstream says so.</li>
+      <li>Unreadable is malformed, so something says so: no object in the reply, a missing contract field, a script that stops with an error. It costs time, and a program reading it fails visibly, so nobody is misled.</li>
+      <li>Confidently wrong is an answer to a question the material cannot answer. It is the worst case and the only one with a hard exclusion gate.</li>
+      <li>Nothing to grade is a reply that came back empty, was cut off at the length limit or filtered by the provider, or a request that failed after its retries. It is never scored as right or wrong, and it has its own column.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 24ch">Accuracy, and the time to get a correct answer</h2>
+    <p class="prose" style="margin-top: 14px">Two numbers decide this purchase: how often the model is right, and how long you wait for it. The first table gives both. Accuracy barely separates the field, and the time column separates it by a factor of twenty-five, on the same card.</p>
+    <p class="prose"><span class="tag t-est">ESTIMATE</span> The time column in the first table and everything below are estimated from published parameter counts, and they stay estimates until a finalist runs on a card in this office. Tokens per correct answer are measured, from the correct trials only of the second run. Seconds are those tokens divided by the single-stream rate one card can sustain: efficiency times memory bandwidth, over the active parameters read for every token. One RTX PRO 6000 Blackwell, 96 GB at 1,792 GB/s, 16,000 USD.</p>
+    <p class="prose">The three rows to compare are F, G and D, which ran at the full budget on one card.</p>
+    <p class="prose" style="margin-top: 20px; font-size: 19px; font-weight: 500">Open-weight D and Open-weight F are three points apart on accuracy and twenty-five times apart on time, on the same card.</p>
+    <p class="prose">D is dense, so all 27 billion of its parameters are read for every token it writes, and it writes long answers. F activates 3 billion per token and writes shorter ones. That comparison carries the hardware argument: a more accurate but slower model is a larger purchase, either in cards or in the time an engineer spends waiting. A team that wants both buys D and more cards; a team that wants an answer inside a minute on one card buys F and gives up three accuracy points.</p>
+
+    <h3 style="font-size: 28px; margin-top: 36px">What a hundred-engineer fleet would have to return</h3>
+    <p class="prose" style="margin-top: 12px">Sized for the busiest hour with one spare set of cards. The assumptions that dominate are twenty answers per engineer per working day, eight concurrent answers per set of cards, a five-minute target for the slowest tenth, and a loaded cost per engineer. None of the four is measured. The engineer count and the expected benefit are the client's input rather than our measurement, so the output is a break-even and not a return. Each row is priced on the cheaper of two fleets, the workstation card above or a data-centre card, and row D is the one that comes out cheaper on the data-centre card.</p>
+    <div class="tbl">
+      <table style="min-width: 760px">
+        <thead><tr><th>configuration</th><th>cards</th><th>capital</th><th>annual cost</th><th>weeks each engineer must gain per year to break even</th></tr></thead>
+        <tbody>
+          <tr><td class="lab">Open-weight F</td><td class="num">5</td><td class="num">100,000 USD</td><td class="num">46,290 USD</td><td class="num">0.07</td></tr>
+          <tr><td class="lab">Open-weight B</td><td class="num">10</td><td class="num">190,000 USD</td><td class="num">88,246 USD</td><td class="num">0.14</td></tr>
+          <tr><td class="lab">Open-weight D</td><td class="num">5</td><td class="num">237,500 USD</td><td class="num">105,873 USD</td><td class="num">0.16</td></tr>
+          <tr><td class="lab">Open-weight E</td><td class="num">15</td><td class="num">280,000 USD</td><td class="num">130,203 USD</td><td class="num">0.20</td></tr>
+          <tr><td class="lab">Open-weight C</td><td class="num">102</td><td class="num">1,892,000 USD</td><td class="num">880,179 USD</td><td class="num">1.35</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols" style="margin-top: 20px">
+      <div class="prose">
+        <p>The weeks column uses a loaded cost of $300,000 per engineer and 46 working weeks a year, the break-even model's own base. At the $400,000 the Executive Summary uses, every figure in it falls by a quarter, so row F breaks even at 0.05 weeks and row C at 1.0.</p>
+        <p>Across every sensitivity case we ran, moving one assumption at a time, the workstation-class rows stay between 0.04 and 0.32 weeks and the 2.4 T row between 0.72 and 2.25.</p>
+        <p>That table says the hardware does not decide this: for the workstation-class rows the break-even is under a tenth of the 2.6 to 4.8 weeks a year the Executive Summary's conservative model recovers per engineer, and smaller again against the four to eight weeks I expect a team to reach. Neither figure is a measurement. What decides it is whether the time saved is real, and that turns on the measurements above. A silently wrong answer costs checking and rework that this break-even leaves out entirely. A confidently wrong answer to an unanswerable question costs more.</p>
+      </div>
+      <div class="prose">
+        <p style="font-size: 19px; font-weight: 500">These weeks are throughput per engineer, meaning what one engineer can run and check. They are not headcount.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 14ch">What we have not tested</h2>
+      <p class="prose" style="margin-top: 14px">Stating this plainly is part of the method.</p>
+    </div>
+    <div class="prose">
+      <p>Every number on this page came from models running on somebody else's hardware, reached through an aggregator. That screens candidates and it is not deployment evidence, because the serving stack, the quantisation loaded and the batching are all the provider's. Nothing here has run on a card in this office.</p>
+      <p>Eight of thirteen rows changed at least one answer between identical runs at temperature zero with a seed set, on pinned endpoints, and four more could not be compared because a probe came back empty. Our own comparison rule once counted a capital letter and a multiplication sign as changes. It was corrected, and under the corrected rule the count is still eight. The changes look like real nondeterminism in serving, concentrated on borderline questions where the model is deciding whether to answer at all. The re-run those rows are owed has not happened yet, so the figures from the second run are one sample per cell on rows shown not to repeat.</p>
+      <p>No open-weight model has yet been asked to drive a simulator. We have the controls built for it: a pair of circuits where the same checker returns opposite verdicts, and on the faulty one the simulator's own records and the circuit geometry agree with each other perfectly and both describe the wrong circuit, with no error reported anywhere in the tool. Only comparison against stated intent caught it. That control reproduced a week later on a rebuilt circuit with identical figures. What has not happened is a model producing the build commands, and that is the next measurement.</p>
+      <p>The code-writing family, where the finding above suggests these models are strongest, is built and has no measurement at all.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 16px; padding-bottom: 64px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 14ch">What is being measured next</h2>
+    </div>
+    <div class="prose">
+      <p>Three measurements are next. None has a number yet, and none appears here until it does.</p>
+      <p><strong>Can a model drive SIMPLIS at all, and what each kind of help is worth.</strong> The same task asked four ways, each adding one thing: a syntax guide, then standing instructions, then a sandbox with a checker. The differences between the arms are the measured value of each, which is the part of a deployment that can be bought and the number a prospective client cares about. This is the first measurement on the work the site is about, which is driving a tool to a design rather than answering questions about one.</p>
+      <p><strong>AnalogCoder on this year's models.</strong> The fifteen transistor-level tasks with the paper's settings, so the second table gets a 2026 figure beside each 2024 one.</p>
+      <p><strong>The compute-in-the-reply test, rebuilt so a cut reply still yields something to grade.</strong> A shorter array, the first intermediate values in the reply so the definition can be graded before the arithmetic finishes, and one continuation when a reply is cut. This can lower the accuracy figures above and cannot raise them, because trials that return nothing today will come back right or wrong.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <div class="cols">
+      <div>
+        <h2 style="font-size: 40px; max-width: 16ch">How the measurement is kept honest</h2>
+        <p class="prose" style="margin-top: 14px">The parts of the method that matter more than any individual score.</p>
+      </div>
+      <div class="prose">
+        <p>Predictions are written into a file and hashed before the first trial of a campaign, then scored mechanically in the result. Nineteen such predictions were scored across the two campaigns. Twelve held, four failed and three could not be evaluated. We publish the failures, because a prediction written after the run is a rationalisation.</p>
+        <p>Rosters that have run are never edited, because their hash sits in a pre-registration.</p>
+        <p>The harness checks itself before each campaign, and a campaign refuses to start unless that self-test passes and the harness version matches what the test kit expects. Older harness versions are kept, because the test suite uses them as negative controls: a control that reproduces the fix is not a control.</p>
+        <p>A grader change is tested by mutation. We deliberately break the grader and confirm it then fails exactly the cases it should.</p>
+        <p>Our own defects are numbered, published, and reported with the mechanism that caught each one. The count passed forty on the harness alone. Several reached the engineer before being caught, including a passing test suite that crashed its own runner, a manifest that omitted its own failures, and twice a result true of one folder stated as a fact about the machine. The verification discipline surfaced those and a person judged them. We think that record is worth more to a prospective client than a page of clean results would be.</p>
+        <p>The same discipline produced the <a href="evidence.html">evidence cases</a>: predictions hashed before the run, mechanical scoring, defects published with the mechanism that caught each.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 14ch">Why the models are not named</h2>
+    </div>
+    <div class="prose">
+      <p>Two reasons, and one limitation.</p>
+      <p>A named league table dates fast. These releases turn over in weeks, and a page that ranks ten of them by name is wrong within a quarter and invites an argument with whichever vendor came last. What does not date is the structural finding: that giving a model a sandbox mattered more than which model it was, that nobody failed the abstention gate, and that bandwidth rather than memory sets the card count for a dense model writing long answers.</p>
+      <p>The second reason is that a single misspelled field name moved one model from mid-table to last. Publishing that against a name would be a claim about a product. Publishing it against a label is a claim about output contracts, which is the useful version and the one that will still be true next year.</p>
+      <p>The published results in the second table keep the names their papers used. Those are citations of someone else's figures, and the names are how a reader checks them. Our remeasurements beside them name their models too, because each one repeats a paper's comparison on the paper's own models and a later release of the same family, and that comparison needs the names.</p>
+      <p>The limitation: the parameter counts and deployment classes are kept because the hardware argument cannot be made without them, and anyone who follows open-weight releases could narrow several of these rows down from those columns alone. The labels remove the vendor framing rather than making the rows unidentifiable. The named version of every table exists, and we will walk a serious prospect through it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 38px; max-width: 24ch">On this material, the sandbox mattered more than the model.</h2>
+    <p class="prose" style="margin-top: 16px; color: #E6EDFF">If you are choosing a model to put on site, the measurements above are the ones to ask for, and the ones to ask any vendor for. The named version of every table exists for a scoping conversation.</p>
+    <a class="btn" href="contact.html" style="margin-top: 12px">Book a scoping conversation</a>
+  </div>
+  <div class="wrap">
+    <div style="border-top: 1px solid #2A3A52; padding-top: 32px; font-size: 14px; color: #C9D3DF; max-width: 84ch">
+      <p>Sources for the published benchmarks, as read in October 2026. <a href="https://arxiv.org/abs/2107.03374">HumanEval</a>: Chen et al., arXiv 2107.03374, 2021. <a href="https://arxiv.org/abs/2108.07732">MBPP</a>: Austin et al., arXiv 2108.07732, 2021. <a href="https://arxiv.org/abs/2208.08227">MultiPL-E</a>: Cassano et al., IEEE TSE 2023. <a href="https://arxiv.org/abs/2310.06770">SWE-bench</a>: Jimenez et al., ICLR 2024. <a href="https://arxiv.org/abs/2309.07544">VerilogEval</a>: Liu et al., ICCAD 2023, and its <a href="https://arxiv.org/abs/2408.11053">revisited edition</a>, ACM TODAES. <a href="https://arxiv.org/abs/2308.05345">RTLLM</a>: Lu et al., ASP-DAC 2024. <a href="https://arxiv.org/abs/2506.14074">CVDP</a>: NVIDIA, arXiv 2506.14074, 2025. <a href="https://arxiv.org/abs/2502.07980">CIRCUIT</a>: Skelic et al., arXiv 2502.07980, 2025. <a href="https://arxiv.org/abs/2505.24138">AMSbench</a>: Shi et al., arXiv 2505.24138, 2025. <a href="https://arxiv.org/abs/2405.14918">AnalogCoder</a>: Lai et al., arXiv 2405.14918, AAAI 2025. <a href="https://arxiv.org/abs/2507.10639">Buck converter design workflows</a>: Nau, Krummenauer and Zimmermann, "Evaluating LLM-based Workflows for Switched-Mode Power Supply Design", arXiv 2507.10639, 2025. Abstention given no credit: Kalai et al., <a href="https://arxiv.org/abs/2509.04664">"Why Language Models Hallucinate"</a>, arXiv 2509.04664, 2025. <a href="https://arxiv.org/abs/2506.09038">AbstentionBench</a>: Kirichenko et al., arXiv 2506.09038, 2025. <a href="https://arxiv.org/abs/2511.13029">AA-Omniscience</a>: Jackson et al., arXiv 2511.13029, 2025. <a href="https://arxiv.org/abs/2405.06676">EDA Corpus</a>: Wu et al., arXiv 2405.06676, 2024. <a href="https://arxiv.org/abs/2603.04476">iScript-Bench</a>: arXiv 2603.04476, 2026. Where this page says we found none, that rests on a coverage survey run for PJ Crawley LLC on 2026-10-05 and on searches repeated on 2026-10-07 and 2026-10-08. Those searches missed the buck converter study until 2026-10-08, so a benchmark we missed would be welcome and would be added here.</p>
+      <p>Every figure in the first and third tables is taken from the output of one script that reads the trial records of the two campaigns, graded under the current harness rules, and row J's third run is read from its own record. The time column and the fleet table are estimates with their assumptions listed. The second table's published figures are the papers' own, and its buck remeasurement is read from the result file of that run. Edition 4 of this page, 2026-10-08.</p>
+    </div>
+    <div class="foot">
+      <div>PJ Crawley LLC. Corp-to-corp. On site for the kickoff and as often as the work needs, remote in between.</div>
+      <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

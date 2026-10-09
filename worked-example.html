@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PJ Crawley LLC, worked example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ Crawley LLC">
+<meta property="og:title" content="PJ Crawley LLC, worked example">
+<meta property="og:description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:url" content="https://www.pjcrawleyllc.com/worked-example.html">
+<meta property="og:image" content="https://www.pjcrawleyllc.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.pjcrawleyllc.com/worked-example.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#0C1B33;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1B4FE8}a:hover{color:#0C1B33}
+h1,h2,h3{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-0.01em}
+p{margin:0 0 14px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.prose{max-width:68ch}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid #C9D3DF}
+.nav a{text-decoration:none;color:#0C1B33;font-weight:500;font-size:15px;padding:8px 0}
+.nav a.on{color:#1B4FE8;box-shadow:inset 0 -2px 0 #1B4FE8}
+.brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:22px;color:#0C1B33;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px}
+.btn{display:inline-block;background:#1B4FE8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn:hover{background:#0C1B33;color:#fff}
+.btn2{display:inline-block;color:#0C1B33;text-decoration:none;font-weight:600;font-size:16px;padding:12px 22px;border:1.5px solid #0C1B33;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn2:hover{color:#1B4FE8;border-color:#1B4FE8}
+.band{background:#0C1B33;color:#fff}
+.band a{color:#7FA6FF}.band a:hover{color:#fff}
+.band a.btn{color:#fff}.band a.btn:hover{background:#fff;color:#0C1B33}
+.band2{background:#EEF3F8}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+code{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:14px;background:#EEF3F8;padding:2px 6px;border-radius:3px}
+.band code{background:#2A3A52;color:#fff}
+.tag{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:3px;line-height:1.3;vertical-align:middle;white-space:nowrap}
+.t-meas{background:#0A7F4A;color:#fff}
+.t-fail{background:#D13B1E;color:#fff}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.ro .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:38px;font-weight:600;line-height:1.05;color:#fff;letter-spacing:-0.02em}
+.ro .l{font-size:14px;color:#C9D3DF;margin-top:10px;line-height:1.4}
+.ro .tag{margin-top:12px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.tbl{overflow-x:auto;border:1px solid #C9D3DF;border-radius:4px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+th{background:#0C1B33;color:#fff;text-align:left;font-weight:600;padding:10px 12px;font-size:14px}
+td{padding:10px 12px;border-top:1px solid #C9D3DF;vertical-align:top}
+tr:nth-child(even) td{background:#F6F8FB}
+td.num{font-family:'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap}
+.big{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:64px;font-weight:600;line-height:1;letter-spacing:-0.03em}
+.foot{padding:40px 0;font-size:14px;color:#C9D3DF}
+ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
+@media (max-width:760px){.readout{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
+
+@media (max-width:1240px){.wrap{width:100%}}
+@media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
+
+<div class="wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">PJ Crawley LLC</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="offering.html">The Offering</a>
+      <a class="on" href="worked-example.html">Worked example</a>
+      <a href="evidence.html">Evidence</a>
+      <a href="metrics.html">Metrics</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 56px">
+  <h1 style="font-size: 62px; max-width: 18ch">Everything on this page runs on your laptop.</h1>
+  <p class="prose" style="font-size: 21px; margin-top: 26px; color: #2A3A52">A 12-bit converter with capacitor mismatch, an analog trim array on the top capacitors, and a calibration routine that finds its own trim codes. Then the digital block that corrects offset and gain, checked against the model that specifies it at every input code.</p>
+  <p class="prose" style="font-size: 19px">Ask for the files, read them, run them, try to break them.</p>
+  <p class="prose" style="color: #5B6B7F">It needs Python and an open-source Verilog simulator, Icarus Verilog or Verilator. No licensed tool is required to run anything on this page.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+    <a class="btn" href="#download">Get the example</a>
+    <a class="btn2" href="contact.html">Book a scoping conversation</a>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 44px; padding-bottom: 44px">
+    <div class="readout">
+      <div class="ro">
+        <div class="n">1.435 to 0.112</div>
+        <div class="l">peak DNL in LSB on the default part, six capacitors trimmed. FAIL to PASS.</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">97 % and 0 %</div>
+        <div class="l">yield with the polarity check in place and with it bypassed. Both runs complete without an error.</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+      <div class="ro">
+        <div class="n">20,480 of 20,480</div>
+        <div class="l">exhaustive comparisons of the digital block against its model, bit-exact on every one</div>
+        <span class="tag t-meas">MEASURED</span>
+      </div>
+    </div>
+    <p style="margin: 28px 0 0 0; font-size: 14px; color: #C9D3DF; max-width: 80ch">Every figure on this page is reproduced by running the example's code, and the command that reproduces it is given beside it.</p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 14ch">The part measures its own error</h2>
+    </div>
+    <div class="prose">
+      <p>At 12 bits with a 3 % unit-capacitor sigma, the top capacitor's error is about 1.4 LSB rms. A part like that misses a half-LSB linearity spec badly, and no amount of digital cleverness recovers the missing charge. The array itself has to be trimmed.</p>
+      <p>The calibration needs no external reference and no tester. For a binary-weighted array the ideal condition at every bit is that the capacitor equals the sum of all the lower capacitors plus the terminator, and the amount by which that fails is the linearity step at that transition. So the converter measures its own error with its own comparator, and trims until the residue is nulled.</p>
+      <p style="font-size: 19px; font-weight: 500">Result on the default part, with six capacitors trimmed: peak DNL 1.435 to 0.112 LSB. FAIL to PASS.</p>
+      <p><span class="tag t-meas">MEASURED</span> <code>python sar_adc_trim_demo.py --trim-caps 6</code>. The script's own default trims three capacitors, which nulls the three trimmed transitions and leaves the peak at an untrimmed one; six is where the whole part passes.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <div class="cols">
+      <div>
+        <h2 style="font-size: 40px; max-width: 14ch">The question a designer asks</h2>
+      </div>
+      <div class="prose">
+        <p>The question is how deep the trim has to go, and what that costs in area.</p>
+        <p>That is a yield curve, and it takes one sweep.</p>
+      </div>
+    </div>
+    <div class="tbl" style="margin-top: 24px">
+      <table>
+        <thead><tr><th>capacitors trimmed</th><th>mean peak DNL</th><th>worst</th><th>yield at 0.5 LSB</th></tr></thead>
+        <tbody>
+          <tr><td class="num">0</td><td class="num">1.97</td><td class="num">5.79</td><td class="num">2 %</td></tr>
+          <tr><td class="num">3</td><td class="num">0.71</td><td class="num">2.08</td><td class="num">30 %</td></tr>
+          <tr><td class="num">5</td><td class="num">0.37</td><td class="num">1.08</td><td class="num">78 %</td></tr>
+          <tr><td class="num">6</td><td class="num">0.25</td><td class="num">0.65</td><td class="num">97 %</td></tr>
+          <tr><td class="num">7</td><td class="num">0.17</td><td class="num">0.49</td><td class="num">100 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top: 16px"><span class="tag t-meas">MEASURED</span> 150 parts per point, 1,350 simulated parts, nine depths, a few seconds. <code>python sar_adc_trim_demo.py --sweep 150</code></p>
+    <p class="prose">What matters about the table is that asking the question cost nothing. When a sweep is free, you run the sweep instead of picking a number and defending it later.</p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 16ch">A routine that completes, reports sensible codes, and makes the part worse</h2>
+    </div>
+    <div class="prose">
+      <p>Adding trim capacitance moves a threshold. Which direction depends on wiring and on the sign convention in the trim control logic. If those two disagree, calibration drives every code the wrong way, and it completes normally, reports plausible trim codes, and hands you a worse part than you started with.</p>
+      <p>So the routine does not assume the polarity. It applies a known trim step, measures which direction reduces the residue, and takes the answer from the measurement.</p>
+    </div>
+  </div>
+  <div class="cols" style="margin-top: 24px; align-items: stretch">
+    <div style="border: 1.5px solid #0A7F4A; border-radius: 4px; padding: 24px">
+      <div class="big" style="color: #0A7F4A">97 %</div>
+      <p style="margin-top: 10px; font-weight: 500">yield at 0.5 LSB DNL with the polarity check in place</p>
+      <p style="margin: 0; color: #5B6B7F">mean peak DNL 0.24 LSB</p>
+    </div>
+    <div style="border: 1.5px solid #D13B1E; border-radius: 4px; padding: 24px">
+      <div class="big" style="color: #D13B1E">0 %</div>
+      <p style="margin-top: 10px; font-weight: 500">yield with the check bypassed</p>
+      <p style="margin: 0; color: #5B6B7F">mean peak DNL 4.79 LSB</p>
+    </div>
+  </div>
+  <p class="prose" style="margin-top: 16px"><span class="tag t-meas">MEASURED</span> 200 Monte Carlo parts each, six capacitors trimmed. Both runs complete without an error. <code>python sar_adc_trim_demo.py --trim-caps 6 --mc 200</code>, then the same with <code>--break-sign</code>.</p>
+  <p class="prose">Run it yourself with <code>--break-sign</code> and watch calibration succeed at making the part worse.</p>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <div class="cols">
+      <div>
+        <h2 style="font-size: 40px; max-width: 16ch">Half the transfer function wrong, and no plot would show it</h2>
+      </div>
+      <div class="prose">
+        <p>The offset and gain correction is fixed-point arithmetic in SystemVerilog. It is specified by a model, so the model is the oracle: every input code goes through both, and they must agree exactly.</p>
+        <ul>
+          <li><strong>20,480 comparisons</strong> across five operating points, 4,096 codes each, the entire input space.</li>
+          <li><strong>Bit-exact on every one.</strong></li>
+        </ul>
+        <p>Then the negative control. Switch the RTL to truncate where the model rounds:</p>
+        <ul>
+          <li><strong>2,005 of 4,096 codes disagree.</strong> Every error is exactly one LSB.</li>
+        </ul>
+        <p>Half the transfer function is wrong. The maximum error is a single count. Nothing about it would look wrong on any plot you would normally draw. This is the failure the practice exists to catch, and an exhaustive comparison that takes a second to run catches it.</p>
+        <p><span class="tag t-meas">MEASURED</span> <code>check_rtl.py</code> against <code>adc_offset_gain_corr.sv</code>, exit code 1 on any mismatch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
+  <div class="cols">
+    <div>
+      <h2 style="font-size: 40px; max-width: 14ch">MATLAB or Python, your choice</h2>
+    </div>
+    <div class="prose">
+      <p>The golden model ships as both a Python function and a MATLAB function, verified arithmetically identical over the full input space.</p>
+      <p>If your team has MATLAB, MATLAB is the target: your scripts, your conventions, your plots. If you would rather the flow needed no seat, Python is the target. Mixed teams are normal and fine.</p>
+      <p>One honest note for teams weighing Octave as a free substitute: base scripting and plotting port with modest effort, but Simulink and Fixed-Point Designer have no Octave equivalent, so anything built on <code>fi()</code> objects or a <code>.slx</code> model does not travel. Better to know that now than in week two.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="download" style="padding-top: 32px; padding-bottom: 72px">
+  <h2 style="font-size: 40px; max-width: 20ch">What is on this page, and what is not</h2>
+  <div class="tbl" style="margin-top: 24px">
+    <table>
+      <thead><tr><th>Runs on your laptop</th><th>Runs on your tools</th></tr></thead>
+      <tbody>
+        <tr><td>Converter model, mismatch, trim, yield sweeps (Python)</td><td>Verilog-A and Verilog-AMS views</td></tr>
+        <tr><td>Digital correction RTL (SystemVerilog)</td><td>OCEAN campaign scripts</td></tr>
+        <tr><td>Exhaustive RTL simulation (Icarus Verilog, Verilator)</td><td>SKILL generation</td></tr>
+        <tr><td>Real-number behavioural view</td><td>Transistor-level benches on your PDK</td></tr>
+        <tr><td>Plots and reports</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cols" style="margin-top: 28px">
+    <div class="prose">
+      <p>The right-hand column is the half that is tool-bound by nature, and it is what the on-premises deployment exists to produce. For that half the deliverable is a generator plus a checker that validates the output without running the tool: every function verified against an API whitelist built from your installed release, argument counts checked against real usage. A script that fails the check never reaches your simulator.</p>
+      <p>Code that passes the check calls no hallucinated functions, which is the failure that bites in practice. It can still be wrong in other ways.</p>
+    </div>
+    <div class="prose">
+      <p style="font-weight: 500">One archive, sent by email on request.</p>
+      <p><span class="mono" style="font-size: 14px">sar_adc_trim_demo.py, adc_offset_gain_corr.sv, tb_adc_corr.sv, check_rtl.py, adc_corr_golden.m, selftest_matlab_twin.py, run_all.sh</span></p>
+      <p><a class="btn" href="mailto:phil@pjcrawleyllc.com?subject=Worked%20example%20archive">Request the archive by email</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px; max-width: 20ch">The engineer still decides.</h2>
+    <p class="prose" style="margin-top: 16px; color: #C9D3DF">Every artefact here is paired with something mechanical, an exhaustive comparison, a known-answer probe, an API whitelist, because generated code is assumed wrong until a check says otherwise.</p>
+    <a class="btn" href="contact.html" style="margin-top: 12px">Book a scoping conversation</a>
+  </div>
+  <div class="wrap">
+    <div class="foot" style="border-top: 1px solid #2A3A52">
+      <div>PJ Crawley LLC. Corp-to-corp. On site for the kickoff and as often as the work needs, remote in between.</div>
+      <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

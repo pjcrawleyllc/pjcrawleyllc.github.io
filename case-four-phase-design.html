@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PJ Crawley LLC, evidence case 2, the four-phase 1 MHz design</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ Crawley LLC">
+<meta property="og:title" content="PJ Crawley LLC, evidence case 2, the four-phase 1 MHz design">
+<meta property="og:description" content="AI tools for analog and mixed-signal design teams, deployed into your own flow, with a deterministic check on everything they produce. PJ Crawley LLC.">
+<meta property="og:url" content="https://www.pjcrawleyllc.com/case-four-phase-design.html">
+<meta property="og:image" content="https://www.pjcrawleyllc.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.pjcrawleyllc.com/case-four-phase-design.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#0C1B33;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1B4FE8}a:hover{color:#0C1B33}
+h1,h2,h3{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-0.01em}
+p{margin:0 0 14px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;box-sizing:border-box}
+.prose{max-width:68ch}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid #C9D3DF}
+.nav a{text-decoration:none;color:#0C1B33;font-weight:500;font-size:15px;padding:8px 0}
+.nav a.on{color:#1B4FE8;box-shadow:inset 0 -2px 0 #1B4FE8}
+.brand{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:700;font-size:22px;color:#0C1B33;text-decoration:none}
+.links{display:flex;flex-wrap:wrap;gap:4px 24px}
+.crumb{font-size:14px;color:#5B6B7F;padding-top:20px}
+.btn{display:inline-block;background:#1B4FE8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn:hover{background:#0C1B33;color:#fff}
+.btn2{display:inline-block;color:#0C1B33;text-decoration:none;font-weight:600;font-size:16px;padding:12px 22px;border:1.5px solid #0C1B33;border-radius:4px;min-height:44px;box-sizing:border-box}
+.btn2:hover{color:#1B4FE8;border-color:#1B4FE8}
+.band{background:#0C1B33;color:#fff}
+.band a{color:#7FA6FF}.band a:hover{color:#fff}
+.band a.btn{color:#fff}.band a.btn:hover{background:#fff;color:#0C1B33}
+.band2{background:#EEF3F8}
+.banner{border-top:3px solid #D13B1E;border-bottom:1px solid #C9D3DF;padding:14px 0;font-weight:600;font-size:16px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tag{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 8px;border-radius:3px;line-height:1.3;vertical-align:middle;white-space:nowrap}
+.t-meas{background:#0A7F4A;color:#fff}
+.t-sim{background:#fff;color:#0A7F4A;border:1.5px solid #0A7F4A}
+.t-doc{background:#fff;color:#0C1B33;border:1.5px solid #0C1B33}
+.t-der{background:#1B4FE8;color:#fff}
+.t-est{background:#B35900;color:#fff}
+.t-na{background:#5B6B7F;color:#fff}
+.t-fail{background:#D13B1E;color:#fff}
+.t-prop{background:#fff;color:#B35900;border:1.5px solid #B35900}
+.readout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.ro .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:36px;font-weight:600;line-height:1.05;color:#fff;letter-spacing:-0.02em}
+.ro .l{font-size:14px;color:#C9D3DF;margin-top:10px;line-height:1.4}
+.ro .tag{margin-top:12px}
+.ro .r{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;color:#7FA6FF;margin-top:8px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.tbl{overflow-x:auto;border:1px solid #C9D3DF;border-radius:4px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+th{background:#0C1B33;color:#fff;text-align:left;font-weight:600;padding:10px 12px;font-size:13.5px}
+td{padding:9px 12px;border-top:1px solid #C9D3DF;vertical-align:top}
+tr:nth-child(even) td{background:#F6F8FB}
+td.num{font-family:'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap}
+td.rc{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;color:#5B6B7F;white-space:nowrap}
+.miss td.num{color:#D13B1E;font-weight:600}
+.fig{width:100%;height:auto;display:block;border:1px solid #C9D3DF;border-radius:4px}
+.ent{border-top:1px solid #C9D3DF;padding:26px 0}
+.ent h3{font-size:24px;margin-bottom:12px;max-width:30ch}
+.row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;padding:6px 0}
+.row .k{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;color:#5B6B7F;padding-top:4px}
+.row .v{max-width:72ch}
+.row.chk{background:#E6EDFF;border-radius:4px;padding:14px;margin-top:8px}
+.row.chk .k{color:#1B4FE8}
+.row.chk .v{font-weight:500}
+.ent .d{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;color:#5B6B7F;margin-top:8px}
+.dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.dl div{border-top:4px solid #1B4FE8;padding-top:14px}
+.dl h3{font-size:22px;margin-bottom:8px}
+.cost{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:64px;font-weight:600;line-height:1;letter-spacing:-0.03em;color:#fff}
+.prop{border:1.5px solid #B35900;border-radius:4px;padding:24px;background:#FFF8F0}
+.foot{padding:40px 0;font-size:14px;color:#C9D3DF}
+ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
+ol{padding-left:22px;margin:0 0 14px 0}
+@media (max-width:900px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}.dl{grid-template-columns:1fr}}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+
+@media (max-width:1240px){.wrap{width:100%}}
+@media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
+
+<div class="wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">PJ Crawley LLC</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="offering.html">The Offering</a>
+      <a href="worked-example.html">Worked example</a>
+      <a class="on" href="evidence.html">Evidence</a>
+      <a href="metrics.html">Metrics</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="crumb"><a href="evidence.html">Evidence</a>, case 2, the four-phase 1 MHz design</div>
+</div>
+
+<div class="wrap" style="padding-top: 48px; padding-bottom: 40px">
+  <h1 style="font-size: 60px; max-width: 20ch">Four phases, 119 A, held to Intel's guide line by line, with nobody at the keyboard.</h1>
+  <p class="prose" style="font-size: 20px; margin-top: 26px; color: #2A3A52">A synchronous buck regulator for a processor core rail, 12 V in, VID 1.4 V on a 1.00 mOhm load line, four phases at 1 MHz each. It is held to Intel's VRD 10.1 design guide, document 302356-004, configuration 775_VR_CONFIG_04B, line by line, and to two rules the engineer set: 1 MHz a phase, and loop crossover under 200 kHz.</p>
+  <p class="prose">Two hundred and fifty-two simulator runs, each graded against a prediction written and sealed before the deck that tests it existed. Twenty-two of the thirty-one recorded design decisions were made by the AI, by the engineer's written delegation. Forty-one wrong turns are on the record below with what each one changed.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+    <a class="btn" href="#how">Read how it was run</a>
+    <a class="btn2" href="#download">Get the design files</a>
+    <a class="btn2" href="contact.html">Book a scoping conversation</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="banner">Read in simulation. Nothing was built, and nothing was measured on a board.</div>
+</div>
+
+<div class="wrap" style="padding-top: 36px; padding-bottom: 40px">
+  <div class="cols">
+    <div><h2 style="font-size: 36px; max-width: 16ch">The check is written before the thing it judges.</h2></div>
+    <div class="prose"><p>Every reading on this page was predicted in a file that was sealed before its deck existed, and a script graded the run against the seal. That is what makes a failed prediction reportable, and there are failed predictions below, including one where the engineer was told to expect a miss and the design met the line.</p></div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 44px; padding-bottom: 44px">
+    <div class="readout">
+      <div class="ro">
+        <div class="n">10.7 mV over</div>
+        <div class="l">Intel's load step, 24 A to 119 A in 1.25 us, lowest point against the bottom of Intel's window</div>
+        <span class="tag t-sim">SIMULATED</span>
+        <div class="r">spike275 (df0aecb2)</div>
+      </div>
+      <div class="ro">
+        <div class="n">+47.8 mV</div>
+        <div class="l">release, 100 A to 5 A at 1,900 A/us, peak against the zero-current level, where +50 mV is allowed</div>
+        <span class="tag t-sim">SIMULATED</span>
+        <div class="r">spike277 (18facfc2)</div>
+      </div>
+      <div class="ro">
+        <div class="n">148,162 Hz</div>
+        <div class="l">loop crossover at 119 A, at 75.2 degrees, the engineer's rule being under 200,000 Hz</div>
+        <span class="tag t-sim">SIMULATED</span>
+        <div class="r">spike278 (6dc56243)</div>
+      </div>
+      <div class="ro">
+        <div class="n">252 runs</div>
+        <div class="l">behind the design, 43.5 hours of simulator time, none of them started by hand</div>
+        <span class="tag t-meas">MEASURED</span>
+        <div class="r">the queue log</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px">Provenance</h2>
+  <div class="cols" style="margin-top: 20px">
+    <div class="prose">
+      <p>A 2004 doctoral dissertation on multiphase voltage-regulator design, public and citable. A published Intel design guide for the requirement. Catalogue parts with their makers' simulation models. One commercial circuit simulator, SIMetrix/SIMPLIS, stock install, on one machine. No client material of any kind is involved in this case, and none of the work was done on anyone's equipment but ours.</p>
+      <p>The source is K. Yao's dissertation at Virginia Tech. Its own chapter 3 carries three designs, at 25 A and 50 A on two phases and 90 A on four. This design carries 119 A on four phases at 1 MHz and is held to a named requirement the source designs were not.</p>
+    </div>
+    <div class="prose">
+      <p style="font-weight: 600">Read the tags.</p>
+      <p><span class="tag t-sim">SIMULATED</span> a reading taken in SIMetrix/SIMPLIS against a prediction sealed before the deck existed, named by its deck and the first eight characters of its receipt hash.</p>
+      <p><span class="tag t-meas">MEASURED</span> on this page means read off the machines themselves: clocks, the queue log, the clients' own cost counters.</p>
+      <p><span class="tag t-doc">DOCUMENTED</span> from a published source, the Intel guide, a part datasheet or the dissertation. <span class="tag t-der">DERIVED</span> arithmetic on those, with the inputs named.</p>
+      <p><span class="tag t-na">NOT EVALUABLE</span> a check that could not decide. It is never promoted to a pass because the answer looks plausible.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px">The result</h2>
+    <p class="prose" style="margin-top: 12px">Four figures, and the misses beside them at the same size.</p>
+    <div class="cols" style="margin-top: 24px; align-items: start">
+      <div>
+        <h3 style="font-size: 24px; margin-bottom: 12px; color: #0A7F4A">What it holds</h3>
+        <div class="tbl">
+          <table style="min-width: 420px">
+            <thead><tr><th>Reading</th><th>Result</th><th>Receipt</th></tr></thead>
+            <tbody>
+              <tr><td>Intel's load step, 24 A to 119 A in 1.25 us, lowest point against the bottom of Intel's window</td><td class="num">10.7 mV over</td><td class="rc">spike275 (df0aecb2)</td></tr>
+              <tr><td>Release, 100 A to 5 A at 1,900 A/us, peak against the zero-current level, limit +50 mV</td><td class="num">+47.8 mV</td><td class="rc">spike277 (18facfc2)</td></tr>
+              <tr><td>Loop crossover at 119 A, the engineer's rule being under 200,000 Hz</td><td class="num">148,162 Hz, 75.2 deg</td><td class="rc">spike278 (6dc56243)</td></tr>
+              <tr><td>Simulator runs behind the design, none started by hand</td><td class="num">252, 43.5 h</td><td class="rc">the queue log</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top: 10px; font-size: 14px"><span class="tag t-sim">SIMULATED</span> for the first three, <span class="tag t-meas">MEASURED</span> for the run count.</p>
+      </div>
+      <div>
+        <h3 style="font-size: 24px; margin-bottom: 12px; color: #D13B1E">What it misses, and where it stops</h3>
+        <div class="tbl">
+          <table class="miss" style="min-width: 420px">
+            <thead><tr><th>Reading</th><th>Result</th><th>Receipt</th></tr></thead>
+            <tbody>
+              <tr><td>The same load step with the controller's reference at its 1 % low limit and no trim on the board</td><td class="num">3.7 mV under Intel's window</td><td class="rc">spike280 (37a74708)</td></tr>
+              <tr><td>Phase currents at 119 A with sense offsets of 3.5 mV on alternate phases, an even share being 29.7 A</td><td class="num">23.1 and 36.4 A; 40.5 A peak</td><td class="rc">spike281 (7b3aabc7)</td></tr>
+              <tr><td>Pulses in 50 periods at VID 0.8375 V and 13.8 V in, with the part's minimum on-time at its 100 ns maximum</td><td class="num">40, 40, 38, 39 of 50; ripple 4.3 mV where 5.0 is allowed</td><td class="rc">spike286 (c8ec6405)</td></tr>
+              <tr><td>Change of VID with this controller</td><td class="num">no VID input; a DAC outside the part, not simulated</td><td class="rc">none</td></tr>
+              <tr><td>The AC analysis of the loop at 24 A</td><td class="num">the simulator refused the deck; read from a transient instead, 156,310 Hz at 80.3 deg</td><td class="rc">spike279, then spike283 (f7afa0a8)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top: 10px; font-size: 14px"><span class="tag t-sim">SIMULATED</span> for the first three, <span class="tag t-na">NOT EVALUABLE</span> for the last two, the loop at 24 A then read by another route.</p>
+      </div>
+    </div>
+    <p class="prose" style="margin-top: 24px">The trim is therefore a requirement with this part, not an option. That is the design's own conclusion, and it is in the specification as a condition on the board.</p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px">Before and after</h2>
+  <p class="prose" style="margin-top: 12px">The dissertation's three designs beside this one. The full table is section 13 of the electrical specification in the archive.</p>
+  <div class="tbl" style="margin-top: 20px">
+    <table style="min-width: 760px">
+      <thead><tr><th></th><th>Two-phase hardware</th><th>Two-phase ceramic, simulated</th><th>Four-phase demonstration board</th><th>This design</th></tr></thead>
+      <tbody>
+        <tr><td>Output</td><td class="num">1.5 V</td><td class="num">1.5 V</td><td class="num">1.3 V</td><td class="num">VID 1.4 V, 0.8375 to 1.6 V while running</td></tr>
+        <tr><td>Maximum current</td><td class="num">25 A</td><td class="num">50 A</td><td class="num">90 A</td><td class="num">119 A</td></tr>
+        <tr><td>Phases</td><td class="num">2</td><td class="num">2</td><td class="num">4</td><td class="num">4</td></tr>
+        <tr><td>Switching frequency</td><td class="num">300 kHz</td><td class="num">1 MHz</td><td>not stated</td><td class="num">1 MHz</td></tr>
+        <tr><td>Output capacitors</td><td class="num">4 x 820 uF Oscon</td><td class="num">8 x 100 uF ceramic</td><td class="num">10 x 100 uF ceramic</td><td class="num">23 x 100 uF ceramic</td></tr>
+        <tr><td>Loop crossover</td><td class="num">about 16 kHz</td><td class="num">130 kHz</td><td class="num">220 kHz measured, 80 deg</td><td class="num">148,162 Hz at 75.2 deg</td></tr>
+        <tr><td>Requirement it is held to</td><td>none named</td><td>none named</td><td>none named</td><td>Intel VRD 10.1, 775_VR_CONFIG_04B, line by line</td></tr>
+        <tr><td>Evidence</td><td>measured on a board</td><td>simulated</td><td>measured on a board</td><td>simulated; 252 graded runs, every one against a sealed prediction</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 10px; font-size: 14px"><span class="tag t-doc">DOCUMENTED</span> for the first three columns, from chapter 3 of the dissertation. <span class="tag t-sim">SIMULATED</span> for the fourth.</p>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px">Where the part stands</h2>
+    <p class="prose" style="margin-top: 12px">A real controller is in the design, the TPS40091, with TPS28225 drivers. It is carried in the decks as a network built from its datasheet, SLUS578B, and that network was checked first on a case with a known answer (spike274, 38f16bd7). Where the part falls short of what the design asks, the page shows the shortfall rather than changing the design around it.</p>
+    <div class="tbl" style="margin-top: 20px">
+      <table style="min-width: 760px">
+        <thead><tr><th>Line</th><th>Typical part</th><th>At its datasheet limit</th><th>Receipts</th></tr></thead>
+        <tbody>
+          <tr><td>Intel's step, lowest point against the bottom of the window</td><td class="num">10.7 mV over</td><td class="num">3.7 mV under, reference 1 % low, no trim</td><td class="rc">spike275 (df0aecb2), spike280 (37a74708)</td></tr>
+          <tr><td>Release at 76 A/us, peak against the zero-current level, limit +50 mV</td><td class="num">+23.8 mV</td><td>not read</td><td class="rc">spike276 (1bc481e6)</td></tr>
+          <tr><td>Release at 1,900 A/us</td><td class="num">+47.8 mV</td><td class="num">+47.8 mV with the ramp and the sense gain at their limits</td><td class="rc">spike277 (18facfc2), spike284 (d866f705)</td></tr>
+          <tr><td>Loop crossover at 119 A, rule under 200,000 Hz</td><td class="num">148,162 Hz, 75.2 deg</td><td>not read</td><td class="rc">spike278 (6dc56243)</td></tr>
+          <tr><td>Loop crossover at 24 A, read from a transient</td><td class="num">156,310 Hz, 80.3 deg</td><td>not read</td><td class="rc">spike283 (f7afa0a8)</td></tr>
+          <tr><td>Phase currents at 119 A, an even share being 29.7 A</td><td>alike</td><td class="num">23.1 and 36.4 A with sense offsets of 3.5 mV</td><td class="rc">spike281 (7b3aabc7)</td></tr>
+          <tr><td>Pulses at VID 0.8375 V and 13.8 V in</td><td class="num">50 of 50 in each phase</td><td class="num">38 to 40 of 50 at a 100 ns minimum on-time; ripple 4.3 mV peak where 5.0 is allowed</td><td class="rc">spike285 (64d18433), spike286 (c8ec6405)</td></tr>
+          <tr><td>Change of VID</td><td>the part has no VID input</td><td>a DAC outside the part, not simulated</td><td class="rc">none</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top: 10px; font-size: 14px">All <span class="tag t-sim">SIMULATED</span> except the last line, which is <span class="tag t-na">NOT EVALUABLE</span>.</p>
+    <p class="prose" style="margin-top: 20px">The decks carried an ideal modulator until October 4. Against it the same step keeps 17.7 mV instead of 10.7, and the releases peak +14.8 mV and +46.5 mV instead of +23.8 and +47.8 (spike242, spike241, spike216). The difference is what a real part costs on this stage, and it is published rather than averaged away.</p>
+
+    <h3 style="font-size: 28px; margin-top: 36px">What a better controller would buy</h3>
+    <div class="tbl" style="margin-top: 16px">
+      <table style="min-width: 700px">
+        <thead><tr><th>Feature this part lacks</th><th>What it costs here</th><th>What the feature would buy</th></tr></thead>
+        <tbody>
+          <tr><td>VID input with changes on the fly</td><td>a DAC and its accuracy outside the part, not simulated</td><td>Intel's change of VID with one part</td></tr>
+          <tr><td>A reference good to 0.5 %</td><td>3.7 mV under the window on Intel's step at the reference's limit</td><td>the step inside the window with no trim</td></tr>
+          <tr><td>Sense offset of 100 uV, or a larger sense signal</td><td>phases 6.7 A over their share at full load, 40.5 A peak</td><td>the phases within an ampere of each other</td></tr>
+          <tr><td>A droop that follows the load without an integrating amplifier's lag</td><td>6.6 mV of undershoot, and the margin on the step down from 17.7 to 10.7 mV</td><td>the ideal block's figures</td></tr>
+          <tr><td>A minimum on-time of 50 ns at its worst</td><td>at VID 0.8375 V and 13.8 V in, a part at its limit skips about a fifth of its pulses</td><td>the whole VID range across the whole input range</td></tr>
+          <tr><td>A stated spread on the droop gain</td><td>not known, so the load line budget cannot be closed</td><td>a budget that closes</td></tr>
+          <tr><td>A simulation model from the maker</td><td>this network, built from the datasheet and checked on a known answer</td><td>the part's clamps, its balance loop and its protections in the decks</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top: 16px">What the part does give: four phases to 1.2 MHz, a programmable load line from the summed phase currents, differential remote sense, three-state outputs for the driver already chosen, the protections, and a part that can still be bought. The other controllers of its generation that were looked at are obsolete. <span class="tag t-doc">DOCUMENTED</span> from SLUS578B.</p>
+  </div>
+</div>
+
+<div class="wrap" id="how" style="padding-top: 64px; padding-bottom: 32px">
+  <h2 style="font-size: 40px">How it was run</h2>
+  <img class="fig" style="margin-top: 20px" src="assets/four-phase-who-decided.png" alt="Timeline of who decided what: four inputs of the engineer's, eight design choices of the AI's, each with what it traded and the figure it turned on; where the 7.4 days went and what the tokens cost">
+  <p class="prose" style="margin-top: 24px">Nobody sat at the simulator. Scheduled tasks on one machine took jobs from a queue, ran them and wrote receipts. The chat wrote the decks, sealed the prediction for each one before it ran, read the receipts and reported. The engineer's part was about eighteen messages in eight days.</p>
+  <div class="tbl" style="margin-top: 20px">
+    <table style="min-width: 700px">
+      <thead><tr><th>Figure</th><th>Value</th><th>Tag</th><th>How it was counted</th></tr></thead>
+      <tbody>
+        <tr><td>Calendar time, first step to the finished documents</td><td class="num">7.4 days</td><td><span class="tag t-meas">MEASURED</span></td><td>the session's start time and the folder's last write</td></tr>
+        <tr><td>Model working time</td><td class="num">31.5 hours</td><td><span class="tag t-meas">MEASURED</span></td><td>the chat's own counter, retries left out, sub-agents included</td></tr>
+        <tr><td>Tool time</td><td class="num">44.6 hours</td><td><span class="tag t-meas">MEASURED</span></td><td>the same counters: scripts, file transfers, and waiting on the simulator</td></tr>
+        <tr><td>Share of tool time spent waiting on the simulator</td><td class="num">78 %</td><td><span class="tag t-meas">MEASURED</span> on the last 2.2 hours only</td><td>the earlier record is compacted and cannot be split</td></tr>
+        <tr><td>Working time, model time plus tool time that was not waiting</td><td class="num">about 41 hours</td><td><span class="tag t-est">ESTIMATE</span> bounded at 31.5 and 76.5</td><td>31.5 h plus 22 % of 44.6 h</td></tr>
+        <tr><td>Simulator runs</td><td class="num">252 runs, 43.5 hours</td><td><span class="tag t-meas">MEASURED</span></td><td>start and end of every run in the queue log</td></tr>
+        <tr><td>Grading jobs</td><td class="num">115 by script, 144 by agents before that</td><td><span class="tag t-meas">MEASURED</span></td><td>the queue log</td></tr>
+        <tr><td>Reports from the AI to the engineer</td><td class="num">138</td><td><span class="tag t-meas">MEASURED</span></td><td>the message files</td></tr>
+        <tr><td>Messages from the engineer</td><td class="num">about 18</td><td><span class="tag t-est">ESTIMATE</span></td><td>four set the requirement or the design and are on the picture; the rest were status questions, process rulings and short answers</td></tr>
+        <tr><td>Idle time</td><td class="num">100 hours of the 176.5</td><td><span class="tag t-meas">MEASURED</span></td><td>calendar time less model time and tool time</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cols" style="margin-top: 24px">
+    <div class="prose">
+      <p>The idle time has reasons on the record and they are worth more than the number. Sixty-one hours in one stretch were spent waiting for an answer with nothing queued behind it, which is a defect of the automation and is logged as one. Some of it was the weekly usage allowance running out. Some of it was turns that had ended overnight.</p>
+    </div>
+    <div class="prose">
+      <p>There is no speed multiplier on this page and there will not be one. No engineer designed the same regulator by hand beside this, so there is nothing to divide by.</p>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 56px; padding-bottom: 56px">
+    <div class="cols" style="align-items: start">
+      <div>
+        <h2 style="font-size: 36px">What it cost</h2>
+        <div class="cost" style="margin-top: 16px">$1,375</div>
+        <p style="color: #C9D3DF; margin-top: 12px">at metered rates. <span class="tag t-meas">MEASURED</span> from the clients' own cost counters: 1,192 for the design chat and its sub-agents, 183 for 211 agent jobs on the machine.</p>
+      </div>
+      <div class="prose" style="color: #E6EDFF">
+        <p>That one figure means three different things depending on how a team runs it, and all three belong on the page.</p>
+        <p><strong style="color: #fff">On a personal subscription</strong>, which is what the work ran on, it is a flat monthly price. The allowance ran out once on record, when eighteen agent jobs came back against the weekly limit and grading moved to scripts with no agent for the rest of that day.</p>
+        <p><strong style="color: #fff">At metered rates</strong>, $1,375 is what the same tokens cost. That is the basis a company pays on through the API or its own cloud tenancy, which are tiers 2 and 3 of the offering.</p>
+        <p><strong style="color: #fff">On a team's own hardware with a local model</strong>, tier 1, there is no token fee at all, and the cost is the hardware. The caveat has to travel with that sentence: this design was run on a frontier model, and no local model has been shown to do it. What the open-weight models have been shown to do, and what they cost in cards, is on the <a href="metrics.html">Metrics page</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 64px; padding-bottom: 48px">
+  <h2 style="font-size: 40px">Who decided what</h2>
+  <div style="margin-top: 20px">
+    <div class="prose" style="max-width: 76ch">
+      <p>The engineer set the target and handed over the design. He fixed the frequency, the inductance, the part set, the requirement and the controller, and he ruled whenever he was asked. Between those decisions the AI made twenty-two of the thirty-one design calls on record, because he said so in writing: "I trust you to make acceptable choices." He added that a second model would review the result cold at the end.</p>
+      <p>So the home page's sentence needs reading precisely here. He decided what to delegate, and he decides whether what came back is acceptable. Nothing on this page is signed off. The design review's verdict is to go to a first board, and its open calls are his: the capacitor count against release speed, one side of the socket or two, one high-side FET a phase or two, the trim, the sense offset, and a DAC for VID.</p>
+      <p>What this case shows is narrower and more useful than a claim that the AI designed a regulator. It shows how far design work can be handed over before the checks stop being able to tell you whether the result is right. On this design the checks held. Five cold reviews by a second model that saw only a packet each, and 252 runs graded against sealed predictions, turned up forty-one wrong turns, one of which was a load line centred on the wrong deck.</p>
+    </div>
+  </div>
+  <p class="prose" style="margin-top: 16px">Every one of those twenty-two decisions is on the path page in the archive with what it traded, why, and the figure it turned on.</p>
+</div>
+
+<div class="band2">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 44px; max-width: 20ch">Where the work was wrong</h2>
+    <p class="prose" style="margin-top: 16px; font-size: 19px">This is the longest section on the page, and that is the point of it. Forty-one wrong turns are on the record with what each one changed, thirty-four on the path page and seven more in the controller specification, both in the archive. The numbered-defect record reaches 609.</p>
+    <p class="prose">Each entry below gives the failure, then why nothing flagged it at the time, then the check that catches it. The checks are the thing being sold. They are what the fourth week of an engagement installs.</p>
+
+    <div style="margin-top: 28px; background: #fff; border-radius: 4px; padding: 8px 28px 4px 28px">
+
+      <div class="ent" style="border-top: none">
+        <h3>A load line centred on the wrong deck.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">The reference was lowered 6.5 mV to put the load line in the middle of Intel's window, and the design carried that constant forward. The reading had been taken on driver blocks with no turn-off delay. On the real part's timing the line sat 4.3 mV higher.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">The deck ran clean and returned a plausible number, and a plausible number from a valid deck is invisible to any checker that inspects one artefact. It was found by the fourth cold review, a second model handed only a packet.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">A reading that sets a design constant is re-derived on the deck that carries the final timing, not on the deck it was first read on.</div></div>
+        <div class="d">defect 577</div>
+      </div>
+
+      <div class="ent">
+        <h3>A requirement figure taken from somebody's account of the wrong document.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">Intel's load step was taken to be 50 ns. The figure came from a web reader's summary of a later guide. The guide for this design gives 1.25 us for the step of its own simulation, in a chapter that had not been opened.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">Every deck built on it ran and passed, and the design simply grew to meet a harder requirement than it had, from 23 output capacitors to 25.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">A requirement figure is read on the source document's own page and the page is cited. The 50 ns decks stay in the record as margin.</div></div>
+        <div class="d">wrong turn 22</div>
+      </div>
+
+      <div class="ent">
+        <h3>A loop measurement that was one phase.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">The AC analysis at full load was sealed to return the loop and returned the curve of a single phase, an artifact of the simulator's own periodic analysis.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">The record already knew this artifact from an earlier deck and the knowledge had not been turned into a procedure.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">A control deck with a known answer runs before the measurement deck, and the periodic solution is started after the clock edge.</div></div>
+        <div class="d">defect 593</div>
+      </div>
+
+      <div class="ent">
+        <h3>Two simulators running at once.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">Each export came back equal to the other deck's answer.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">Both runs completed and both produced output files of the right shape.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">One run at a time, enforced by the queue rather than by intention.</div></div>
+        <div class="d">defect 175</div>
+      </div>
+
+      <div class="ent">
+        <h3>A prediction that was wrong in the direction that flatters the design.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">The fast release was sealed at about +57 mV and graded INTEL-MISSED, and the engineer was told to expect the part's first real miss there. It read +47.808 mV and met the line. The switching model behind the prediction was right on the slow release and on the step and wrong on the fast one.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">Nothing would have, because a design that passes gets no second look.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">The seal is published whether it hits or misses. A model's blind spot only shows up in the gap between what was predicted and what was read, and that gap exists only if the prediction was written down first.</div></div>
+        <div class="d">defect 604</div>
+      </div>
+
+      <div class="ent">
+        <h3>An efficiency estimate 6.4 points low.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">A run was sealed at 83.8 % within 5 points, from the losses of an earlier deck. It read 90.21 %, and the grader's word fell EFF-DIFFERS.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">In the moment, 90 % is a perfectly reasonable number for this stage and nobody would have questioned it on sight.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">The grader decides on the band that was sealed, not on whether the reader finds the answer reasonable.</div></div>
+        <div class="d">defect 607</div>
+      </div>
+
+      <div class="ent">
+        <h3>A deck the simulator refused, promised to the engineer with a time on it.</h3>
+        <div class="row"><div class="k">what happened</div><div class="v">The AC analysis of the loop at 24 A was sealed, and the engineer was told when to expect it. The simulator's periodic operating point did not converge and it refused the deck. The same analysis at 119 A had converged in half an hour, and that had been taken as given.</div></div>
+        <div class="row"><div class="k">nothing flagged it</div><div class="v">Convergence at one operating point reads like a property of the deck.</div></div>
+        <div class="row chk"><div class="k">the check</div><div class="v">Convergence is a property of an operating point, and a prediction records what it assumed so the assumption can fail visibly. The loop at 24 A is read from a transient instead, and a control deck agrees with the AC analysis to 0.11 dB and 1.9 degrees.</div></div>
+        <div class="d">defect 606</div>
+      </div>
+
+    </div>
+
+    <h3 style="font-size: 28px; margin-top: 40px">The checks, as a list</h3>
+    <p class="prose" style="margin-top: 10px">These are the five mechanisms that caught the entries above, and they are what the fourth week of an engagement installs in a customer's own flow.</p>
+    <ol class="prose">
+      <li>The prediction is written and sealed before the deck that tests it exists, and a script grades the run against the seal. The seal is published whether it hits or misses.</li>
+      <li>A control deck with a known answer runs before the deck that measures something, so the instrument is checked before the measurement is believed.</li>
+      <li>Every requirement figure is read on the source document's own page, and the page is cited where the figure is used.</li>
+      <li>A reading that matters is read a second time by an independent route, and the two are compared rather than averaged.</li>
+      <li>A second model, given only a packet and none of the history, reviews the result cold. Five of those reviews ran here, with 14, 14, 10, 9 and 10 findings, each answered one by one in the record.</li>
+    </ol>
+    <p class="prose" style="font-weight: 500">The verification discipline that the automation made cheap enough to run every time is what surfaced these. The engineer judged them.</p>
+  </div>
+</div>
+
+<div class="wrap" id="download" style="padding-top: 64px; padding-bottom: 64px">
+  <h2 style="font-size: 40px">The files</h2>
+  <div class="banner" style="margin-top: 16px">Read in simulation. Nothing was built, and nothing was measured on a board.</div>
+  <p class="prose" style="margin-top: 16px">The datasheet opens here. The archive and the deck go out by email on request.</p>
+  <div class="dl" style="margin-top: 28px">
+    <div>
+      <h3>The design, as it ran</h3>
+      <p>206 files, 8.1 MB. Nineteen SIMetrix/SIMPLIS decks with the prediction sealed for each, their checkers, schematics, netlists and receipts. Nineteen figures. The documents beside this one. A README and a manifest of SHA-256 sums.</p>
+      <p class="mono" style="font-size: 13px; color: #5B6B7F">DOWNLOAD_4PH_1MHZ_DESIGN_2026-10-05.zip, sha256 0a344d5e</p>
+      <p><a class="btn2" href="mailto:phil@pjcrawleyllc.com?subject=Four-phase%20design%20archive">Request the archive by email</a></p>
+    </div>
+    <div>
+      <h3>The one-page datasheet</h3>
+      <p>Four phases, 1 MHz, 119 A on a 1.00 mOhm load line, held to Intel's VRD 10.1 in simulation. One page.</p>
+      <p class="mono" style="font-size: 13px; color: #5B6B7F">DATASHEET_4PH_1MHZ_2026-10-04.pdf, 248 kB, sha256 8a5b1b87</p>
+      <p><a class="btn2" href="assets/DATASHEET_4PH_1MHZ_2026-10-04.pdf">Open the datasheet</a></p>
+    </div>
+    <div>
+      <h3>The design review as a deck</h3>
+      <p>63 slides. Verdict, twelve findings, the open calls, and a controller section.</p>
+      <p class="mono" style="font-size: 13px; color: #5B6B7F">DESIGN_REVIEW_4PH_1MHZ_2026-10-04.pptx, 2.4 MB, sha256 fdd06046</p>
+      <p><a class="btn2" href="mailto:phil@pjcrawleyllc.com?subject=Four-phase%20design%20review%20deck">Request the deck by email</a></p>
+    </div>
+  </div>
+  <p class="prose" style="margin-top: 28px">What the archive is, stated plainly so nobody asks for it expecting something else. These decks ran on one machine under SIMetrix/SIMPLIS 8.40i. The device makers' model files are left out, and the README names where each one comes from. Running the decks on another machine has not been tried.</p>
+</div>
+
+<div class="band">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 38px; max-width: 24ch">Go to a first board, with open calls. That is not the same as ready to build.</h2>
+    <p class="prose" style="margin-top: 16px; color: #E6EDFF">What the record will support is this. A requirement was taken from a published guide and held line by line. The design choices were delegated on purpose and are all on record. The checks found forty-one things wrong, and the engineer ruled on what they meant.</p>
+    <a class="btn" href="contact.html" style="margin-top: 12px">Book a scoping conversation</a>
+  </div>
+  <div class="wrap">
+    <div style="border-top: 1px solid #2A3A52; padding-top: 32px; font-size: 14px; color: #C9D3DF; max-width: 80ch">
+      <p>K. Yao, "High-Frequency and High-Performance VRM Design for the Next Generations of Processors", PhD dissertation, Virginia Polytechnic Institute and State University, April 2004, chapter 3.</p>
+      <p>Intel Voltage Regulator-Down (VRD) 10.1 Design Guide, document 302356-004, configuration 775_VR_CONFIG_04B.</p>
+      <p>Texas Instruments TPS40091 datasheet SLUS578B; TPS28225 datasheet. Simulations in SIMetrix/SIMPLIS 8.40i.</p>
+      <p>Every figure on this page traces to a receipt named by its deck and the first eight characters of its hash. The full record is DESIGN_RECORD_4PH_1MHZ_2026-10-01.md, edition 16, in the archive.</p>
+    </div>
+    <div class="foot">
+      <div>PJ Crawley LLC. Corp-to-corp. On site for the kickoff and as often as the work needs, remote in between.</div>
+      <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
