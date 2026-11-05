@@ -61,8 +61,51 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
 
 @media (max-width:1240px){.wrap{width:100%}}
 @media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
+.wrap{width:100%}
+.lede{font-size:21px;color:#2A3A52}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:28px}
+.cta .big{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:40px;line-height:1;letter-spacing:-0.02em}
+.cta .sub{font-size:15px;color:#5B6B7F;margin-top:6px}
+.figure{margin:36px 0 0 0}
+.figure img{width:100%;height:auto;display:block}
+.band .figure img,.band2 .figure img{background:#fff;border-radius:6px;padding:22px;box-sizing:border-box}
+.kick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5B6B7F}
+.toc{list-style:none;padding:0;margin:14px 0 0 0;border-top:1px solid #C9D3DF}
+.toc li{margin:0;border-bottom:1px solid #C9D3DF}
+.toc a{display:grid;grid-template-columns:260px minmax(0,1fr) 24px;gap:4px 24px;padding:15px 0;text-decoration:none;color:#0C1B33;align-items:baseline}
+.toc .th{font-weight:600;grid-column:1}
+.toc .tc{color:#2A3A52}
+.toc .ar{color:#1B4FE8;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;text-align:right}
+.toc a:hover .th,.toc a:hover .ar{color:#1B4FE8}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+.more{margin-top:18px}
+.more>summary{display:inline-block;font-weight:600;font-size:15px;color:#1B4FE8;padding:8px 0}
+.band .more>summary{color:#7FA6FF}
+.more>summary::before{content:"+";display:inline-block;width:20px;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.more[open]>summary::before{content:"\2212"}
+.more[open]>summary{margin-bottom:12px}
+.step{border-top:1px solid #C9D3DF}
+.step:last-child{border-bottom:1px solid #C9D3DF}
+.step>summary{display:grid;grid-template-columns:120px minmax(0,1fr) 24px;gap:20px;padding:16px 0;align-items:baseline}
+.step .w{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;color:#1B4FE8;font-size:15px}
+.step .sh{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;font-weight:600;font-size:24px;line-height:1.1}
+.step>summary::after,.q>summary::after{content:"+";font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:22px;line-height:1;color:#1B4FE8;text-align:right}
+.step[open]>summary::after,.q[open]>summary::after{content:"\2212"}
+.step>.prose{margin:0 0 20px 140px}
+.q{border-top:1px solid #C9D3DF}
+.q:last-child{border-bottom:1px solid #C9D3DF}
+.q>summary{display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:6px 20px;padding:18px 0}
+.q>summary h3{font-size:24px;grid-column:1}
+.q>summary .claim{grid-column:1;color:#2A3A52}
+.q>summary::after{grid-column:2;grid-row:1}
+.q>.qbody{padding:2px 0 26px 0}
+.q h4{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;font-size:21px;line-height:1.1;margin:0 0 8px 0}
+.footlinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px}
+@media (max-width:760px){.toc a{grid-template-columns:minmax(0,1fr) 24px}.toc .tc{grid-column:1}.toc .ar{grid-column:2;grid-row:1}.step>summary{grid-template-columns:64px minmax(0,1fr) 24px;gap:12px}.step>.prose{margin-left:0}.cta .big{font-size:34px}.band .figure img,.band2 .figure img{padding:12px}}
 </style>
 </head>
+
 <body>
 
 <div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column">
@@ -71,61 +114,124 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   <div class="nav">
     <a class="brand" href="index.html">PJ Crawley LLC</a>
     <div class="links">
-      <a href="index.html">Home</a>
-      <a href="executive-summary.html">Executive summary</a>
       <a class="on" href="offering.html">The Offering</a>
-      <a href="worked-example.html">Worked example</a>
       <a href="evidence.html">Evidence</a>
-      <a href="metrics.html">Metrics</a>
-      <a href="about.html">About</a>
+      <a href="executive-summary.html">Executive summary</a>
       <a href="contact.html">Contact</a>
     </div>
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 56px">
-  <h1 style="font-size: 62px; max-width: 18ch">An enablement engagement built around your own flow.</h1>
-  <p class="prose" style="font-size: 21px; margin-top: 26px; color: #2A3A52">The tooling and the operating discipline are deployed into your flow, integrated against your releases, and taught in a live session built from your artifacts. Every engagement starts with a two-week measured assessment of your own tasks, fixed fee, remote, and what follows is scoped and priced from what it finds. Three deployment tiers cover every IP verdict your legal team can return.</p>
-  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px">
+<div class="wrap" style="padding-top: 56px; padding-bottom: 48px">
+  <h1 style="font-size: 58px; max-width: 20ch">Start with two weeks on your own tasks.</h1>
+  <p class="prose lede" style="margin-top: 22px">The measured assessment is $7,500, fixed and remote. Your team's own tasks run through the models it is allowed to use, and you get back how often each model is right on them, with one recommendation. Everything after it is scoped and priced from what it finds.</p>
+  <div class="cta">
+    <div><div class="big">$7,500</div><div class="sub">two weeks, fixed fee, remote</div></div>
     <a class="btn" href="contact.html">Write to me</a>
-    <a class="btn2" href="#cost">What it costs</a>
   </div>
+  <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-arc-narrow.svg" width="358" height="868"><img src="assets/fig-arc-wide.svg" width="1116" height="225" alt="Before: you send twenty to thirty of your team&#x27;s own tasks, de-identified, and name the models it may use. Weeks 1 and 2: the measured assessment, $7,500 fixed and remote; each task runs three times through each model, with the predictions written before the first run. End of week 2: the report, with accuracy by model and family, the silent-wrong-answer map and one recommendation, yours to keep. About two months: the follow-on, kickoff and deploy, integrate, build the curriculum, live training, priced from the report. Ongoing and optional: support from $1,000 a month."></picture></figure>
 </div>
 
-<div class="band2">
+<div class="wrap" style="padding-bottom: 64px">
+  <div class="kick">On the rest of this page</div>
+  <ol class="toc">
+    <li><a href="#cost"><span class="th">What it costs</span><span class="tc">$7,500 for the assessment and $8,500 for a one-week simulated design check. The follow-on is priced from the report.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#follows"><span class="th">What follows the assessment</span><span class="tc">Four steps over about two months, from the kickoff to a live training session on your own tools.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#tiers"><span class="th">Three deployment tiers</span><span class="tc">An answer for every verdict your legal team can return, including no to all cloud.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#plug"><span class="th">Where we plug in</span><span class="tc">A plug-in at every stage of your flow, with every decision left to the engineer.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#more"><span class="th">Questions engineers ask</span><span class="tc">Cadence, data that cannot leave, who owns what, support and timing, in ten short answers.</span><span class="ar">&#8595;</span></a></li>
+  </ol>
+</div>
+
+<div class="band" id="cost">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
-    <h2 style="font-size: 40px; max-width: 24ch">Where we plug in</h2>
-    <p class="prose" style="margin-top: 16px">Your flow keeps its shape. The plug-ins land stage by stage; the decisions never move.</p>
-    <div class="plug" style="margin-top: 36px">
-      <div><strong>Requirements and spec.</strong> Read-only database dumps; copy-and-patch writes behind guards; version-history verification; test-procedure authoring.</div>
-      <div><strong>Architecture and behavioural models.</strong> Generated, parameterised behavioural harnesses and models, checked against the simulator.</div>
-      <div><strong>Schematic entry.</strong> Generated build scripts with device terminals addressed by name, so topology is right by construction.</div>
-      <div><strong>Simulation and characterisation.</strong> One swept test, netlisted once, dispatched across a compute farm; statistical and mismatch campaigns scripted into flat, checkable rollups; purpose-built readers for result formats the vendor utilities cannot open.</div>
-      <div><strong>Reliability and stress.</strong> Parameterised stress benches: fresh, stress and aged, in multiple stress configurations.</div>
-      <div><strong>Documentation and review.</strong> Programmatic deck and figure production with headless render QA.</div>
-      <div><strong>Production test handoff.</strong> Test procedures authored and staged in the requirements database, guarded and verified.</div>
-      <div><strong>Cross-cutting artifact QA.</strong> Render-to-image inspection, checksum-before-load, integrity greps, hard stops on null results.</div>
+    <h2 style="font-size: 40px">What it costs</h2>
+    <p class="prose" style="margin-top: 12px; color: #C9D3DF">One way in, measured on your own tasks. The next steps and the rate are agreed from what it finds.</p>
+    <div class="cols" style="margin-top: 28px; align-items: start">
+      <div>
+        <p style="color: #7FA6FF; font-weight: 600; margin-bottom: 6px">The first engagement</p>
+        <div class="price" style="font-size: 56px; line-height: 1">$7,500</div>
+        <h3 style="font-size: 28px; margin-top: 12px">The measured assessment. Two weeks, fixed fee, remote.</h3>
+        <p style="color: #C9D3DF; margin-top: 12px">Twenty to thirty tasks of your team's own, de-identified, in the families my harness grades. Each task runs three times through each model your team is allowed to use, with the predictions written before the first run.</p>
+        <details class="more"><summary>What you get</summary>
+        <ul style="color: #fff">
+          <li>Accuracy by model and by task family, measured on your tasks rather than on a public benchmark</li>
+          <li>The silent-wrong-answer map: where a model returned a plausible answer outside tolerance with nothing in the reply to say so</li>
+          <li>One recommendation: which models, for which tasks, behind which checks</li>
+          <li>The task set, the checks and the passing scripts, yours to keep</li>
+          <li>A measured baseline, so any follow-on has something honest to compare against</li>
+        </ul>
+        <p style="color: #C9D3DF">Fixed, because the first number should be known before anything starts. If it runs past two weeks, the overrun is mine.</p>
+        </details>
+      </div>
+      <div>
+        <p style="color: #7FA6FF; font-weight: 600; margin-bottom: 6px">For power-converter teams</p>
+        <div class="price" style="font-size: 56px; line-height: 1">$8,500</div>
+        <h3 style="font-size: 28px; margin-top: 12px">The simulated design check. One week, fixed fee.</h3>
+        <p style="color: #C9D3DF; margin-top: 12px">A converter specification or an existing design, run unattended through the same loop that produced the four-phase case on this site, against predictions sealed before each run.</p>
+        <details class="more"><summary>What you get</summary>
+        <ul style="color: #fff">
+          <li>A design review against your own specification, with the misses reported as they fall</li>
+          <li>A datasheet-style electrical specification</li>
+          <li>The decks, the receipts and the sealed predictions, so every reading can be reproduced</li>
+          <li>Every reading tagged SIMULATED; nothing is built</li>
+        </ul>
+        <p style="color: #C9D3DF">Read on SIMetrix/SIMPLIS, which I license. A design on another simulator is a conversation first.</p>
+        </details>
+      </div>
     </div>
-    <p class="prose" style="margin-top: 32px; font-size: 19px; font-weight: 500">The decisions stay off the list: limits, waivers, corner acceptance, ship-versus-redesign. They stay with the engineer at every stage, by design.</p>
+    <div style="margin-top: 28px; border-top: 1px solid #2A3A52; padding-top: 24px" class="cols">
+      <div class="prose">
+        <h3 style="font-size: 24px">After the assessment, the next steps and the rate</h3>
+        <p style="color: #C9D3DF; margin-top: 10px">The four steps above, kickoff through live training, scoped from what the assessment measured and scheduled over about two months at a cadence we agree. For one team or for many: a larger company that wants several teams enabled starts the same way, and the plan grows from there.</p>
+        <p style="color: #C9D3DF">Priced by the hour or as a fixed scope, agreed when the assessment report is in hand, so nobody is quoted for work the measurements did not call for.</p>
+        <a class="btn" href="contact.html" style="margin-top: 8px">Write to me</a>
+      </div>
+      <div style="font-size: 16px">
+        <h3 style="font-size: 22px">Ongoing support, from $1,000 a month</h3>
+        <details class="more"><summary>What support covers</summary>
+        <p style="color: #C9D3DF; margin-top: 10px">A deployment is not a delivery. Tool releases change function signatures and move menus. PDK updates shift model cards and corner definitions. Local models improve every six to twelve months. An API whitelist built from an installed release goes stale the day you upgrade.</p>
+        <p><strong>Maintained, $1,000 a month.</strong> Release tracking against your installed versions. Whitelist and retrieval index rebuilt when your tools or PDK move. Regression tests run against the tooling that was delivered. Bug fixes. Plus access to the recipe library described below, as it is built.</p>
+        <p><strong>Maintained and extended, $2,500 a month.</strong> Everything above, plus two days a month of development against your own priorities: new benches, new generators, extending what exists to blocks the engagement did not cover. Also early access to new recipes, and the ability to ask for a specific one. If the task is general enough to be worth building, yours is the flow it gets built against. It also keeps you current on AI. The reference cards are updated for each new tool version, a model worth considering goes through the tests on the <a href="metrics.html">Metrics</a> page when it is released, and you hear from me when something changes what your team should use.</p>
+        <p style="color: #C9D3DF">Annual prepayment attracts a discount. Twelve-month minimum on either tier. Larger pieces of work are scoped separately.</p>
+        <p style="color: #C9D3DF; margin-top: 20px">Corp-to-corp through PJ Crawley LLC. Remote, with site visits by arrangement, and the live training on site or live remote as you prefer.</p>
+        </details>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 64px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 16ch">Every designer can now draft and test their own SystemVerilog or Verilog-AMS model.</h2>
-    </div>
-    <div class="prose">
-      <p>Hand-built stimulus becomes a generated, parameterised behavioural harness, checked against the simulator.</p>
-      <p>Larger teams keep their system-validation engineers; the bottleneck moves. Small teams with no modeling staff get covered anyway: the project lead carries system modeling, the AI does the drafting, and the deterministic bench does the deciding.</p>
-      <p style="font-size: 15px; color: #5B6B7F">SystemVerilog is demonstrated in the worked example, a correction block checked against its model over every input code. Verilog-AMS applies and is not yet demonstrated here; it runs on your simulator, in the follow-on work.</p>
+<div class="band2" id="follows">
+  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
+    <h2 style="font-size: 40px">What follows the assessment</h2>
+    <p class="prose" style="margin-top: 12px">The same four steps for a team of two or a company of many, scheduled over about two months at a cadence we agree rather than four straight weeks. The scope and the rate are set from what the assessment measured.</p>
+    <div style="margin-top: 24px">
+      <details class="step"><summary><span class="w">Step 1</span><span class="sh">Kickoff, assess and deploy</span></summary><div class="prose">
+          <p>A kickoff with the team to set priorities, on site where that is the right way to start.</p>
+          <p>With your legal and IT: data-sensitivity map, tier verdict per content class, an inventory of your flow. Tiers 2 and 3 stood up in your tenancy. Tier 1 designed and specified now, installed when your GPU procurement lands. IT and security review routinely outruns the engagement, and the plan assumes it.</p>
+          <p>The assessment already measured your baseline, so the live training has something honest to compare against, and so do you.</p>
+      </div></details>
+      <details class="step"><summary><span class="w">Step 2</span><span class="sh">Integrate</span></summary><div class="prose">
+          <p>Sweep and corner campaign scripting, guarded requirements-database writes, the deck and figure pipeline, the QA render loop, against your flow, your releases, your naming.</p>
+      </div></details>
+      <details class="step"><summary><span class="w">Step 3</span><span class="sh">Integrate and build the curriculum</span></summary><div class="prose">
+          <p>Deeper integration on whatever step 2 surfaced, and the training material is written from the artifacts your environment just produced. This is why it cannot be canned.</p>
+      </div></details>
+      <details class="step"><summary><span class="w">Step 4</span><span class="sh">Live training</span></summary><div class="prose">
+          <p>A live session with your team, taught from your own material, hands on your own tools. The operating discipline, the standing rules, the verification gates, the claim-tagging practice, is written down and stays with you.</p>
+          <p>The training is where the checks come from. The failure list on the Evidence page is eight real defects and the eight mechanical checks that now catch them. Writing that kind of check against your own flow is what the training is for.</p>
+          <p><a href="evidence.html">See the failure list and the checks</a></p>
+      </div></details>
     </div>
   </div>
 </div>
 
-<div class="band">
+<div class="band" id="tiers">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px">Three deployment tiers</h2>
+    <p class="prose" style="margin-top: 12px; color: #C9D3DF">An answer for every verdict your legal team can return, including "no to all cloud."</p>
+    <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-tiers-narrow.svg" width="358" height="1066"><img src="assets/fig-tiers-wide.svg" width="1116" height="442" alt="A routing gate comes first: foundry-covered and design-sensitive content stays in tier 1, generic tasks can go to tiers 2 and 3. Tier 1, inside your building: full on-prem with open weights, a modest 30B-class local model on your hardware, $42,000 up front for up to 25 engineers (estimate). Tier 2, inside your cloud account: a frontier model in your tenancy, such as Claude through AWS Bedrock or GCP Vertex, or OpenAI&#x27;s models through Azure. Tier 3, at a vendor with zero data retention: generic tasks only. Tiers 2 and 3 need no capital and cost $28 to $230 per engineer a year at measured usage (estimate). Every tier ships with local retrieval over your documentation, and your legal team decides which tiers your foundry NDA allows."></picture></figure>
+    <details class="more"><summary>The tiers in detail</summary>
     <div class="cols3" style="margin-top: 28px">
       <div class="tier" style="border-color: #7FA6FF">
         <h3>Tier 1. Full on-prem, open weights.</h3>
@@ -151,113 +257,71 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
         <p>Which open-weight model to use, and what it costs in cards, is measured. Thirteen models were screened on analog and mixed-signal material, with the finding that a sandbox mattered more than the choice of model. <a href="metrics.html">The measurements are on the Metrics page.</a></p>
       </div>
     </div>
+    </details>
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 14ch">I do not own the tools. You do.</h2>
-    </div>
-    <div class="prose">
-      <p>I hold no Cadence or MATLAB licence, no PDK and no foundry NDA, and I have no access to anyone else's design data. The engagement is built that way on purpose.</p>
-      <p>The tooling and the operating discipline are mine, and they are portable. The tools and the data are yours, and they stay on your machines. The engagement connects the two inside your environment, against your installed releases.</p>
-      <p>So anything demonstrated before an engagement runs on my own equipment, either in the worked example you can run yourself or on the simulators I license, and anything needing your commercial tool is generated, checked statically, and run on your side. Those two categories are listed on the worked-example page. There is no third category where you have to take my word for it.</p>
-      <p><a href="worked-example.html">See what runs where</a></p>
-    </div>
-  </div>
-</div>
-
-<div class="band2">
+<div class="band2" id="plug">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
-    <div class="cols">
-      <div>
-        <h2 style="font-size: 40px; max-width: 14ch">Cadence, specifically</h2>
-      </div>
-      <div class="prose">
-        <p>The evidence on this site runs on SIMetrix/SIMPLIS, Python and SystemVerilog, because those are the tools I license or that need no licence. A Cadence shop will want to know what happens to SKILL, OCEAN, Spectre and ADE.</p>
+    <h2 style="font-size: 40px; max-width: 24ch">Where we plug in</h2>
+    <p class="prose" style="margin-top: 16px">Your flow keeps its shape. The plug-ins land stage by stage; the decisions never move.</p>
+    <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-flow-narrow.svg" width="358" height="782"><img src="assets/fig-flow-wide.svg" width="1116" height="349" alt="Seven stages of a design flow, each with its plug-in. Requirements and spec: read-only dumps of the requirements database and guarded copy-and-patch writes. Architecture and models: generated behavioural harnesses checked against the simulator. Schematic entry: build scripts that address terminals by name. Simulation and characterisation: one swept test spread across a farm, mismatch campaigns rolled up flat. Reliability and stress: benches for fresh, stressed and aged parts. Documentation and review: decks and figures built by script and checked as rendered images. Production test handoff: test procedures staged in the requirements database. Artifact QA runs on every output. At every stage the decisions stay with the engineer: limits, waivers, corner acceptance, ship or redesign."></picture></figure>
+    <details class="more"><summary>Each stage in detail</summary>
+    <div class="plug" style="margin-top: 36px">
+      <div><strong>Requirements and spec.</strong> Read-only database dumps; copy-and-patch writes behind guards; version-history verification; test-procedure authoring.</div>
+      <div><strong>Architecture and behavioural models.</strong> Generated, parameterised behavioural harnesses and models, checked against the simulator.</div>
+      <div><strong>Schematic entry.</strong> Generated build scripts with device terminals addressed by name, so topology is right by construction.</div>
+      <div><strong>Simulation and characterisation.</strong> One swept test, netlisted once, dispatched across a compute farm; statistical and mismatch campaigns scripted into flat, checkable rollups; purpose-built readers for result formats the vendor utilities cannot open.</div>
+      <div><strong>Reliability and stress.</strong> Parameterised stress benches: fresh, stress and aged, in multiple stress configurations.</div>
+      <div><strong>Documentation and review.</strong> Programmatic deck and figure production with headless render QA.</div>
+      <div><strong>Production test handoff.</strong> Test procedures authored and staged in the requirements database, guarded and verified.</div>
+      <div><strong>Cross-cutting artifact QA.</strong> Render-to-image inspection, checksum-before-load, integrity greps, hard stops on null results.</div>
+    </div>
+    <p class="prose" style="margin-top: 32px; font-size: 19px; font-weight: 500">The decisions stay off the list: limits, waivers, corner acceptance, ship-versus-redesign. They stay with the engineer at every stage, by design.</p>
+    </details>
+  </div>
+</div>
+
+<div class="wrap" id="more" style="padding-top: 72px; padding-bottom: 72px">
+  <h2 style="font-size: 40px">Questions engineers ask</h2>
+  <p class="prose" style="margin-top: 12px; color: #5B6B7F">Ten short answers. Each one opens when you click it.</p>
+  <div style="margin-top: 24px">
+    <details class="q" id="cadence"><summary><h3>Cadence, specifically</h3><span class="claim">Generated SKILL and OCEAN, checked against a whitelist built from your installed documentation before anything runs on your licence.</span></summary><div class="qbody prose">
+      <p>The evidence on this site runs on SIMetrix/SIMPLIS, Python and SystemVerilog, because those are the tools I license or that need no licence. A Cadence shop will want to know what happens to SKILL, OCEAN, Spectre and ADE.</p>
         <p>I have automated Cadence flows before, writing SKILL and the OCEAN scripts that drive the simulator, under agreements that keep that work with the client. None of it appears on this site, and that is the rule I would apply to yours.</p>
         <p>What does appear is the method, and it is the same whatever the tool. A generator writes the script. A checker validates it without running the tool: every function against a whitelist built from the documentation installed on your machines, every call's argument count against real usage in your own scripts, and a script that fails the check never reaches your simulator. That does not make generated code correct. It makes it not hallucinated, which is the failure that bites. In the follow-on work it is built and proven against your installed release and your PDK, on your licence.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 32px; padding-bottom: 72px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 14ch">Why the local box, specifically</h2>
-    </div>
-    <div class="prose">
+    </div></details>
+    <details class="q" id="local"><summary><h3>Why the local box, specifically</h3><span class="claim">Your tool documentation and your foundry-covered data are both on your machines, so retrieval runs there too.</span></summary><div class="qbody prose">
       <p>Three reasons, and they all point the same way.</p>
       <p><strong>The API surface is release-specific.</strong> A generator's whitelist has to come from the documentation installed on your machines, not from a model's recollection of a different version. That is why retrieval has to run where your docs live.</p>
       <p><strong>The data cannot leave.</strong> PDK-adjacent work is foundry-covered. That is a legal fact, not a preference, and your legal team decides where the line sits.</p>
       <p><strong>Architecture exploration is where the time goes.</strong> A yield-versus-trim-depth sweep is nine simulation campaigns, and each campaign in a real flow is a generated testbench. Making generation cheap and checkable is what turns a week of setup into an afternoon, and that only works next to the tools.</p>
       <p>None of it requires a frontier model on your side. It requires a modest local model, grounded by retrieval over documentation already on your disk.</p>
+    </div></details>
+    <details class="q" id="own"><summary><h3>I do not own the tools. You do.</h3><span class="claim">Anything shown before an engagement runs on my own equipment. Anything that needs your tools runs on your side.</span></summary><div class="qbody prose">
+      <p>I hold no Cadence or MATLAB licence, no PDK and no foundry NDA, and I have no access to anyone else's design data. The engagement is built that way on purpose.</p>
+      <p>The tooling and the operating discipline are mine, and they are portable. The tools and the data are yours, and they stay on your machines. The engagement connects the two inside your environment, against your installed releases.</p>
+      <p>So anything demonstrated before an engagement runs on my own equipment, either in the worked example you can run yourself or on the simulators I license, and anything needing your commercial tool is generated, checked statically, and run on your side. Those two categories are listed on the worked-example page. There is no third category where you have to take my word for it.</p>
+      <p><a href="worked-example.html">See what runs where</a></p>
+    </div></details>
+    <details class="q" id="models"><summary><h3>Every designer can now draft and test their own SystemVerilog or Verilog-AMS model.</h3><span class="claim">Generated behavioural harnesses, checked against the simulator. SystemVerilog is demonstrated in the worked example.</span></summary><div class="qbody prose">
+      <p>Hand-built stimulus becomes a generated, parameterised behavioural harness, checked against the simulator.</p>
+      <p>Larger teams keep their system-validation engineers; the bottleneck moves. Small teams with no modeling staff get covered anyway: the project lead carries system modeling, the AI does the drafting, and the deterministic bench does the deciding.</p>
+      <p style="font-size: 15px; color: #5B6B7F">SystemVerilog is demonstrated in the worked example, a correction block checked against its model over every input code. Verilog-AMS applies and is not yet demonstrated here; it runs on your simulator, in the follow-on work.</p>
+    </div></details>
+    <details class="q" id="lands"><summary><h3>What lands when</h3><span class="claim">Data reduction from the first day with access. Version-specific work by the end of the first month.</span></summary><div class="qbody prose">
+      <p class="prose" style="margin-top: 12px">Counted from the day access to your tools and databases is granted. Getting that access is usually the slow part, and the assessment plans for it.</p>
+<div class="cols3" style="margin-top: 24px">
+      <div class="prose"><h4>First day with access</h4><p>Data reduction, document and figure generation, read-only requirements dumps.</p></div>
+      <div class="prose"><h4>First week</h4><p>Sweep and corner campaign scripting, deck pipeline, QA render loop.</p></div>
+      <div class="prose"><h4>First month</h4><p>Version-specific work (GUI paths, function signatures) and anything needing your project's own ground truth.</p></div>
     </div>
-  </div>
-</div>
-
-<div class="band2">
-  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
-    <h2 style="font-size: 40px">What follows the assessment</h2>
-    <p class="prose" style="margin-top: 12px">The same four steps for a team of two or a company of many, scheduled over about two months at a cadence we agree rather than four straight weeks. The scope and the rate are set from what the assessment measured.</p>
-    <div style="margin-top: 32px">
-      <div class="week">
-        <div class="w">Step 1</div>
-        <div class="prose">
-          <h3>Kickoff, assess and deploy</h3>
-          <p>A kickoff with the team to set priorities, on site where that is the right way to start.</p>
-          <p>With your legal and IT: data-sensitivity map, tier verdict per content class, an inventory of your flow. Tiers 2 and 3 stood up in your tenancy. Tier 1 designed and specified now, installed when your GPU procurement lands. IT and security review routinely outruns the engagement, and the plan assumes it.</p>
-          <p>The assessment already measured your baseline, so the live training has something honest to compare against, and so do you.</p>
-        </div>
-      </div>
-      <div class="week">
-        <div class="w">Step 2</div>
-        <div class="prose">
-          <h3>Integrate</h3>
-          <p>Sweep and corner campaign scripting, guarded requirements-database writes, the deck and figure pipeline, the QA render loop, against your flow, your releases, your naming.</p>
-        </div>
-      </div>
-      <div class="week">
-        <div class="w">Step 3</div>
-        <div class="prose">
-          <h3>Integrate and build the curriculum</h3>
-          <p>Deeper integration on whatever step 2 surfaced, and the training material is written from the artifacts your environment just produced. This is why it cannot be canned.</p>
-        </div>
-      </div>
-      <div class="week">
-        <div class="w">Step 4</div>
-        <div class="prose">
-          <h3>Live training</h3>
-          <p>A live session with your team, taught from your own material, hands on your own tools. The operating discipline, the standing rules, the verification gates, the claim-tagging practice, is written down and stays with you.</p>
-          <p>The training is where the checks come from. The failure list on the Evidence page is eight real defects and the eight mechanical checks that now catch them. Writing that kind of check against your own flow is what the training is for.</p>
-          <p><a href="evidence.html">See the failure list and the checks</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 16ch">Every week ends with a post-mortem. Including the weeks that went badly.</h2>
-    </div>
-    <div class="prose">
+    </div></details>
+    <details class="q" id="postmortem"><summary><h3>Every week ends with a post-mortem. Including the weeks that went badly.</h3><span class="claim">You get a written record of what was done in your environment, and why.</span></summary><div class="qbody prose">
       <p>What worked, what failed, what got built and never used, what the next week changes as a result. Written down, shared with you, and applied immediately.</p>
       <p>This is the same discipline the engagement teaches, turned on the engagement itself: no claim survives without evidence, and a failure is treated as data. You get a written record of exactly what was done in your environment and why. It also means each engagement is measurably better run than the last, and you see that record.</p>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 32px; padding-bottom: 72px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 16ch">Before we start</h2>
-      <p style="margin-top: 12px; color: #5B6B7F">Optional pre-work, free, about three to four hours.</p>
-    </div>
-    <div class="prose">
+    </div></details>
+    <details class="q" id="prework"><summary><h3>Before we start</h3><span class="claim">Optional pre-work, free, about three to four hours.</span></summary><div class="qbody prose">
       <p>Teams get more out of the kickoff when they arrive with shared vocabulary. None of this is required and none of it costs anything.</p>
       <ul>
         <li><strong>AI Fluency: Framework and Foundations</strong> (Anthropic, free on Coursera). Roughly three hours, beginner level. Its 4D framework maps directly onto how this engagement works: Delegation is what you hand to a model, Description is how you specify it, Discernment is judging what comes back, Diligence is the labeling and verification practice. Discernment and Diligence are the two that matter most here.</li>
@@ -265,69 +329,16 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
         <li>For engineers who want more depth, any solid introduction to how language models work is fine. The engagement does not depend on it.</li>
       </ul>
       <p>The pre-work leaves out your flow, your tools and your ground truth, because the engagement is for those.</p>
-    </div>
-  </div>
-</div>
-
-<div class="band" id="cost">
-  <div class="wrap" style="padding-top: 72px; padding-bottom: 72px">
-    <h2 style="font-size: 40px">What it costs</h2>
-    <p class="prose" style="margin-top: 12px; color: #C9D3DF">One way in, measured on your own tasks. The next steps and the rate are agreed from what it finds.</p>
-    <div class="cols" style="margin-top: 28px; align-items: start">
-      <div>
-        <p style="color: #7FA6FF; font-weight: 600; margin-bottom: 6px">The first engagement</p>
-        <div class="price" style="font-size: 56px; line-height: 1">$7,500</div>
-        <h3 style="font-size: 28px; margin-top: 12px">The measured assessment. Two weeks, fixed fee, remote.</h3>
-        <p style="color: #C9D3DF; margin-top: 12px">Twenty to thirty tasks of your team's own, de-identified, in the families my harness grades. Each task runs three times through each model your team is allowed to use, with the predictions written before the first run. What you get:</p>
-        <ul style="color: #fff">
-          <li>Accuracy by model and by task family, measured on your tasks rather than on a public benchmark</li>
-          <li>The silent-wrong-answer map: where a model returned a plausible answer outside tolerance with nothing in the reply to say so</li>
-          <li>One recommendation: which models, for which tasks, behind which checks</li>
-          <li>The task set, the checks and the passing scripts, yours to keep</li>
-          <li>A measured baseline, so any follow-on has something honest to compare against</li>
-        </ul>
-        <p style="color: #C9D3DF">Fixed, because the first number should be known before anything starts. If it runs past two weeks, the overrun is mine.</p>
-      </div>
-      <div>
-        <p style="color: #7FA6FF; font-weight: 600; margin-bottom: 6px">For power-converter teams</p>
-        <div class="price" style="font-size: 56px; line-height: 1">$8,500</div>
-        <h3 style="font-size: 28px; margin-top: 12px">The simulated design check. One week, fixed fee.</h3>
-        <p style="color: #C9D3DF; margin-top: 12px">A converter specification or an existing design, run unattended through the same loop that produced the four-phase case on this site, against predictions sealed before each run. What you get:</p>
-        <ul style="color: #fff">
-          <li>A design review against your own specification, with the misses reported as they fall</li>
-          <li>A datasheet-style electrical specification</li>
-          <li>The decks, the receipts and the sealed predictions, so every reading can be reproduced</li>
-          <li>Every reading tagged SIMULATED; nothing is built</li>
-        </ul>
-        <p style="color: #C9D3DF">Read on SIMetrix/SIMPLIS, which I license. A design on another simulator is a conversation first.</p>
-      </div>
-    </div>
-    <div style="margin-top: 28px; border-top: 1px solid #2A3A52; padding-top: 24px" class="cols">
-      <div class="prose">
-        <h3 style="font-size: 24px">After the assessment, the next steps and the rate</h3>
-        <p style="color: #C9D3DF; margin-top: 10px">The four steps above, kickoff through live training, scoped from what the assessment measured and scheduled over about two months at a cadence we agree. For one team or for many: a larger company that wants several teams enabled starts the same way, and the plan grows from there.</p>
-        <p style="color: #C9D3DF">Priced by the hour or as a fixed scope, agreed when the assessment report is in hand, so nobody is quoted for work the measurements did not call for.</p>
-        <a class="btn" href="contact.html" style="margin-top: 8px">Write to me</a>
-      </div>
-      <div style="font-size: 16px">
-        <h3 style="font-size: 22px">Ongoing support, from $1,000 a month</h3>
-        <p style="color: #C9D3DF; margin-top: 10px">A deployment is not a delivery. Tool releases change function signatures and move menus. PDK updates shift model cards and corner definitions. Local models improve every six to twelve months. An API whitelist built from an installed release goes stale the day you upgrade.</p>
-        <p><strong>Maintained, $1,000 a month.</strong> Release tracking against your installed versions. Whitelist and retrieval index rebuilt when your tools or PDK move. Regression tests run against the tooling that was delivered. Bug fixes. Plus access to the recipe library described below, as it is built.</p>
-        <p><strong>Maintained and extended, $2,500 a month.</strong> Everything above, plus two days a month of development against your own priorities: new benches, new generators, extending what exists to blocks the engagement did not cover. Also early access to new recipes, and the ability to ask for a specific one. If the task is general enough to be worth building, yours is the flow it gets built against. It also keeps you current on AI. The reference cards are updated for each new tool version, a model worth considering goes through the tests on the <a href="metrics.html">Metrics</a> page when it is released, and you hear from me when something changes what your team should use.</p>
-        <p style="color: #C9D3DF">Annual prepayment attracts a discount. Twelve-month minimum on either tier. Larger pieces of work are scoped separately.</p>
-        <p style="color: #C9D3DF; margin-top: 20px">Corp-to-corp through PJ Crawley LLC. Remote, with site visits by arrangement, and the live training on site or live remote as you prefer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 72px; padding-bottom: 40px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 14ch">The recipe library</h2>
-      <div style="margin-top: 14px"><span class="tag t-dev">IN DEVELOPMENT</span></div>
-    </div>
-    <div class="prose">
+    </div></details>
+    <details class="q" id="support"><summary><h3>What you are buying with support</h3><span class="claim">Work done once reaches every client on support. Your designs and data stay inside your engagement.</span></summary><div class="qbody prose">
+      <p>Support buys a maintained and growing library.</p>
+      <p>Tracking a tool release, rebuilding whitelist logic, working out how to reliably automate a recurring task: each is done once and every client on support gets it. The work compounds across engagements, which is why the monthly number is a fraction of what the same effort would cost billed hourly to one team.</p>
+      <p>That arrangement only works if the boundary is explicit, so here it is.</p>
+      <p>Between clients, only generic material flows: method, verification patterns, tool-API handling for a public EDA tool release, and prompt and recipe structures, meaning anything that would be equally true at any company using the same software.</p>
+      <p>Your designs, data, specifications, results, naming and process details never flow. Anything that identifies your work or your silicon stays inside your engagement and inside your infrastructure. Recipes derived from work on your flow are rebuilt on generic structures before they enter the shared library, and if a pattern cannot be de-identified it does not leave.</p>
+      <p>This is the same rule the delivered tooling enforces on its own outputs. It would be strange to sell you a discipline and not run the practice on it.</p>
+    </div></details>
+    <details class="q" id="recipes"><summary><h3>The recipe library <span class="tag t-dev">IN DEVELOPMENT</span></h3><span class="claim">Short worked examples, one automation task each, built on open PDKs. Planned and not yet shipping.</span></summary><div class="qbody prose">
       <p>The recipe library is planned and not yet shipping. The first recipes are being built now. Nothing here is available on day one of an engagement, and support pricing does not assume it is. It is described here because it is where the support tiers are going, and you should know what you are buying into.</p>
       <p>Each recipe is a short worked example of one automation task, structured so you can adapt it. The first is placing and auto-routing a matched capacitor array: a converter array in the worked example, but the same problem as an R-2R ladder, a current-steering unit-cell array, a thermometer array, or a resistor string. One recipe covers a family, which is the point.</p>
       <p>Every recipe has the same five parts, in the same order.</p>
@@ -340,49 +351,13 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
       </ol>
       <p>Recipes are recorded on open PDKs and generic structures, never on a client's array, never with client naming or dimensions. The pattern travels between clients; the design never does. That constraint is why the library can be shared at all.</p>
       <p>No release cadence is promised. A recipe takes a day or so to build properly, and a promised release rate produces filler. You get the library as it exists and as it grows.</p>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 32px; padding-bottom: 40px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 16ch">What you are buying with support</h2>
-    </div>
-    <div class="prose">
-      <p>Support buys a maintained and growing library.</p>
-      <p>Tracking a tool release, rebuilding whitelist logic, working out how to reliably automate a recurring task: each is done once and every client on support gets it. The work compounds across engagements, which is why the monthly number is a fraction of what the same effort would cost billed hourly to one team.</p>
-      <p>That arrangement only works if the boundary is explicit, so here it is.</p>
-      <p>Between clients, only generic material flows: method, verification patterns, tool-API handling for a public EDA tool release, and prompt and recipe structures, meaning anything that would be equally true at any company using the same software.</p>
-      <p>Your designs, data, specifications, results, naming and process details never flow. Anything that identifies your work or your silicon stays inside your engagement and inside your infrastructure. Recipes derived from work on your flow are rebuilt on generic structures before they enter the shared library, and if a pattern cannot be de-identified it does not leave.</p>
-      <p>This is the same rule the delivered tooling enforces on its own outputs. It would be strange to sell you a discipline and not run the practice on it.</p>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 32px; padding-bottom: 72px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px; max-width: 16ch">Two things worth asking before you sign</h2>
-    </div>
-    <div class="prose">
-      <h3 style="font-size: 24px; margin-bottom: 8px">"What happens if you stop?"</h3>
+    </div></details>
+    <details class="q" id="ask"><summary><h3>Two things worth asking before you sign</h3><span class="claim">What happens if you stop, and how often you get something new.</span></summary><div class="qbody prose">
+      <h4>"What happens if you stop?"</h4>
       <p>The tooling and every recipe delivered to that point are yours to keep and use, with no further payment and no expiry. Support keeps them current; it does not hold them hostage. Nothing in the deployment phones home, requires a licence check, or stops working when an invoice does.</p>
-      <h3 style="font-size: 24px; margin-bottom: 8px; margin-top: 20px">"How often do I get something new?"</h3>
+      <h4 style="margin-top: 20px">"How often do I get something new?"</h4>
       <p>No cadence is promised, because a promised cadence produces filler. What continues is the weekly post-mortem discipline from the engagement: what changed, what failed, and what it means for you, written down for you to read before any renewal.</p>
-    </div>
-  </div>
-</div>
-
-<div class="band2">
-  <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
-    <h2 style="font-size: 40px">What lands when</h2>
-    <p class="prose" style="margin-top: 12px">Counted from the day access to your tools and databases is granted. Getting that access is usually the slow part, and the assessment plans for it.</p>
-    <div class="cols3" style="margin-top: 24px">
-      <div class="prose"><h3 style="font-size: 22px; margin-bottom: 8px">First day with access</h3><p>Data reduction, document and figure generation, read-only requirements dumps.</p></div>
-      <div class="prose"><h3 style="font-size: 22px; margin-bottom: 8px">First week</h3><p>Sweep and corner campaign scripting, deck pipeline, QA render loop.</p></div>
-      <div class="prose"><h3 style="font-size: 22px; margin-bottom: 8px">First month</h3><p>Version-specific work (GUI paths, function signatures) and anything needing your project's own ground truth.</p></div>
-    </div>
+    </div></details>
   </div>
 </div>
 
@@ -391,6 +366,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
     <div class="foot" style="padding-top: 48px">
       <div>PJ Crawley LLC. Corp-to-corp. Remote, with site visits by arrangement.</div>
       <div style="margin-top: 6px"><a href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a></div>
+      <div class="footlinks"><a href="index.html">Home</a><a href="about.html">About</a><a href="metrics.html">Metrics</a><a href="worked-example.html">Worked example</a></div>
     </div>
   </div>
 </div>
