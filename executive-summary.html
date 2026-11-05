@@ -62,6 +62,29 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
 @media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
 .wrap{width:100%}
 .footlinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px}
+h1,h2,h3{text-wrap:balance}
+.lede{font-size:21px;color:#2A3A52}
+.kick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5B6B7F}
+.figure{margin:36px 0 0 0}
+.figure img{width:100%;height:auto;display:block}
+.band .figure img,.band2 .figure img{background:#fff;border-radius:6px;padding:22px;box-sizing:border-box}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+.more{margin-top:18px}
+.more>summary{display:inline-block;font-weight:600;font-size:15px;color:#1B4FE8;padding:8px 0}
+.band .more>summary{color:#7FA6FF}
+.more>summary::before{content:"+";display:inline-block;width:20px;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.more[open]>summary::before{content:"\2212"}
+.more[open]>summary{margin-bottom:12px}
+@media (max-width:760px){.band .figure img,.band2 .figure img{padding:12px}}
+.toc{list-style:none;padding:0;margin:14px 0 0 0;border-top:1px solid #C9D3DF}
+.toc li{margin:0;border-bottom:1px solid #C9D3DF}
+.toc a{display:grid;grid-template-columns:260px minmax(0,1fr) 24px;gap:4px 24px;padding:15px 0;text-decoration:none;color:#0C1B33;align-items:baseline}
+.toc .th{font-weight:600;grid-column:1}
+.toc .tc{color:#2A3A52}
+.toc .ar{color:#1B4FE8;font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;text-align:right}
+.toc a:hover .th,.toc a:hover .ar{color:#1B4FE8}
+@media (max-width:760px){.toc a{grid-template-columns:minmax(0,1fr) 24px}.toc .tc{grid-column:1}.toc .ar{grid-column:2;grid-row:1}}
 </style>
 </head>
 <body>
@@ -112,7 +135,21 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 32px">
+<div class="wrap" style="padding-top: 48px; padding-bottom: 8px">
+  <div class="kick">On the rest of this page</div>
+  <ol class="toc">
+    <li><a href="#program"><span class="th">The program this is measured against</span><span class="tc">Twelve months and 114 man-months, $3.8M of engineering at a $400,000 loaded year.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#back"><span class="th">What comes back</span><span class="tc">Six to eleven man-months of effort and up to four weeks of schedule in a model that keeps its recovery rates low.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#where"><span class="th">Where it comes from</span><span class="tc">Simulation campaigns, documentation and review, data reduction, and generated artefacts checked mechanically.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#decides"><span class="th">What does not change</span><span class="tc">Every limit, every waiver, corner acceptance and ship or redesign stay with the engineer.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#accuracy-cost"><span class="th">What an accuracy figure costs</span><span class="tc">Each point of accuracy a model lacks costs about $10,000 per engineer a year when people find its wrong answers.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#false-conclusions"><span class="th">How one setup decision can mislead you</span><span class="tc">A short trial's setup can decide its verdict before the first answer comes back.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#cost"><span class="th">What it costs</span><span class="tc">The assessment at $7,500, the design check at $8,500, and the follow-on priced from the report.</span><span class="ar">&#8595;</span></a></li>
+    <li><a href="#fine"><span class="th">The fine print</span><span class="tc">The model's soft spots, in the order that should worry you most.</span><span class="ar">&#8595;</span></a></li>
+  </ol>
+</div>
+
+<div class="wrap" id="program" style="padding-top: 72px; padding-bottom: 32px">
   <h2 style="font-size: 40px; max-width: 24ch">The program this is measured against</h2>
   <p class="prose" style="margin-top: 16px">A twelve-month program, definition to tapeout, on the shape a practising designer would recognise.</p>
   <div class="tbl" style="margin-top: 20px">
@@ -142,7 +179,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   <img class="fig" style="margin-top: 32px" src="assets/schedule-12-month.png" alt="Twelve-month schedule, five phases and twenty-four tasks with week ranges and milestones, with documentation marked as the critical path">
 </div>
 
-<div class="band2">
+<div class="band2" id="back">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px">What comes back</h2>
     <div class="tbl" style="margin-top: 20px; background: #fff">
@@ -163,7 +200,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 24px">
+<div class="wrap" id="where" style="padding-top: 72px; padding-bottom: 24px">
   <h2 style="font-size: 40px">Where it comes from</h2>
   <p class="prose" style="margin-top: 16px">It comes from four places, listed in order of size.</p>
   <div class="cols" style="margin-top: 12px">
@@ -182,7 +219,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 40px; padding-bottom: 64px">
+<div class="wrap" id="decides" style="padding-top: 40px; padding-bottom: 64px">
   <div class="cols">
     <div>
       <h2 style="font-size: 40px">What does not change</h2>
@@ -198,6 +235,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px; max-width: 24ch">What an accuracy figure costs</h2>
     <p class="prose" style="margin-top: 16px; font-size: 19px; font-weight: 500">Each point of accuracy a model lacks costs about $10,000 per engineer a year when people find its wrong answers. When a check finds them first, the same point costs minutes of waiting.</p>
+    <details class="more"><summary>The arithmetic and the table</summary>
     <p class="prose">The arithmetic uses figures already on this site. Twenty answers per engineer per working day over 230 days is 4,600 answers a year, the usage the Metrics page sizes its hardware for, so one point of accuracy is 46 wrong answers a year. Suppose each wrong answer left for a person to find takes an hour to find and put right. At $400,000 loaded over 230 eight-hour days, about $217 an hour, those 46 hours cost $10,000, a little over a week of the engineer's year.</p>
     <div class="tbl" style="margin-top: 20px; background: #fff">
       <table>
@@ -219,12 +257,14 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
         <p>A check catches only what it was written to catch, and not every task has one yet. That is why every generated artefact in this practice comes paired with a check, as described under Where it comes from.</p>
       </div>
     </div>
+    </details>
   </div>
 </div>
 
 <div class="wrap" id="false-conclusions" style="padding-top: 72px; padding-bottom: 64px">
   <h2 style="font-size: 40px; max-width: 26ch">How one setup decision can mislead you about AI</h2>
   <p class="prose" style="margin-top: 16px; font-size: 19px; font-weight: 500">A team's verdict on AI usually comes from a short trial, and the trial's setup can decide the verdict before the first answer comes back.</p>
+  <details class="more"><summary>The seven decisions and what each did to a result</summary>
   <p class="prose">Each row below is a decision of that kind, with what it did to a result measured for this site.</p>
   <div class="tbl" style="margin-top: 20px">
     <table>
@@ -245,9 +285,10 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
     <p>The first three make AI look worse than it is, and a team that stops there passes on a tool it could have used. The last four can make it look better than it is, and a team that stops there meets the errors later, in review or in silicon.</p>
     <p>The first three each moved a result by 50 points or more, further than the measured gap between most of the models on the Metrics page.</p>
   </div>
+  </details>
 </div>
 
-<div class="band2">
+<div class="band2" id="cost">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px">What it costs</h2>
     <div class="cols" style="margin-top: 24px">
@@ -268,7 +309,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap fine" style="padding-top: 72px; padding-bottom: 80px">
+<div class="wrap fine" id="fine" style="padding-top: 72px; padding-bottom: 80px">
   <h2 style="font-size: 44px">The fine print</h2>
   <p style="font-size: 17px; color: #5B6B7F; margin-top: 8px">The part that is usually smaller. Here it is larger.</p>
   <div class="prose" style="margin-top: 24px; max-width: 76ch">

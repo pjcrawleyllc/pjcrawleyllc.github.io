@@ -49,6 +49,22 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
 @media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
 .wrap{width:100%}
 .footlinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px}
+h1,h2,h3{text-wrap:balance}
+.lede{font-size:21px;color:#2A3A52}
+.kick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5B6B7F}
+.figure{margin:36px 0 0 0}
+.figure img{width:100%;height:auto;display:block}
+.band .figure img,.band2 .figure img{background:#fff;border-radius:6px;padding:22px;box-sizing:border-box}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+.more{margin-top:18px}
+.more>summary{display:inline-block;font-weight:600;font-size:15px;color:#1B4FE8;padding:8px 0}
+.band .more>summary{color:#7FA6FF}
+.more>summary::before{content:"+";display:inline-block;width:20px;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.more[open]>summary::before{content:"\2212"}
+.more[open]>summary{margin-bottom:12px}
+@media (max-width:760px){.band .figure img,.band2 .figure img{padding:12px}}
+@media (max-width:760px){.writeto{order:-1}}
 </style>
 </head>
 <body>
@@ -79,7 +95,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
         <li>The live training on site or live remote, as you prefer</li>
       </ul>
     </div>
-    <div>
+    <div class="writeto">
       <p style="font-size: 15px; color: #5B6B7F; margin-bottom: 8px">Write to</p>
       <a class="mail" href="mailto:phil@pjcrawleyllc.com">phil@pjcrawleyllc.com</a>
       <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px">
@@ -93,6 +109,8 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px; max-width: 24ch">How an assessment runs</h2>
     <p class="prose" style="margin-top: 16px; font-size: 19px; font-weight: 500">$7,500 fixed, two weeks, remote. There is no calendar to book; the dates are set by email once the task list is agreed.</p>
+    <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-arc-narrow.svg" width="358" height="868"><img src="assets/fig-arc-wide.svg" width="1116" height="225" alt="Before: you send twenty to thirty of your team&#x27;s own tasks, de-identified, and name the models it may use. Weeks 1 and 2: the measured assessment, $7,500 fixed and remote; each task runs three times through each model, with the predictions written before the first run. End of week 2: the report, with accuracy by model and family, the silent-wrong-answer map and one recommendation, yours to keep. About two months: the follow-on, kickoff and deploy, integrate, build the curriculum, live training, priced from the report. Ongoing and optional: support from $1,000 a month."></picture></figure>
+    <details class="more"><summary>The three steps of an assessment, in detail</summary>
     <div style="margin-top: 24px">
       <div class="week">
         <div class="w">Before</div>
@@ -116,6 +134,7 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
         </div>
       </div>
     </div>
+    </details>
   </div>
 </div>
 

@@ -66,6 +66,41 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
 @media (max-width:760px){.wrap{padding-left:16px;padding-right:16px}h1{font-size:40px!important}h2{font-size:30px!important}body{overflow-wrap:anywhere}.tbl{overflow-wrap:normal}.cols{grid-template-columns:minmax(0,1fr)}.cols>*{min-width:0}}
 .wrap{width:100%}
 .footlinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px}
+h1,h2,h3{text-wrap:balance}
+.lede{font-size:21px;color:#2A3A52}
+.kick{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5B6B7F}
+.figure{margin:36px 0 0 0}
+.figure img{width:100%;height:auto;display:block}
+.band .figure img,.band2 .figure img{background:#fff;border-radius:6px;padding:22px;box-sizing:border-box}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+.more{margin-top:18px}
+.more>summary{display:inline-block;font-weight:600;font-size:15px;color:#1B4FE8;padding:8px 0}
+.band .more>summary{color:#7FA6FF}
+.more>summary::before{content:"+";display:inline-block;width:20px;font-family:'IBM Plex Mono',ui-monospace,monospace}
+.more[open]>summary::before{content:"\2212"}
+.more[open]>summary{margin-bottom:12px}
+@media (max-width:760px){.band .figure img,.band2 .figure img{padding:12px}}
+.q{border-top:1px solid #C9D3DF}
+.q:last-child{border-bottom:1px solid #C9D3DF}
+.q>summary{display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:6px 20px;padding:18px 0}
+.q>summary h3{font-size:24px;grid-column:1}
+.q>summary .claim{grid-column:1;color:#2A3A52}
+.q>summary::after{content:"+";font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:22px;line-height:1;color:#1B4FE8;text-align:right;grid-column:2;grid-row:1}
+.q[open]>summary::after{content:"\2212"}
+.q>.qbody{padding:2px 0 26px 0}
+.q h4{font-family:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;font-size:21px;line-height:1.1;margin:0 0 8px 0}
+.cta{display:flex;flex-wrap:wrap;align-items:flex-start;gap:18px 36px;margin-top:28px}
+.cta .big{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:40px;line-height:1;letter-spacing:-0.02em}
+.cta .sub{font-size:15px;color:#5B6B7F;margin-top:8px;max-width:30ch}
+.cta .btn{align-self:center}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.door{display:flex;flex-direction:column;gap:10px;border:1.5px solid #C9D3DF;border-radius:6px;padding:20px 22px;text-decoration:none;color:#0C1B33;background:#fff}
+.door:hover{border-color:#1B4FE8}
+.door p{margin:0;color:#2A3A52}
+.door .go{margin-top:auto;font-weight:600;color:#1B4FE8}
+@media (max-width:900px){.doors{grid-template-columns:1fr}}
+@media (max-width:760px){.cta .big{font-size:34px}}
 </style>
 </head>
 <body>
@@ -84,15 +119,22 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 56px">
-  <h1 style="font-size: 58px; max-width: 26ch">AI tools for analog and mixed-signal design teams, deployed into your own flow.</h1>
-  <p class="prose" style="font-size: 21px; margin-top: 26px; color: #2A3A52">Nothing a model produces is acted on until a deterministic check has passed it. The tools change how much one engineer can run and check. They do not change who decides.</p>
-  <p class="prose" style="font-size: 19px; font-weight: 500; margin-top: 18px">Every engagement starts with a two-week measured assessment of your own tasks, $7,500 fixed and remote. What follows is scoped and priced from what it finds, for one team or many.</p>
-  <p class="prose" style="margin-top: 6px"><span class="tag t-est">ESTIMATE</span> A month earlier to tapeout on a twelve-month program. <a href="executive-summary.html">The executive summary works it through.</a></p>
-  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px">
+<div class="wrap" style="padding-top: 56px; padding-bottom: 40px">
+  <h1 style="font-size: 52px; max-width: 30ch">AI tools for analog and mixed-signal design teams, deployed into your own flow.</h1>
+  <p class="prose" style="font-size: 21px; margin-top: 22px; color: #2A3A52">Nothing a model produces is acted on until a deterministic check has passed it. The tools change how much one engineer can run and check. They do not change who decides.</p>
+  <div class="cta">
+    <div class="stat"><div class="big">$7,500</div><div class="sub">two weeks on your own tasks, fixed and remote</div></div>
+    <div class="stat"><div class="big">1 month</div><div class="sub">earlier to tapeout on a twelve-month program <span class="tag t-est">ESTIMATE</span> <a href="executive-summary.html">The executive summary works it through.</a></div></div>
     <a class="btn" href="contact.html">Write to me</a>
-    <a class="btn2" href="executive-summary.html">Read the executive summary</a>
-    <a class="btn2" href="evidence.html">See the evidence, including where the AI was wrong</a>
+  </div>
+  <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-arc-narrow.svg" width="358" height="868"><img src="assets/fig-arc-wide.svg" width="1116" height="225" alt="Before: you send twenty to thirty of your team&#x27;s own tasks, de-identified, and name the models it may use. Weeks 1 and 2: the measured assessment, $7,500 fixed and remote; each task runs three times through each model, with the predictions written before the first run. End of week 2: the report, with accuracy by model and family, the silent-wrong-answer map and one recommendation, yours to keep. About two months: the follow-on, kickoff and deploy, integrate, build the curriculum, live training, priced from the report. Ongoing and optional: support from $1,000 a month."></picture></figure>
+</div>
+
+<div class="wrap" style="padding-bottom: 64px">
+  <div class="doors">
+    <a class="door" href="offering.html"><div class="kick">What I sell</div><p>Every engagement starts with a two-week measured assessment of your own tasks, $7,500 fixed and remote. What follows is scoped and priced from what it finds, for one team or many.</p><span class="go">See The Offering</span></a>
+    <a class="door" href="evidence.html"><div class="kick">Why believe it</div><p>A converter calibration you can run on your laptop, and two power designs read in a licensed simulator, with the wrong turns left on the record.</p><span class="go">See the evidence, including where the AI was wrong</span></a>
+    <a class="door" href="executive-summary.html"><div class="kick">The arithmetic</div><p><strong>A month earlier to tapeout, on a twelve-month program.</strong> On that program, a month of team cost is $330,000, and the effort recovered alongside it is worth more again. The case, the schedule it comes from, and the fine print, in that order.</p><span class="go">Read the executive summary</span></a>
   </div>
 </div>
 
@@ -140,65 +182,41 @@ ul{padding-left:22px;margin:0 0 14px 0}li{margin:6px 0}
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 24px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px">These tools lie fluently.</h2>
-    </div>
-    <div class="prose">
-      <p>The failure that costs a design team is the confident wrong answer: plausible, free of warnings and ready to ship. A wrong number arrives looking exactly like a right one, and review practice built for human mistakes does not flag it.</p>
-      <p>A deterministic verification layer catches it, where a smarter model would not. The model proposes, the engine decides, and nothing ships on a model's say-so.</p>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="padding-top: 48px; padding-bottom: 72px">
-  <div class="cols">
-    <div>
-      <h2 style="font-size: 40px">AI does not replace the design engineer.</h2>
-    </div>
-    <div class="prose">
-      <p>It changes how much one engineer can run and check: sweep and statistical campaigns at cube scale, requirements work in bulk, decks and documentation rendered and checked.</p>
-      <p>Every limit, waiver and design decision stays with the engineer.</p>
-    </div>
-  </div>
-</div>
-
 <div class="band2">
   <div class="wrap" style="padding-top: 64px; padding-bottom: 64px">
     <h2 style="font-size: 40px; max-width: 22ch">Where it plugs into your flow</h2>
     <p class="prose" style="margin-top: 16px">One flow, familiar stages, and a plug-in point at each, with the decision layer left exactly where it was. The Offering lists the plug-ins stage by stage.</p>
+    <figure class="figure"><picture><source media="(max-width: 700px)" srcset="assets/fig-flow-narrow.svg" width="358" height="782"><img src="assets/fig-flow-wide.svg" width="1116" height="349" alt="Seven stages of a design flow, each with its plug-in. Requirements and spec: read-only dumps of the requirements database and guarded copy-and-patch writes. Architecture and models: generated behavioural harnesses checked against the simulator. Schematic entry: build scripts that address terminals by name. Simulation and characterisation: one swept test spread across a farm, mismatch campaigns rolled up flat. Reliability and stress: benches for fresh, stressed and aged parts. Documentation and review: decks and figures built by script and checked as rendered images. Production test handoff: test procedures staged in the requirements database. Artifact QA runs on every output. At every stage the decisions stay with the engineer: limits, waivers, corner acceptance, ship or redesign."></picture></figure>
     <p style="margin-top: 14px"><a href="offering.html">See the plug-ins stage by stage on The Offering</a></p>
   </div>
 </div>
 
-<div class="wrap" style="padding-top: 72px; padding-bottom: 32px">
-  <h2 style="font-size: 40px; max-width: 24ch">Evidence you can run</h2>
-  <div class="cols" style="margin-top: 28px">
+<div class="wrap" id="how" style="padding-top: 72px; padding-bottom: 72px">
+  <h2 style="font-size: 40px">How I work</h2>
+  <p class="prose" style="margin-top: 12px; color: #5B6B7F">Three short answers. Each one opens when you click it.</p>
+  <div style="margin-top: 24px">
+    <details class="q" id="lie"><summary><h3>These tools lie fluently.</h3><span class="claim">The costly failure is the confident wrong answer, so a deterministic check passes every output before anyone relies on it.</span></summary><div class="qbody prose">
+      <p>The failure that costs a design team is the confident wrong answer: plausible, free of warnings and ready to ship. A wrong number arrives looking exactly like a right one, and review practice built for human mistakes does not flag it.</p>
+      <p>A deterministic verification layer catches it, where a smarter model would not. The model proposes, the engine decides, and nothing ships on a model's say-so.</p>
+    </div></details>
+    <details class="q" id="engineer"><summary><h3>AI does not replace the design engineer.</h3><span class="claim">It changes how much one engineer can run and check. Every limit, waiver and design decision stays with the engineer.</span></summary><div class="qbody prose">
+      <p>It changes how much one engineer can run and check: sweep and statistical campaigns at cube scale, requirements work in bulk, decks and documentation rendered and checked.</p>
+      <p>Every limit, waiver and design decision stays with the engineer.</p>
+    </div></details>
+    <details class="q" id="run"><summary><h3>Evidence you can run</h3><span class="claim">A converter calibration you can run on your laptop, and two power designs read in a licensed simulator.</span></summary><div class="qbody prose">
+      <div class="cols" style="margin-top: 28px">
     <div class="prose">
-      <h3 style="font-size: 24px; margin-bottom: 10px">The worked example</h3>
+      <h4>The worked example</h4>
       <p>A 12-bit converter, its calibration, and its digital correction block. Runnable on your laptop, and checked against its own model at every input code.</p>
       <p><a href="worked-example.html">Run the worked example</a></p>
     </div>
     <div class="prose">
-      <h3 style="font-size: 24px; margin-bottom: 10px">Two power designs in a licensed simulator</h3>
+      <h4>Two power designs in a licensed simulator</h4>
       <p>A published compensator rule reproduced from its own figures and found to be incomplete for the multiphase case it is used in. Then a four-phase 1 MHz regulator held to Intel's design guide line by line, with the design calls delegated on purpose and every one on record. Both read in simulation, nothing built.</p>
       <p><a href="evidence.html">See the evidence, including where the AI was wrong</a></p>
     </div>
   </div>
-</div>
-
-<div class="wrap" style="padding-top: 24px; padding-bottom: 72px">
-  <div style="border-top: 1px solid #C9D3DF; padding-top: 32px">
-    <div class="cols">
-      <div>
-        <h2 style="font-size: 34px; max-width: 18ch">A month earlier to tapeout, on a twelve-month program.</h2>
-      </div>
-      <div class="prose">
-        <p>On that program, a month of team cost is $330,000, and the effort recovered alongside it is worth more again. The case, the schedule it comes from, and the fine print, in that order.</p>
-        <p><a href="executive-summary.html">Read the executive summary</a></p>
-      </div>
-    </div>
+    </div></details>
   </div>
 </div>
 
